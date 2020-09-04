@@ -5,5 +5,5 @@ Behavioral Enhancement Experiment for Ministry Of Health and Welfare
 
 # Contributors
 
-* KB (moonx190)
+* KB [email](mailto:moonx190@umn.edu)
 * NW (z0nam)
