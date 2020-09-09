@@ -16,6 +16,12 @@ SESSION_CONFIGS = [
        num_demo_participants=1,
        app_sequence=['introduction']
     ),
+    dict(
+      name='pre_test', 
+      display_name="Pre-test questionnaire for behavioral experiment",
+      num_demo_participants=1, 
+      app_sequence=['pre_test']
+    ),
 ]
 
 
