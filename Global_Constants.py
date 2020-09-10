@@ -128,6 +128,12 @@ class GlobalConstants:
         [NO, "아니오"],
     ]
 
+    HAVE, DONT_HAVE = True, False
+    BINARY_POSSESSION = [
+        [HAVE,"있음"],
+        [DONT_HAVE,"없음"],
+    ]
+
     YNU_CHOICES = [
         [1, "예"],
         [2, "아니오"],

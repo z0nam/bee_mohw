@@ -17,20 +17,26 @@ SESSION_CONFIGS = [
        app_sequence=['introduction']
     ),
     dict(
-      name='pre_test', 
+      name='pre_test',
       display_name="Pre-test questionnaire for behavioral experiment",
-      num_demo_participants=1, 
+      num_demo_participants=1,
       app_sequence=['pre_test']
+    ),
+    dict(
+      name='post_test',
+      display_name="Post-test questionnaire for behavioral experiment",
+      num_demo_participants=1,
+      app_sequence=['post_test']
     ),
 ]
 
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ko'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'KRW'
 USE_POINTS = True
 
 ROOMS = []
