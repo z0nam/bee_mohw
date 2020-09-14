@@ -10,6 +10,7 @@ from otree.api import (
 )
 
 from Global_Constants import GlobalConstants
+from . import satisfaction
 
 author = 'Kyubum Moon <mailto:moonx190@umn.edu>'
 
@@ -23,6 +24,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
+    sm1_list = satisfaction.sm1_list
     BINARY_CHOICE = GlobalConstants.BINARY_CHOICES
     BINARY_POSSESSION = GlobalConstants.BINARY_POSSESSION
 
@@ -110,6 +112,22 @@ class Constants(BaseConstants):
         [4, "(0) 1시간 이후"],
     ]
 
+    TYPE_LICKERT = [
+        [1, "전혀 그렇지 않다"],
+        [2, "그렇지 않은편이다"],
+        [3, "간혹 그렇다"],
+        [4, "자주 그렇다"],
+        [5, "항상 그렇다"],
+    ]
+
+    SATISFACTION_LICKERT =[
+        [1, "매우 그렇다"],
+        [2, "그렇다"],
+        [3, "보통이다"],
+        [4, "그렇지 않다"],
+        [5, "전혀 그렇지 않다"],
+    ]
+
 
 class Subsession(BaseSubsession):
     pass
@@ -118,6 +136,13 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     pass
 
+
+def make_field_sm(index):
+    return models.IntegerField(
+        label=Constants.sm1_list[index-1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.SATISFACTION_LICKERT,
+    )
 
 class Player(BasePlayer):
     registration_type = models.IntegerField(
@@ -916,7 +941,7 @@ class Player(BasePlayer):
     )
 
     morning_smoking_more_than_the_rest_of_day = models.BooleanField(
-        label="아침에 일어나서 첫 몇 시간 동안 하루 중 다른 시간보다 거 자주 담배를 피우십니까?",
+        label="아침에 일어나서 첫 몇 시간 동안하루 중 다른 시간보다 거 자주 담배를 피우십니까?",
         choices=[
             [1, "(1) 예"],
             [2, "(0) 아니오"],
@@ -932,6 +957,223 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelectHorizontal,
     )
+
+    smoker_typeA_1 = models.IntegerField(
+        label="마음이 조급할 때 여유를 가지기 위해 피운다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeA_2 = models.IntegerField(
+        label="집중력을 높이기 위해 피운다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeA_3 = models.IntegerField(
+        label="기분 전환을 하려고 피운다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeB_1 = models.IntegerField(
+        label="담배, 라이터, 성냥 등을 만지작거리는 버릇이 있다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeB_2 = models.IntegerField(
+        label="담배를 꺼내 불을 붙이고 연기를 들이마셨다가 내뿜고 재떨이에 비벼  끄는 과정자체가 좋다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeB_3 = models.IntegerField(
+        label="담배 연기로 모양을 만드는 것을 좋아한다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeC_1 = models.IntegerField(
+        label="담배를 피우면 마음이 가라앉는다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeC_2 = models.IntegerField(
+        label="담배연기를 내뿜으면 나른한 행복감을 느낄 수 있다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeC_3 = models.IntegerField(
+        label="마음이 편안할 때면 담배생각이 더 난다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeD_1 = models.IntegerField(
+        label="흥분하거나 화가 났을 때 담배를 찾게 된다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeD_2 = models.IntegerField(
+        label="불안하고 긴장되면 담배를 피우게 된다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeD_3 = models.IntegerField(
+        label="마음이 울적하거나 걱정거리가 있을 때 담배를 피운다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeE_1 = models.IntegerField(
+        label="담배가 떨어지면 안절부절 못한다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeE_2 = models.IntegerField(
+        label="아무리 바빠도 담배를 거르면 마음 한 구적에 담배생각이 난다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeE_3 = models.IntegerField(
+        label="오랫동안 안 피우다가 한 대 피우면 그 순간 불안했던 마음이 사라진다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeF_1 = models.IntegerField(
+        label="자신도 모르는 사이에 담배를 물고 있는 것을 발견하곤 한다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeF_2 = models.IntegerField(
+        label="특정한 장소(화장실 등)에서는 담배가 당기지 않는데도 흡연하게 된다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeF_3 = models.IntegerField(
+        label="특정한 상황(식사 후 등)에서는 담배가 당기지 않는데도 흡연하게 된다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeG_1 = models.IntegerField(
+        label="주위 사람들이 흡연하면 나도 담배를 피운다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeG_2 = models.IntegerField(
+        label="동료/친구들과 함께 흥겨운 시간을 보낼 때 흡연하게 된다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoker_typeG_3 = models.IntegerField(
+        label="나는 친구들과 회식이나 모임을 할 때 항상 흡연한다.",
+        choices=Constants.TYPE_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    sm1_1 = make_field_sm(1)
+    sm1_2 = make_field_sm(2)
+    sm1_3 = make_field_sm(3)
+    sm1_4 = make_field_sm(4)
+    sm1_5 = make_field_sm(5)
+    sm1_6 = make_field_sm(6)
+    sm1_7 = make_field_sm(7)
+
+    satisfactory_1 = models.IntegerField(
+        label="금연상담사는 상담 약속시간을 잘 지켰습니까?",
+        choices=Constants.SATISFACTION_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    satisfactory_2 = models.IntegerField(
+        label="금연하는 동안 상담사로부터 도움을 충분히 받았습니까?",
+        choices=Constants.SATISFACTION_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    satisfactory_3 = models.IntegerField(
+        label="CO측정, 혈압, 체중 등을 충분히 체크를 받으셨습니까?",
+        choices=Constants.SATISFACTION_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    satisfactory_4 = models.IntegerField(
+        label="금연상담사나 다른 직원들이 친절하게 잘 대해주었습니까?",
+        choices=Constants.SATISFACTION_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    satisfactory_5 = models.IntegerField(
+        label="방문서비스를 이용하는 것에 불편하였습니까?",
+        choices=Constants.SATISFACTION_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    satisfactory_6 = models.IntegerField(
+        label="국가금연지원서비스 이용이 금연성공에 얼마나 도움이 되었습니까?",
+        choices=Constants.SATISFACTION_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    satisfactory_7 = models.IntegerField(
+        label="담배를 피우는 다른 사람에게도 국가금연지원서비스를 이용하도록 권유할 생각이 있습니까?",
+        choices=Constants.SATISFACTION_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    self_reported_health_status = models.IntegerField(
+        label="귀하가 생각하는 본인의 현재 건강상태는 어떻습니까?",
+        choices=[
+            [1, "매우 건강함"],
+            [2, "건강한 편"],
+            [3, "보통"],
+            [4, "허약한 편"],
+            [5, "매우 허약함"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    stress_metric_self_reported = models.IntegerField(
+        label="평소 귀하의 스트레스 정도는 어떻습니까?",
+        choices=[
+            [1, "전혀 받지 않음"],
+            [2, "별로 받지 않음"],
+            [3, "그저 그런 편임 "],
+            [4, "약간 받는 편"],
+            [5, "매우 많이 받음"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    afterward_smoking_cessation_yesno = models.IntegerField(
+        label="향후에 금연을 실천할 생각이 있습니까?",
+        choices=[
+            [1, "금연에 대해 생각해 본 적 없음"],
+            [2, "향후 6개월 이내에 금연할 계획이 있음"],
+            [3, "1개월 이내에 금연할 계획이 있음"],
+            [4, "금연을 실천한 지 1일 이상이 지났음"],
+            [5, "금연을 실천한 지 6개월 이상 되었음 "],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+
+
+
+
 
 
 

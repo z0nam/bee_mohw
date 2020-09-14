@@ -4,6 +4,12 @@
 {% block title %}
     행동강화물품 행동실험 사전조사
 {% endblock %}
+{% block app_scripts %}
+    <script>
+    $(document).ready(function(){
+    })
+    </script>
+{% endblock %}
 
 {% block content %}
     <div class="alert border">{% formfield player.registration_type %}</div>
@@ -191,6 +197,100 @@
     <div class="alert border">{% formfield player.how_many_gaebis_per_day %}</div>
     <div class="alert border">{% formfield player.morning_smoking_more_than_the_rest_of_day %}</div>
     <div class="alert border">{% formfield player.sick_all_day_still_smoking %}</div>
+
+    <div class="alert border">
+        <p>※ 흡연유형 A 관련 문항</p>
+    </div>
+    <div class="alert border">{% formfield player.smoker_typeA_1 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeA_2 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeA_3 %}</div>
+    <div class="alert border">
+        <p>※ 흡연유형 B 관련 문항</p>
+    </div>
+    <div class="alert border">{% formfield player.smoker_typeB_1 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeB_2 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeB_3 %}</div>
+    <div class="alert border">
+        <p>※ 흡연유형 C 관련 문항</p>
+    </div>
+    <div class="alert border">{% formfield player.smoker_typeC_1 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeC_2 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeC_3 %}</div>
+    <div class="alert border">
+        <p>※ 흡연유형 D 관련 문항</p>
+    </div>
+	<div class="alert border">{% formfield player.smoker_typeD_1 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeD_2 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeD_3 %}</div>
+    <div class="alert border">
+        <p>※ 흡연유형 E 관련 문항</p>
+    </div>
+    <div class="alert border">{% formfield player.smoker_typeE_1 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeE_2 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeE_3 %}</div>
+    <div class="alert border">
+        <p>※ 흡연유형 F 관련 문항</p>
+    </div>
+    <div class="alert border">{% formfield player.smoker_typeF_1 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeF_2 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeF_3 %}</div>
+    <div class="alert border">
+        <p>※ 흡연유형 G 관련 문항</p>
+    </div>
+    <div class="alert border">{% formfield player.smoker_typeG_1 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeG_2 %}</div>
+	<div class="alert border">{% formfield player.smoker_typeG_3 %}</div>
+
+<!--{#                    <table class="table-bordered" style="border:3px solid grey; padding-left: 5px; padding-right: 5px">#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <th></th>#}-->
+<!--{#                            <th style="text-align:center; border: 3px solid grey">매우 그렇다    그렇다    보통이다    그렇지 않다    전혀 그렇지 않다</th>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <td style="background-color: lightgrey">금연상담사는 상담 약속시간을 잘 지켰습니까?</td>#}-->
+<!--{#                            <td style="background-color: lightgrey">{% formfield player.sm1_1 %}</td>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <td>금연하는 동안 상담사로부터 도움을 충분히 받았습니까?</td>#}-->
+<!--{#                            <td>{% formfield player.sm1_2 %}</td>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <td style="background-color: lightgrey">CO측정, 혈압, 체중 등을 충분히 체크를 받으셨습니까?</td>#}-->
+<!--{#                            <td style="background-color: lightgrey">{% formfield player.sm1_3 %}</td>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <td>금연상담사나 다른 직원들이 친절하게 잘 대해주었습니까?</td>#}-->
+<!--{#                            <td>{% formfield player.sm1_4 %}</td>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <td style="background-color: lightgrey">방문서비스를 이용하는 것에 불편하였습니까?</td>#}-->
+<!--{#                            <td style="background-color: lightgrey">{% formfield player.sm1_5 %}</td>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <td>국가금연지원서비스 이용이 금연성공에 얼마나 도움이 되었습니까?</td>#}-->
+<!--{#                            <td>{% formfield player.sm1_6 %}</td>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                        <tr>#}-->
+<!--{#                            <td style="background-color: lightgrey">담배를 피우는 다른 사람에게도 국가금연지원서비스를 이용하도록 권유할 생각이 있습니까?</td>#}-->
+<!--{#                            <td style="background-color: lightgrey">{% formfield player.sm1_7 %}</td>#}-->
+<!--{#                        </tr>#}-->
+<!--{#                    </table>#}-->
+    <div class="alert border">
+        <p>※ 만족도 조사</p>
+    </div>
+    <div class="alert border">{% formfield player.satisfactory_1 %}</div>
+	<div class="alert border">{% formfield player.satisfactory_2 %}</div>
+	<div class="alert border">{% formfield player.satisfactory_3 %}</div>
+    <div class="alert border">{% formfield player.satisfactory_4 %}</div>
+	<div class="alert border">{% formfield player.satisfactory_5 %}</div>
+	<div class="alert border">{% formfield player.satisfactory_6 %}</div>
+	<div class="alert border">{% formfield player.satisfactory_7 %}</div>
+     <div class="alert border">
+        <p>※ 금연클리닉 사전조사</p>
+    </div>
+    <div class="alert border">{% formfield player.self_reported_health_status %}</div>
+    <div class="alert border">{% formfield player.stress_metric_self_reported %}</div>
+    <div class="alert border">{% formfield player.afterward_smoking_cessation_yesno %}</div>
 
 
 

@@ -142,8 +142,49 @@ class pre_test(Page):
         'how_many_gaebis_per_day',
         'morning_smoking_more_than_the_rest_of_day',
         'sick_all_day_still_smoking',
-
-
+        'smoker_typeA_1',
+        'smoker_typeA_2',
+        'smoker_typeA_3',
+        'smoker_typeB_1',
+        'smoker_typeB_2',
+        'smoker_typeB_3',
+        'smoker_typeC_1',
+        'smoker_typeC_2',
+        'smoker_typeC_3',
+        'smoker_typeD_1',
+        'smoker_typeD_2',
+        'smoker_typeD_3',
+        'smoker_typeE_1',
+        'smoker_typeE_2',
+        'smoker_typeE_3',
+        'smoker_typeF_1',
+        'smoker_typeF_2',
+        'smoker_typeF_3',
+        'smoker_typeG_1',
+        'smoker_typeG_2',
+        'smoker_typeG_3',
+        'sm1_1',
+        'sm1_2',
+        'sm1_3',
+        'sm1_4',
+        'sm1_5',
+        'sm1_6',
+        'sm1_7',
+        'satisfactory_1',
+        'satisfactory_2',
+        'satisfactory_3',
+        'satisfactory_4',
+        'satisfactory_5',
+        'satisfactory_6',
+        'satisfactory_7',
+        'self_reported_health_status',
+        'stress_metric_self_reported',
+        'afterward_smoking_cessation_yesno',
     ]
+
+    def vars_for_template(self) -> dict:
+        return {
+            'SATISFACTION_LICKERT': [i[1] for i in Constants.SATISFACTION_LICKERT]
+        }
 
 page_sequence = [pre_test,]
