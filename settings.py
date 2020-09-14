@@ -10,21 +10,33 @@ SESSION_CONFIG_DEFAULTS = dict(
 )
 
 SESSION_CONFIGS = [
-    # dict(
-    #    name='public_goods',
-    #    display_name="Public Goods",
-    #    num_demo_participants=3,
-    #    app_sequence=['public_goods', 'payment_info']
-    # ),
+    dict(
+       name='introduction',
+       display_name="Introduction to Behavioral Experiment",
+       num_demo_participants=1,
+       app_sequence=['introduction']
+    ),
+    dict(
+      name='pre_test',
+      display_name="Pre-test questionnaire for behavioral experiment",
+      num_demo_participants=1,
+      app_sequence=['pre_test']
+    ),
+    dict(
+      name='post_test',
+      display_name="Post-test questionnaire for behavioral experiment",
+      num_demo_participants=1,
+      app_sequence=['post_test']
+    ),
 ]
 
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ko'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'KRW'
 USE_POINTS = True
 
 ROOMS = []
