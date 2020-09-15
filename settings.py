@@ -28,6 +28,12 @@ SESSION_CONFIGS = [
       num_demo_participants=1,
       app_sequence=['post_test']
     ),
+    dict(
+        name='online_survey',
+        display_name='Online survey for behavior strengthening material research targeted at smoking cessation contestants',
+        num_demo_participants=1,
+        app_sequence=['online_survey']
+    )
 ]
 
 

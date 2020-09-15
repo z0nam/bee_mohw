@@ -1,0 +1,367 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+  <div class="alert border">
+      연구명: 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석
+      <br>작성자: 조남운, 어수진, 김종환, 문규범, 이지원, 정태성 (한국행동경제학연구소)</br>
+      김진영, 권순탁 (한림대학교 의과대학), 최은철 (고려대학교)
+  </div>
+
+    <h3>1. 설문개요</h3>
+    <div class="alert border">
+        흡연 및 금연경험자이고 근로자인 성인 300명 대상
+        <br>생애중 (궐련형 기준) 100개비 이상 흡연한 적이 있는 20세 이상 60세 미만 흡연경험자</br>
+        최근 1년 이내에 24시간 이상 금연 경험이 있는 금연 경험자
+    </div>
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+    <thead>
+        <tr>
+            <th class="tg-0pky" colspan="2">직군 및 성별 구분<br></th>
+            <th class="tg-1wig">20대</th>
+            <th class="tg-1wig">30대</th>
+            <th class="tg-1wig">40대<br></th>
+            <th class="tg-1wig">50대</th>
+            <th class="tg-1wig">합계</th>
+         </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="tg-1wig" rowspan="2">관리자 및 사무 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">79</td>
+            <td class="tg-0lax">94</td>
+            <td class="tg-0lax">82</td>
+            <td class="tg-0lax">300</td>
+            <td class="tg-0lax">43</td>
+         </tr>
+         <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">19</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">전문가 및 관련 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">10</td>
+            <td class="tg-0lax">16</td>
+            <td class="tg-0lax">14</td>
+            <td class="tg-0lax">8</td>
+            <td class="tg-0lax">48</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">20</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">서비스 및 판매 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">8</td>
+            <td class="tg-0lax">11</td>
+            <td class="tg-0lax">15</td>
+            <td class="tg-0lax">14</td>
+            <td class="tg-0lax">48</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">5</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">20</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">기능원, 장치, 기계 조작 및 조립 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">5</td>
+            <td class="tg-0lax">10</td>
+            <td class="tg-0lax">16</td>
+            <td class="tg-0lax">16</td>
+            <td class="tg-0lax">47</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">2</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">20</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">기타</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">2</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">11</td>
+            <td class="tg-0lax">24</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">1</td>
+            <td class="tg-0lax">2</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">5</td>
+            <td class="tg-0lax">11</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" colspan="2">합계</td>
+            <td class="tg-0lax">45</td>
+            <td class="tg-0lax">79</td>
+            <td class="tg-0lax">94</td>
+            <td class="tg-0lax">82</td>
+            <td class="tg-0lax">300</td>
+        </tr>
+    </tbody>
+    </table>
+    <caption>표 1 조사대상자 표집인원 할당표</caption>
+    <p></p>
+    <br>▷직군은 통계청 2017년 5월말 직종별 인구통계에 기반하여 비율을 할당</br>
+    ▷남성과 여성 비율을 7:3 으로 할당한 것은 미보고에 의한 여성흡연율 과소추산을 고려한 실질 흡연율을 감안함 (정금지 외 2018)
+    <br>▷설문조사의 표집 범위를 근로자로 한정한 이유는 연구 예산 제약상 다소 부족한 설문조사인원수의 문제를 보완하기 위한 것임</br>
+    ▷금연경험자로 한정한 이유는 금연중 행동강화물품의 효과성이 연구의 핵심 질문이기 때문임
+    <p></p>
+    <h3>2. 층화표집을 위한 선별질문</h3>
+    <div class="alert border">{% formfield player.gender %}</div>
+    <div class="alert border">{% formfield player.born_year %}</div>
+    <div class="alert border">{% formfield player.job_position %}</div>
+    <div class="alert border">{% formfield player.smoking_in_lifetime_yesno %}</div>
+    <div class="alert border">{% formfield player.within_past_one_year_smoking_cessation_attempted %}</div>
+    <p></p>
+    <h3>3. 인구통계학적 정보</h3>
+    <div class="alert border">{% formfield player.region %}</div>
+    <div class="alert border">{% formfield player.region_size %}</div>
+    <div class="alert border">{% formfield player.marriage %}</div>
+    <div class="alert border">{% formfield player.final_schooling %}</div>
+    <div class="alert border">{% formfield player.occupation %}</div>
+    <div class="alert border">{% formfield player.occupation_op %}</div>
+    <div class="alert border">{% formfield player.firm_type %}</div>
+    <div class="alert border">{% formfield player.firm_type_op %}</div>
+    <div class="alert border">{% formfield player.firm_size %}</div>
+    <div class="alert border">{% formfield player.household_income %}</div>
+    <p></p>
+    <h3>4. 건강정보</h3>
+    <div class="row alert border">
+            <div class="alert"><b>다음은 음주에 대한 문항입니다. 자신의 현재 상태에 해당되는 내용을 선택해 주십시오.</b>
+                <div class="border">
+                    지난 1년간 술을 마신 적 있으십니까?
+                    <div>{% formfield player.num_drink_not %}</div>
+                </div>
+                <div class="optional" id="drink_questions">
+                    <div class="border">
+                    <p class="alert-info">
+                    술을 마신 횟수는 어느 정도입니까? (1개만 선택해서 작성)</p>
+                    <div>{% formfield player.drink_freq_1 %}</div>
+                    <div>{% formfield player.drink_freq_2 %}</div>
+                    <div>{% formfield player.drink_freq_3 %}</div>
+                </div>
+                <div class="row border alert">
+                    <p class="alert-info">
+                    술을 마시는 날은 보통 어느 정도 마십니까? (원하는 단위에 따라 작성해주세요, 숫자만 입력가능)</p>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th class="align-content-center">잔</th>
+                            <th>병</th>
+                            <th>캔</th>
+                            <th>cc</th>
+                        </tr>
+                        <tr>
+                            <td>소주</td>
+                            <td>{% formfield player.alc_avg_1_jan %} </td>
+                            <td>{% formfield player.alc_avg_1_bot %} </td>
+                            <td> </td>
+                            <td>{% formfield player.alc_avg_1_cc %} </td>
+                        </tr>
+                        <tr>
+                            <td>맥주</td>
+                            <td>{% formfield player.alc_avg_2_jan %} </td>
+                            <td>{% formfield player.alc_avg_2_bot %} </td>
+                            <td>{% formfield player.alc_avg_2_can %} </td>
+                            <td>{% formfield player.alc_avg_2_cc %} </td>
+                        </tr>
+                        <tr>
+                            <td>양주</td>
+                            <td>{% formfield player.alc_avg_3_jan %} </td>
+                            <td>{% formfield player.alc_avg_3_bot %} </td>
+                            <td> </td>
+                            <td>{% formfield player.alc_avg_3_cc %} </td>
+                        </tr>
+                        <tr>
+                            <td>막걸리</td>
+                            <td>{% formfield player.alc_avg_4_jan %} </td>
+                            <td>{% formfield player.alc_avg_4_bot %} </td>
+                            <td> </td>
+                            <td>{% formfield player.alc_avg_4_cc %} </td>
+                        </tr>
+                        <tr>
+                            <td>와인</td>
+                            <td>{% formfield player.alc_avg_5_jan %} </td>
+                            <td>{% formfield player.alc_avg_5_bot %} </td>
+                            <td> </td>
+                            <td>{% formfield player.alc_avg_5_cc %} </td>
+
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row alert border">
+            <b>다음은 신체활동(운동)에 대한 문항입니다. 자신의 현재 상태에 해당되는 내용을 선택해주십시오.</b>
+
+
+                <div style="border:3px solid skyblue; padding-left: 5px; padding-right: 5px">
+                  <div class="d-block">
+                    평소 <b>1주일간</b>, 숨이 많이 차게 만드는 <u>고강도</u> 신체활동을 며칠 하십니까? 주당 <div class="d-inline-block">{% formfield player.high_act_day %}</div> 일
+                  </div>
+                <p class="alert-info">
+                    ※고강도 신체활동의 예: 달리기, 에어로빅, 빠른 속도로 자전거 타기, 건설 현장 노동, 계단으로 물건 나르기 등
+                </p>
+
+                    평소 <b>하루에</b> 숨이 많이 차게 만드는 <u>고강도</u> 신체활동을 몇 시간 하십니까? 하루에 <div class="d-inline-block">{% formfield player.high_act_hour %}</div>시간 <div class="d-inline-block">{% formfield player.high_act_min %}</div>분
+                  </div>
+
+
+                <div style="border:3px solid skyblue; padding-left: 5px; padding-right: 5px">
+                <div class="d-block">
+                    평소 <b>1주일간</b>, 숨이 약간 차게 만드는 <u>중강도</u> 신체활동을 며칠 하십니까? 주당 <div class="d-inline-block">{% formfield player.mid_act_day %}</div> 일
+                </div>
+                <p class="alert-info">
+                    ※ 앞에서 답하신 고강도 문항에 관련한 신체활동은 제외하고 답해주십시오
+                </p>
+                <p class="alert-info">
+                    ※ 중강도 신체활동의 예: 빠르게 걷기, 복식 테니스, 보통 속도로 자전거 타기, 가벼운 물건 나르기, 청소 등
+                </p>
+
+                <div class="d-block">
+                    평소 <b>하루에</b> 숨이 약간 차게 만드는 <u>중강도</u> 신체활동을 몇 시간 하십니까? 하루에 <div class="d-inline-block">{% formfield player.mid_act_hour %}</div>시간 <div class="d-inline-block">{% formfield player.mid_act_min %}</div>분
+                </div>
+                </div>
+
+              <div class="row alert border">
+                <div class="d-block">
+                    최근 한 달 동안 팔굽혀펴기, 윗몸일으키기, 아령(덤벨), 역기, 철봉 등 근력 운동을 한 날은 1주일당 평균 며칠입니까? 주당 <div class="d-inline-block">{% formfield player.muscle_act_days %}</div>일
+                </div>
+              </div>
+
+        <div class="alert row border">
+            <p>※ 아래에 나와있는 0부터 10까지의 척도를 먼저 상고하신 후 귀하의 건강상태와 스트레스 정도에 대한 문항에 답해주시오. </p>
+            <img src="{% static "global/horizontal_scale.png" %}" alt="horizontal_scale" height="150px" width="600px">
+            <div class="alert border">{% formfield player.overall_health_evaluation %}</div>
+            <div class="alert border">{% formfield player.overall_health_evaluation %}</div>
+        </div>
+
+    </div>
+    <p></p>
+    <h3>5. 흡연정보 – 일반담배(궐련형)</h3>
+    <div class="alert border"><p>현재 주로 사용중인 담배제품을 모두 선택해주세요 (복수선택 가능)</p>
+        {% formfield player.tobacco_product_in_use_1 %}
+        {% formfield player.tobacco_product_in_use_2 %}
+        {% formfield player.tobacco_product_in_use_3 %}
+        {% formfield player.tobacco_product_in_use_4 %}
+        {% formfield player.tobacco_product_in_use_5 %}
+        {% formfield player.tobacco_product_in_use_6 %}
+        {% formfield player.tobacco_product_in_use_7 %}
+        {% formfield player.tobacco_product_in_use_8 %}
+        {% formfield player.tobacco_product_in_use_9 %}
+        {% formfield player.tobacco_product_in_use_10 %}
+        {% formfield player.tobacco_product_in_use_11 %}
+        {% formfield player.tobacco_product_in_use_12 %}
+	</div>
+    <div class="alert border"><p>현재 일반담배(궐련)를 피우십니까?</p>
+        <p>일반담배 (궐련)이란, 잘게 썬 담뱃잎을 종이 등에 말아 불을 붙여 피우는 방식의 가장 보편적인 담배 제품입니다. 본 질문에는 일반담배를 피우시는 분들만 답해 주시고, 전자담배 등 다른 방식의 담배 제품을 사용하시는 분은 별도의 질문에 답해주시기 바랍니다. </p>
+         <img src="{% static "global/image1.png" %}" alt="image1" height="400px" width="600px">
+                 {% formfield player.do_you_smoke_tobacco %}
+	</div>
+    <div class="alert border">{% formfield player.first_time_to_finish_one_stick_of_tobacco %}</div>
+    <div class="alert border">{% formfield player.first_time_to_finish_one_stick_or_more %}</div>
+    <div class="alert border">{% formfield player.avg_daily_tobacco_smoking_amount %}</div>
+    <div class="alert border">{% formfield player.within_past_month_tobacco_smoking_days %}</div>
+    <div class="alert border">{% formfield player.tobacco_sticks_per_day %}</div>
+    <div class="alert border">{% formfield player.past_tobacco_smoking_years %}</div>
+    <div class="alert border">{% formfield player.past_tobacco_smoking_months %}</div>
+    <div class="alert border">{% formfield player.past_tobacco_sticks_per_day %}</div>
+    <div class="alert border"><p>평소에 하루 중 일반담배(궐련) 흡연을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
+        {% formfield player.hardest_time_to_resist_smoking_1 %}
+        {% formfield player.hardest_time_to_resist_smoking_2 %}
+        {% formfield player.hardest_time_to_resist_smoking_3 %}
+        {% formfield player.hardest_time_to_resist_smoking_4 %}
+        {% formfield player.hardest_time_to_resist_smoking_5 %}
+        {% formfield player.hardest_time_to_resist_smoking_6 %}
+        {% formfield player.hardest_time_to_resist_smoking_7 %}
+        {% formfield player.hardest_time_to_resist_smoking_8 %}
+        {% formfield player.hardest_time_to_resist_smoking_9 %}
+        {% formfield player.hardest_time_to_resist_smoking_10 %}
+        {% formfield player.hardest_time_to_resist_smoking_11 %}
+	</div>
+    <div class="alert border">{% formfield player.first_tobacco_of_the_day %}</div>
+    <div class="alert border">{% formfield player.is_it_hard_to_resist_smoking_in_the_public %}</div>
+    <div class="alert border">{% formfield player.when_is_tobacco_the_most_tasty %}</div>
+    <div class="alert border">{% formfield player.number_of_sticks_per_day_in_the_past %}</div>
+    <div class="alert border">{% formfield player.is_morning_tobacco_more_tasty_than_the_rest %}</div>
+    <div class="alert border">{% formfield player.sick_all_day_still_smoking %}</div>
+    <p></p>
+    <h3>6. 사용정보 – 액상형 전자담배</h3>
+    <table>
+    <thead>
+        <tr>
+            <th colspan="2">-액상형 전자담배
+                <br>카트리지에 담긴 액체 니코틴 등을 초음파나 열로 기화시켜 증기를 흡입하는 방식의 전자담배</br> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="{% static "global/image2.png" %}" alt="image2" height="400" width="150px">
+</td>
+            <td><img src="{% static "global/image3.png" %}" alt="image3" height="350" width="450px">
+</td>
+        </tr>
+        <tr>
+            <td colspan="2">-[카트리지]. [무화기], [배터리]로 구성
+<br>-니코틴 액상 용량은 주로 한 병에 20-30mL, 대락 4만원 정도</br>
+-흡연량에 따라 다르지만 대략 한 병당 15-20일 정도 사용 가능</td>
+        </tr>
+    </tbody>
+    </table>
+    <caption>출처: 조홍천 외, (2018)</caption>
+    <h3>7. 사용정보 – 궐련형 전자담배</h3>
+    <h3>8. 금연정보</h3>
+    <h3>9. 금연경험</h3>
+    <h3>10. 흡연유형 (현재 비흡연시에는 흡연당시 기준으로 작성)</h3>
+    <h3>11. 금연행위에 대한 태도(Attitude toward the behavior)</h3>
+    <h3>12. 금연행위에 대한 주관적 규범(Subjective norm) </h3>
+    <h3>13. 금연행위에 대한 지각된 행위 통제(Perceived behavioral control)</h3>
+    <h3>14. 금연의도(Intention)</h3>
+
+
+
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}
