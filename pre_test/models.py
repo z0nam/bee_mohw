@@ -17,7 +17,6 @@ author = 'Kyubum Moon <mailto:moonx190@umn.edu>'
 
 doc = """
 행동강화물품 행동실험 사전조사
->>>>>>> introduction
 """
 
 
@@ -129,6 +128,30 @@ class Constants(BaseConstants):
         [3, "보통이다"],
         [4, "그렇지 않다"],
         [5, "전혀 그렇지 않다"],
+    ]
+
+    SMOKING_CESSATION_PRE_TEST_LICKERT = [
+        [1, "전혀 그렇지않다"],
+        [2, "그렇지 않다"],
+        [3, "보통"],
+        [4, "그렇다"],
+        [5, "매우 그렇다"],
+    ]
+
+    DESIRE_METRIC = [
+        [1, "전혀 욕구가 없다"],
+        [2, "아무욕구도 없다"],
+        [3, "보통"],
+        [4, "항상"],
+        [5, "매우강하다"],
+    ]
+
+    CONFIDENCE_METRIC = [
+        [1, "전혀 자신없다"],
+        [2, "자신없다"],
+        [3, "보통"],
+        [4, "자신있다"],
+        [5, "매우 자신있다"],
     ]
 
 
@@ -1178,6 +1201,335 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
+    smoking_cessation_adverse_effect_experience_1 = models.IntegerField(
+        label="담배를 피우고 싶은 절심함",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_2 = models.IntegerField(
+        label="짜증남/ 좌절/ 분노",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_3 = models.IntegerField(
+        label="불안",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_4 = models.IntegerField(
+        label="집중하기 어려움",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_5 = models.IntegerField(
+        label="안절부절 하지 못함",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_6 = models.IntegerField(
+        label="식욕증가",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_7 = models.IntegerField(
+        label="수면방해",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_8 = models.IntegerField(
+        label="우울함",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_cessation_adverse_effect_experience_9 = models.IntegerField(
+        label="참지 못함",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_desire_ignited_1 = models.IntegerField(
+        label="오늘 담배를 사용하겠다는 충동을 얼마나 많이 느꼈습니까?",
+        choices=Constants.DESIRE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_desire_ignited_2 = models.IntegerField(
+        label="오늘은 얼마나 강한 충동이 있었습니까?",
+        choices=Constants.DESIRE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_opinion_1 = models.IntegerField(
+        label="흡연은 스트레스를 해소 시켜준다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_opinion_2 = models.IntegerField(
+        label="흡연은 일에 집중을 더 잘할 수 있도록 도와준다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_opinion_3 = models.IntegerField(
+        label="흡연을 하면 긴장이 풀리면서 기분이 좋아진다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_opinion_4 = models.IntegerField(
+        label="흡연은 나의 건강을 해친다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_opinion_5 = models.IntegerField(
+        label="흡연은 다른 사람의 건강을 해치는 일이다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    smoking_opinion_6 = models.IntegerField(
+        label="흡연의 위험성을 알면서도 흡연하는 것은 어리석은 일이다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    confidence_against_smoking_temptation_1 = models.IntegerField(
+        label="술자리에서 음주 시",
+        choices=Constants.CONFIDENCE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    confidence_against_smoking_temptation_2 = models.IntegerField(
+        label="아침에 잠자리에서 일어났을 때",
+        choices=Constants.CONFIDENCE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    confidence_against_smoking_temptation_3 = models.IntegerField(
+        label="걱정거리가 생겼거나 스트레스를 받을 때",
+        choices=Constants.CONFIDENCE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    confidence_against_smoking_temptation_4 = models.IntegerField(
+        label="잡담을 하거나 휴식을 취하면서 커피를 마실 때",
+        choices=Constants.CONFIDENCE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    confidence_against_smoking_temptation_5 = models.IntegerField(
+        label="기운을 낼 필요가 있다고 느낄 때 (업무 등으로 몸이 지쳐있을 때)",
+        choices=Constants.CONFIDENCE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    confidence_against_smoking_temptation_6 = models.IntegerField(
+        label="화가 많이 났을 때",
+        choices=Constants.CONFIDENCE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    confidence_against_smoking_temptation_7 = models.IntegerField(
+        label="가족이나 친구들이 옆에서 담배를 피울 때",
+        choices=Constants.CONFIDENCE_METRIC,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_1 = models.IntegerField(
+        label="담배 피우고 싶을 때는 일부러 딴 생각을 하거나 다른 일을 한다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_2 = models.IntegerField(
+        label="금연하고 싶을 때는 언제든지 금연할 수 있다고 생각한다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_3 = models.IntegerField(
+        label="사회가 흡연자들의 생활을 불편하게 하는 방향으로 변화하고 있다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_4 = models.IntegerField(
+        label="금연의 혜택이나 금연방법에 대한 정보를 읽거나 들은 적이 있다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_5 = models.IntegerField(
+        label="흡연욕구를 참았을 때 주위사람들로부터 칭찬을 받는다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_6 = models.IntegerField(
+        label="흡연은 환경을 오염시키는 원인이 된다고 생각한다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_7 = models.IntegerField(
+        label="흡연의 결과에 대한 경고문이나 포스터 등을 보면 걱정이 된다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_8 = models.IntegerField(
+        label="담배를 끊지 못하는 내 자신이 실망스럽게 느껴진다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_9 = models.IntegerField(
+        label="담배를 끊기 위해 담배, 재떨이 등을 회사나 집에서 모두 치웠다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    experience_frequency_10 = models.IntegerField(
+        label="나의 금연노력을 도와줄 가족이나 친구가 주변에 있다.",
+        choices=Constants.SMOKING_CESSATION_PRE_TEST_LICKERT,
+        widget=widgets.RadioSelect,
+    )
+
+    behavior_strengthening_material_barcode = models.StringField(
+        label="지급받은 행동물품 일련번호를 입력해주십시오.",
+        blank=True,
+    )
+
+    gender = models.IntegerField(
+        label="귀하의 성별은 어떻게 되십니까?",
+        choices=[
+            [1, "남성"],
+            [2, "여성"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    birth_year = models.IntegerField(
+        label="귀하의 출생년도는 몇년도이십니까?",
+        choices=range(1940, 2001),
+        blank=True,
+    )
+
+    region = models.IntegerField(
+        label="귀하의 거주 지역을 선택해주세요.",
+        choices=[
+            [1, "① 서울"],
+            [2, "② 인천"],
+            [3, "③ 경기도"],
+            [4, "④ 강원도"],
+            [5, "⑤ 세종"],
+            [6, "⑥ 충청남도"],
+            [7, "⑦ 충청북도"],
+            [8, "⑧ 대전"],
+            [9, "⑨ 대구"],
+            [10, "⑩ 경상북도"],
+            [11, "⑪ 경상남도"],
+            [12, "⑫ 울산"],
+            [13, "⑬ 부산"],
+            [14, "⑭ 전라북도"],
+            [15, "⑮ 전라남도"],
+            [16, "⑯ 광주"],
+            [17, "⑰ 제주도"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    region_size = models.IntegerField(
+        label="귀하의 거주지의 지역규모를 선택해주세요.",
+        choices=[
+            [1, "①대도시(특별/광역시-서울, 부산, 대구, 인천, 광주, 대전, 울산)"],
+            [2, "②중소도시(특별/광역시가 아닌 그 외 지역)"],
+            [3, "③읍면지역(ex. ○○시 ○○읍/면)"],
+            [4, "④특수지역(도서·벽지 지역)"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    marriage = models.IntegerField(
+        label="귀하의 혼인상태를 선택해주십시오:",
+        choices=[
+            [1, "(1) 결혼안함"],
+            [2, "(2) 결혼함"],
+            [3, "(3) 이혼/사별함"],
+            [4, "(4) 기타"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    job_position = models.IntegerField(
+        label="직장(일)에서 귀하의 지위는 무엇입니까?",
+        choices=[
+            [1, "①전일제 근무자"],
+            [2, "②파트타임 근무자"],
+            [3, "③프리랜서"],
+            [4, "④최근 6개월 이내 근무경력 없음"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    firm_type = models.IntegerField(
+        label="귀하께서 현재 근무하시는 기업의 유형은 다음 중 무엇입니까?",
+        choices=[
+            [1, "공기업·준정부기관·기타 공공기관"],
+            [2, "공무원"],
+            [3, "사기업-규모별: 대기업"],
+            [4, "사기업-규모별: 중견기업"],
+            [5, "사기업-규모별: 중소·벤처기업"],
+            [6, "사기업-규모별: 소기업 및 소상공인"],
+            [7, "현재 근무중이 아님"],
+            [8, "기타(위에 해당하지 않는 경우 자유 입력: )"],
+
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    firm_type_op = models.StringField(
+        label="기타(위에 해당하지 않는 경우 자유 입력: )",
+        blank=True,
+    )
+
+    firm_size = models.IntegerField(
+        label="현재 근무하시는 사업장 규모를 다음 중 선택해주십시오",
+        choices=[
+            [1, "① 5인 미만"],
+            [2, "② 5인 이상~50인 미만"],
+            [3, "③ 50인 이상~100인 미만"],
+            [4, "④ 100인 이상~200인 미만"],
+            [5, "⑤ 200인 이상~300인 미만"],
+            [6, "⑥ 300인 이상"],
+            [7, "⑨ 현재 근무중이 아님"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    household_income = models.IntegerField(
+        label="최근 6개월 평균 가구소득액(즉, 가족구성원 전체의 수입 합산액)은 어떻게 되십니까? 월별 세후 실질 수령액 기준으로 선택해 주십시오.",
+        choices=[
+            [1, "①없음"],
+            [2, "②150만원 미만"],
+            [3, "③150만원 이상 300만원 미만"],
+            [4, "④300만원 이상 450만원 미만"],
+            [5, "⑤450만원 이상 600만원 미만"],
+            [6, "⑥600만원 이상 750만원 미만"],
+            [7, "⑦750만원 이상"],
+        ],
+        widget=widgets.RadioSelect,
+    )
 
 
 
