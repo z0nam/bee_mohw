@@ -381,7 +381,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
     termination_reason = models.IntegerField(
-        label="금연프로그램이 종결된 사유를 선택해주십시.",
+        label="금연프로그램이 종결된 사유를 선택해주십시오.",
         choices=Constants.TERMINATION_REASON,
         widget=widgets.RadioSelect,
     )

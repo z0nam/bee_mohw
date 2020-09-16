@@ -127,6 +127,27 @@ class online_survey(Page):
         'tobacco_type_e_cigarette_end_month',
         'within_recent_month_days_of_use_for_tobacco_type_e_cigarette',
         'tobacco_type_e_cigarette_avg_sticks_per_day',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_1',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_2',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_3',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_4',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_5',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_6',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_7',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_8',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_9',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_10',
+        'tobacco_type_e_cigarette_hardest_to_resist_when_11',
+        'tobacco_type_e_cigarette_first_in_the_day',
+        'tobacco_type_e_cigarette_hard_to_resist_in_public',
+        'tobacco_type_e_cigarette_most_tasty_in_the_day',
+        'tobacco_type_e_cigarette_sticks_per_day',
+        'tobacco_type_e_cigarette_more_tasty_in_the_morning_than_the_rest',
+        'tobacco_type_e_cigarette_sick_all_day_still_smoking',
+
+        'smoking_cessation_attempt_count',
+        'within_one_month_do_you_plan_to_quit_smoking',
+        'within_past_five_days_last_time_to_use_nicotine_alternatives',
 
     ]
     def born_year_error_message(self, value):

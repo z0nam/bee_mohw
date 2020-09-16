@@ -6,11 +6,17 @@
 {% endblock %}
 {% block app_scripts %}
     <script>
-    $(document).ready(function(){
-    })
+
+        $(document).ready(function(){
+            op_checker("id_nicotine_patch_adverse_effect_7","nicotine_patch_adverse_effect_op")
+            op_checker("id_occupation_15","occupation_op")
+            op_checker("id_firm_type_7","firm_type_op")
+            op_checker("id_smoking_cessation_this_time_reason_primary_8","smoking_cessation_this_time_reason_primary_op")
+            op_checker("id_smoking_cessation_this_time_reason_secondary_8","smoking_cessation_this_time_reason_secondary_op")
+            op_checker("id_smoking_cessation_this_time_reason_tertiary_8","smoking_cessation_this_time_reason_tertiary_op")
+        })
     </script>
 {% endblock %}
-
 {% block content %}
     <div class="alert border">{% formfield player.registration_type %}</div>
     <div class="alert border">
@@ -115,8 +121,8 @@
     <div class="alert border">{% formfield player.age_of_first_smoking %}</div>
     <div class="alert border">{% formfield player.avg_daily_smoking_amount_in_gaebi %}</div>
     <div class="alert border">{% formfield player.total_smoking_years %}</div>
-    <div class="alert border">{% formfield player.nicotine_patch_adverse_effect %}</div>
-    <div class="alert border">{% formfield player.nicotine_patch_adverse_effect_op %}</div>
+    <div class="alert border">{% formfield player.nicotine_patch_adverse_effect %}
+    <div class="optional" id="nicotine_patch_adverse_effect_op">{% formfield player.nicotine_patch_adverse_effect_op %}</div></div>
     <div class="alert border"><p>사용중인 담배제품을 표시해주시기 바랍니다. (복수응답 가능)</p>
         {% formfield player.tobacco_type_in_use_1 %}
         {% formfield player.tobacco_type_in_use_2 %}
@@ -134,8 +140,8 @@
     </div>
     <div class="alert border">{% formfield player.medical_guarantee %}</div>
     <div class="alert border">{% formfield player.highest_schooling %}</div>
-    <div class="alert border">{% formfield player.occupation %}</div>
-    <div class="alert border">{% formfield player.occupation_op %}</div>
+    <div class="alert border">{% formfield player.occupation %}
+    <div class="optional" id="occupation_op">{% formfield player.occupation_op %}</div></div>
     <div class="alert border">
         <p>※ 지난 1년 동안 귀하의 금연 시도 여부에 관해 답해 주십시오.</p>
         <p>※ 지난 1년 동안 귀하의 금연 시도 하셨다면 가장오랫동안 금연을 시도하신 기간을 __개월 __일로 환산하여 입력해주십시오.</p>
@@ -162,13 +168,12 @@
         {% formfield player.smoking_cessation_failure_reason_5 %}
         {% formfield player.smoking_cessation_failure_reason_6 %}
 	</div>
-    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_primary %}</div>
-    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_primary_op %}</div>
-    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_secondary %}</div>
-    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_secondary_op %}</div>
-    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_tertiary %}</div>
-    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_tertiary_op %}</div>
-
+    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_primary %}
+    <div class="optional" id="smoking_cessation_this_time_reason_primary_op">{% formfield player.smoking_cessation_this_time_reason_primary_op %}</div></div>
+    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_secondary %}
+    <div class="optional" id="smoking_cessation_this_time_reason_secondary_op">{% formfield player.smoking_cessation_this_time_reason_secondary_op %}</div></div>
+    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_tertiary %}
+    <div class="optional" id="smoking_cessation_this_time_reason_tertiary_op">{% formfield player.smoking_cessation_this_time_reason_tertiary_op %}</div></div>
     <div class="alert border"><p>평소에 하루 중 흡연을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
         {% formfield player.hardest_event_to_resist_smoking_desire_1 %}
         {% formfield player.hardest_event_to_resist_smoking_desire_2 %}
@@ -354,8 +359,9 @@
     <div class="alert border">{% formfield player.region_size %}</div>
     <div class="alert border">{% formfield player.marriage %}</div>
     <div class="alert border">{% formfield player.job_position %}</div>
-    <div class="alert border">{% formfield player.firm_type %}</div>
-    <div class="alert border">{% formfield player.firm_type_op %}</div>
+    <div class="alert border">{% formfield player.firm_type %}
+    <div class="optional" id="firm_type_op">{% formfield player.firm_type_op %}</div></div>
+
     <div class="alert border">{% formfield player.firm_size %}</div>
     <div class="alert border">{% formfield player.household_income %}</div>
 
