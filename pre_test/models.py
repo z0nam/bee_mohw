@@ -164,10 +164,6 @@ class Group(BaseGroup):
 
 
 
-class Player(BasePlayer):
-    pass
-
-
 def make_field_sm(index):
     return models.IntegerField(
         label=Constants.sm1_list[index-1],
