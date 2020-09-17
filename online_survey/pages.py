@@ -4,8 +4,8 @@ from .models import Constants
 
 
 class online_survey(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'gender',
         'born_year',
         'job_position',
@@ -48,7 +48,9 @@ class online_survey(Page):
         'high_act_day',
         'high_act_hour',
         'high_act_min',
+        'mid_act_yesno',
         'mid_act_day',
+        'mid_act_type',
         'mid_act_hour',
         'mid_act_min',
         'muscle_act_days',
@@ -148,21 +150,109 @@ class online_survey(Page):
         'smoking_cessation_attempt_count',
         'within_one_month_do_you_plan_to_quit_smoking',
         'within_past_five_days_last_time_to_use_nicotine_alternatives',
+        'ate_food_products_when_smoking_desire_arose',
+        'effect_of_food_product_in_resisting_smoking_desire',
+        'drink_water_when_desiring_to_smoke',
+        'effect_of_water_in_resisting_smoking_desire',
+        'pressure_tool_when_desiring_to_smoke',
+        'effect_of_pressure_tool_in_resisting_smoking_desire',
+        'mouth_wash_when_resisting_smoking_desire',
+        'effect_of_mouth_wash_in_resisting_smoking_desire',
+        'aroma_pipe_or_change_stick_when_resisting_smoking_desire',
+        'effect_of_aroma_pipe_or_change_stick_in_resisting_smoking_desire',
+        'smoking_cessation_method_self_will',
+        'smoking_cessation_method_call_center',
+        'smoking_cessation_method_clinic',
+        'smoking_cessation_method_pharmaceuticals',
+        'smoking_cessation_method_champix',
+        'smoking_cessation_method_internet',
+        'smoking_cessation_method_other',
+
+        'smoking_cessation_failure_reason_1',
+        'smoking_cessation_failure_reason_2',
+        'smoking_cessation_failure_reason_3',
+        'smoking_cessation_failure_reason_4',
+        'smoking_cessation_failure_reason_5',
+        'smoking_cessation_failure_reason_6',
+        'smoking_cessation_failure_reason_7',
+        'reason_to_quit_smoking_this_time_primary',
+        'reason_to_quit_smoking_this_time_primary_op',
+        'reason_to_quit_smoking_this_time_secondary',
+        'reason_to_quit_smoking_this_time_secondary_op',
+        'reason_to_quit_smoking_this_time_tertiary',
+        'reason_to_quit_smoking_this_time_tertiary_op',
+        'smoking_cessation_helper_1',
+        'smoking_cessation_helper_2',
+        'smoking_cessation_helper_3',
+        'smoking_cessation_helper_4',
+        'smoking_cessation_helper_5',
+        'smoking_cessation_helper_6',
+        'smoking_cessation_helper_7',
+        'smoking_cessation_helper_8',
+        'smoking_cessation_helper_9',
+        'smoking_cessation_helper_10',
+        'disease_history_1',
+        'disease_history_2',
+        'disease_history_3',
+        'disease_history_4',
+        'disease_history_5',
+        'disease_history_6',
+        'disease_history_7',
+        'disease_history_8',
+        'disease_history_9',
+        'disease_history_10',
+        'disease_history_11',
+        'disease_history_12',
+        'disease_history_13',
+        'disease_history_14',
+        'disease_history_15',
+        'disease_history_16',
+        'disease_history_17',
+        'disease_history_18',
+        'disease_history_19',
+        'disease_history_20',
+        'disease_history_21',
+        'disease_history_22',
+        'disease_history_23',
+        'disease_history_24',
+        'disease_history_25',
+        'disease_history_26',
+        'disease_history_27',
+        'disease_history_28',
+        'disease_history_29',
+        'disease_history_30',
+        'disease_history_31',
+        'smoking_cessation_importance',
+        'smoking_cessation_confidence',
+        'smoking_cessation_readiness',
+        'st_1',
+        'st_2',
+        'st_3',
+        'st_4',
+        'st_5',
+        'st_6',
+        'st_7',
+        'st_8',
+        'st_9',
+        'st_10',
+        'st_11',
+        'st_12',
+        'st_13',
+        'st_14',
+        'st_15',
+        'st_16',
+        'st_17',
+        'st_18',
+        'st_19',
+        'st_20',
+        'st_21',
 
     ]
-    def born_year_error_message(self, value):
-        if (value > Constants.BORN_YEAR_MAX or value < Constants.BORN_YEAR_MIN):
-            return str.format("태어나신 해는 유효한 네자리 숫자 (가령 {} - {} 사이의 숫자) 로 입력하셔야 합니다.", Constants.BORN_YEAR_MIN, Constants.BORN_YEAR_MAX)
 
-    def work_type_error_message(self, value):
-        if (value == Constants.UNPAID):
-            return str.format("안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 현재 6개월 이상 재직자를 대상으로 연구참여를 제한하게 된 점 양해 부탁드립니다. 감사합니다.") # todo: 이것을 클릭했을 경우 alert 뜨고 종료로 안내하도록 수정하기
+    def vars_for_template(self) -> dict:
+        vars_to_return = {}
+        vars_to_return['L5'] = [i[1] for i in Constants.L5_CHOICES]
+        return vars_to_return
 
-    def not_a_smoker_error_message(self, value):
-        if (value == 999 | value==9999):
-            return str.format("안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 5갑(100개비)이상 흡연자를 대상으로 진행되기에 귀하의 연구참여를 제한합니다. ")
-    def smoking_cessation_experience_no_error_message(self, value):
-        if (value == 99999):
-            return str.format("본 연구는 보건복지부의 위탁을 받아 행동강화물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 최근 1년 동안 담배를 끊고자 하루(24시간) 이상 금연한 적이 있는 분들만을 대상으로 하는 연구입니다. 따라서 귀하의 연구 참가를 제한합니다. ")
 
-page_sequence = [online_survey,]
+page_sequence = [online_survey, ]

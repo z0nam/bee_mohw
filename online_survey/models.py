@@ -9,6 +9,7 @@ from otree.api import (
     currency_range,
 )
 from Global_Constants import GlobalConstants
+from . import smoking_cessation_questions
 
 author = 'Kyubum Moon<mailto:moonx190@umn.edu>'
 
@@ -25,7 +26,8 @@ class Constants(BaseConstants):
     BINARY_POSSESSION = GlobalConstants.BINARY_POSSESSION
     BORN_YEAR_MIN = 1959
     BORN_YEAR_MAX = 2000
-
+    L5_CHOICES = GlobalConstants.L5_CHOICES
+    smoking_type_list = smoking_cessation_questions.SMOKING_TYPE
     FULLTIME, PARTTIME, FREELANCER, UNPAID = 1, 2, 3, 99
     JOB_POSITION = [
         [FULLTIME, "전일제 근무자"],
@@ -35,6 +37,7 @@ class Constants(BaseConstants):
     ]
 
 
+
 class Subsession(BaseSubsession):
     pass
 
@@ -42,6 +45,12 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     pass
 
+def make_field_lickert(index):
+    return models.IntegerField(
+        label=Constants.smoking_type_list[index],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L5_CHOICES,
+    )
 
 class Player(BasePlayer):
     gender = models.IntegerField(
@@ -58,11 +67,20 @@ class Player(BasePlayer):
         choices=range(Constants.BORN_YEAR_MAX, Constants.BORN_YEAR_MIN, -1),
     )
 
+    def born_year_error_message(self, value):
+        if (value > Constants.BORN_YEAR_MAX or value < Constants.BORN_YEAR_MIN):
+            return str.format("태어나신 해는 유효한 네자리 숫자 (가령 {} - {} 사이의 숫자) 로 입력하셔야 합니다.", Constants.BORN_YEAR_MIN,Constants.BORN_YEAR_MAX)
+
     job_position = models.IntegerField(
         label="직장(일)에서 귀하의 지위는 무엇입니까?",
         choices=Constants.JOB_POSITION,
         widget=widgets.RadioSelect,
     )
+
+    def job_position_error_message(self, value):
+        if (value == Constants.UNPAID):
+            return str.format("안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 현재 6개월 이상 재직자를 대상으로 연구참여를 제한하게 된 점 양해 부탁드립니다. 감사합니다.")  # todo: 이것을 클릭했을 경우 alert 뜨고 종료로 안내하도록 수정하기
+
 
     smoking_in_lifetime_yesno = models.IntegerField(
         label="지금까지 살아오는 동안 담배를 피운 적 있습니까? (여기에서 담배는, 일반 담배(궐련)과 액상형/궐련형 전자담배 모두를 포괄합니다.)",
@@ -73,6 +91,11 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelect,
     )
+
+    def smoking_in_lifetime_yesno_error_message(self, value):
+        if (value == 999 | value == 9999):
+            return str.format("안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 5갑(100개비)이상 흡연자를 대상으로 진행되기에 귀하의 연구참여를 제한합니다. ")
+
     within_past_one_year_smoking_cessation_attempted = models.IntegerField(
         label="최근 1년 동안 담배를 끊고자 하루(24시간) 이상 금연한 적이 있습니까?",
         choices=[
@@ -82,6 +105,10 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
 
+    def within_past_one_year_smoking_cessation_attempted_error_message(self, value):
+        if (value == 99999):
+            return str.format(
+                "본 연구는 보건복지부의 위탁을 받아 행동강화물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 최근 1년 동안 담배를 끊고자 하루(24시간) 이상 금연한 적이 있는 분들만을 대상으로 하는 연구입니다. 따라서 귀하의 연구 참가를 제한합니다.")
     region = models.IntegerField(
         label="귀하의 거주 지역을 선택해주세요.",
         choices=[
@@ -217,7 +244,7 @@ class Player(BasePlayer):
     )
 
     drink_freq_1 = models.IntegerField(
-        label="일주일에 (__)번",
+        label="일주일에 (__)회",
         choices=range(1, 8),
         blank=True,
     )
@@ -369,9 +396,19 @@ class Player(BasePlayer):
         choices=range(0, 60),
     )
 
+    mid_act_yesno = models.BooleanField(
+        label="",
+        choices=Constants.BINARY_POSSESSION,
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    mid_act_type = models.StringField(
+        label="",
+        blank=True,
+    )
     mid_act_day = models.IntegerField(
         label="",
-        choices=range(0, 8),
+        choices=range(1,8),
     )
 
     mid_act_hour = models.IntegerField(
@@ -381,7 +418,7 @@ class Player(BasePlayer):
 
     mid_act_min = models.IntegerField(
         label="",
-        choices=range(0, 60),
+        choices=range(0, 721, 30),
     )
 
     muscle_act_days = models.IntegerField(
@@ -392,11 +429,13 @@ class Player(BasePlayer):
     overall_health_evaluation = models.IntegerField(
         label="귀하가 생각하는 본인의 현재 건강상태는 어떻습니까?",
         choices=range(0, 11),
+        widget=widgets.RadioSelectHorizontal,
         blank=True,
     )
     overall_stress_evaluation = models.IntegerField(
         label="평소 귀하의 스트레스 정도는 어떻습니까?",
         choices=range(0, 11),
+        widget=widgets.RadioSelectHorizontal,
         blank=True,
     )
 
@@ -1094,3 +1133,643 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelect,
     )
+
+    ate_food_products_when_smoking_desire_arose = models.IntegerField(
+        label="담배가 피우고 싶을 때 식품류 (껌, 사탕, 비타민)를 대신 먹었음	",
+        choices=[
+            [1, "오늘 사용"],
+            [2, "1일 전 사용"],
+            [3, "2일 전 사용"],
+            [4, "3~5일전사용"],
+            [5, "최근 5일 동안 사용하지 않음"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    effect_of_food_product_in_resisting_smoking_desire = models.IntegerField(
+        label="",
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    drink_water_when_desiring_to_smoke = models.IntegerField(
+        label="담배가 피우고 싶을 때 물을마심",
+        choices = [
+                  [1, "오늘 사용"],
+                  [2, "1일 전 사용"],
+                  [3, "2일 전 사용"],
+                  [4, "3~5일전사용"],
+                  [5, "최근 5일 동안 사용하지 않음"],
+              ],
+        widget = widgets.RadioSelect,
+    )
+
+    effect_of_water_in_resisting_smoking_desire = models.IntegerField(
+        label="",
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    pressure_tool_when_desiring_to_smoke = models.IntegerField(
+        label="담배가 피우고 싶을 때 지압기와 같은 몸에 자극을 줄 수 있는 기구로 자극을 줌",
+        choices=[
+            [1, "오늘 사용"],
+            [2, "1일 전 사용"],
+            [3, "2일 전 사용"],
+            [4, "3~5일전사용"],
+            [5, "최근 5일 동안 사용하지 않음"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    effect_of_pressure_tool_in_resisting_smoking_desire = models.IntegerField(
+        label="",
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    mouth_wash_when_resisting_smoking_desire = models.IntegerField(
+        label="담배가 피우고 싶을 때 구강청결제 (가그린, 양치질등) 등을 대신함",
+        choices=[
+            [1, "오늘 사용"],
+            [2, "1일 전 사용"],
+            [3, "2일 전 사용"],
+            [4, "3~5일전사용"],
+            [5, "최근 5일 동안 사용하지 않음"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    effect_of_mouth_wash_in_resisting_smoking_desire = models.IntegerField(
+        label="",
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    aroma_pipe_or_change_stick_when_resisting_smoking_desire = models.IntegerField(
+        label="담배가 피우고 싶을 때 아로마파이프나 체인지스틱 같은 흡연욕구저하제를 대신 사용함	",
+        choices=[
+            [1, "오늘 사용"],
+            [2, "1일 전 사용"],
+            [3, "2일 전 사용"],
+            [4, "3~5일전사용"],
+            [5, "최근 5일 동안 사용하지 않음"],
+             ],
+            widget = widgets.RadioSelect,
+    )
+
+    effect_of_aroma_pipe_or_change_stick_in_resisting_smoking_desire = models.IntegerField(
+        label="",
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_method_self_will = models.BooleanField(
+        label="금연방법: 의지로",
+        choices=[
+            [0, "아니오"],
+            [1, "예"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_method_call_center = models.BooleanField(
+        label="금연방법: 금연상담전화(금연콜센터)",
+        choices=[
+            [0, "아니오"],
+            [1, "예"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_method_clinic = models.BooleanField(
+        label="금연방법: 보건소금연클리닉",
+        choices=[
+            [0, "아니오"],
+            [1, "예"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_method_pharmaceuticals = models.BooleanField(
+        label="금연방법: 약국에서 본인 스스로 니코틴대체용품 (니코틴껌, 패치, 사탕) 구입",
+        choices=[
+            [0, "아니오"],
+            [1, "예"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_method_champix = models.BooleanField(
+        label="금연방법: 병의원을 통해 금연치료약으로 금연 (챔픽스 등)",
+        choices=[
+            [0, "아니오"],
+            [1, "예"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_method_internet = models.BooleanField(
+        label="금연방법: 인터넷, 금연길라잡이",
+        choices=[
+            [0, "아니오"],
+            [1, "예"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_method_other = models.BooleanField(
+        label="금연방법: 기타",
+        choices=[
+            [0, "아니오"],
+            [1, "예"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    smoking_cessation_failure_reason_1 = models.BooleanField(
+        label="본인의 의지가 약해서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_failure_reason_2 = models.BooleanField(
+        label="금단증상 때문에",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_failure_reason_3 = models.BooleanField(
+        label="스트레스가 쌓여서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_failure_reason_4 = models.BooleanField(
+        label="주위의 유혹에 의해서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_failure_reason_5 = models.BooleanField(
+        label="금연 후 체중이 늘어서",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_failure_reason_6 = models.BooleanField(
+        label="금연 실패한 경험 없음",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_failure_reason_7 = models.StringField(
+        label="기타(직접입력)",
+        blank=True,
+    )
+
+    reason_to_quit_smoking_this_time_primary = models.IntegerField(
+        label="이번에 담배를 끊고 싶은 첫번째 이유",
+        choices=[
+            [1, "가족 혹은 주변사람들의 권유"],
+            [2, "개인의 건강을 위해(현재 질병악화 및 장래 질병발생예방)"],
+            [3, "담뱃값 인상 등 경제적 이유"],
+            [4, "금연구역 확대 등 환경적 이유"],
+            [5, "깨끗한 이미지 관리를 위해서(예: 입 냄새가 고약, 옷에 담배 냄새가 뱀)"],
+            [6, "나의 흡연으로 주위사람 건강에 나쁜 영향을 미치는 것을 방지하기 위해서"],
+            [7, "금연의지를 보여주기 위해"],
+            [8, "흡연자에 대한 사회적 시선 때문"],
+            [9,"현재 금연 의사가 없음"],
+            [10, "기타(직접입력)"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    reason_to_quit_smoking_this_time_primary_op = models.StringField(
+        label="기타(직접입력)",
+        blank=True,
+    )
+
+    reason_to_quit_smoking_this_time_secondary = models.IntegerField(
+        label="이번에 담배를 끊고 싶은 두번째 이유",
+        choices=[
+            [1, "가족 혹은 주변사람들의 권유"],
+            [2, "개인의 건강을 위해(현재 질병악화 및 장래 질병발생예방)"],
+            [3, "담뱃값 인상 등 경제적 이유"],
+            [4, "금연구역 확대 등 환경적 이유"],
+            [5, "깨끗한 이미지 관리를 위해서(예: 입 냄새가 고약, 옷에 담배 냄새가 뱀)"],
+            [6, "나의 흡연으로 주위사람 건강에 나쁜 영향을 미치는 것을 방지하기 위해서"],
+            [7, "금연의지를 보여주기 위해"],
+            [8, "흡연자에 대한 사회적 시선 때문"],
+            [9, "현재 금연 의사가 없음"],
+            [10,"기타(직접입력)"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    reason_to_quit_smoking_this_time_secondary_op = models.StringField(
+        label="기타(직접입력)",
+        blank=True,
+    )
+
+    reason_to_quit_smoking_this_time_tertiary = models.IntegerField(
+        label="이번에 담배를 끊고 싶은 세번째 이유",
+        choices=[
+            [1, "가족 혹은 주변사람들의 권유"],
+            [2, "개인의 건강을 위해(현재 질병악화 및 장래 질병발생예방)"],
+            [3, "담뱃값 인상 등 경제적 이유"],
+            [4, "금연구역 확대 등 환경적 이유"],
+            [5, "깨끗한 이미지 관리를 위해서(예: 입 냄새가 고약, 옷에 담배 냄새가 뱀)"],
+            [6, "나의 흡연으로 주위사람 건강에 나쁜 영향을 미치는 것을 방지하기 위해서"],
+            [7, "금연의지를 보여주기 위해"],
+            [8, "흡연자에 대한 사회적 시선 때문"],
+            [9, "현재 금연 의사가 없음"],
+            [10, "기타(직접입력)"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    reason_to_quit_smoking_this_time_tertiary_op = models.StringField(
+        label="기타(직접입력)",
+        blank=True,
+    )
+
+    smoking_cessation_helper_1 = models.BooleanField(
+        label="부모/조부모",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_2 = models.BooleanField(
+        label="형제자매",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_3 = models.BooleanField(
+        label="배우자/애인",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_4 = models.BooleanField(
+        label="자녀",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_5 = models.BooleanField(
+        label="친구/선후배",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_6 = models.BooleanField(
+        label="직장동료",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_7 = models.BooleanField(
+        label="교사",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_8 = models.BooleanField(
+        label="의료인",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_9 = models.BooleanField(
+        label="없음",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    smoking_cessation_helper_10 = models.StringField(
+        label="기타(직접입력:)",
+        blank=True,
+    )
+
+    disease_history_1 = models.BooleanField(
+        label="구강인두암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_2 = models.BooleanField(
+        label="후두암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_3 = models.BooleanField(
+        label="식도암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_4 = models.BooleanField(
+        label="기관, 기관지 및 폐암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_5 = models.BooleanField(
+        label="급성 골수성 백혈병",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_6 = models.BooleanField(
+        label="위암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_7 = models.BooleanField(
+        label="간암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_8 = models.BooleanField(
+        label="췌장암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_9 = models.BooleanField(
+        label="신장암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_10 = models.BooleanField(
+        label="요관암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_11 = models.BooleanField(
+        label="자궁경부암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_12 = models.BooleanField(
+        label="방광암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_13 = models.BooleanField(
+        label="결직장암",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_14 = models.BooleanField(
+        label="뇌졸중",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_15 = models.BooleanField(
+        label="실명, 백내장, 노인성 황반변성증",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_16 = models.BooleanField(
+        label="모성흡연으로 인한 선천적 결함:구강안면 파열",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_17 = models.BooleanField(
+        label="치주염",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_18 = models.BooleanField(
+        label="청소년기 대동맥류, 조기 복대동맥죽상경화증",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_19 = models.BooleanField(
+        label="관상동맥질환",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_20 = models.BooleanField(
+        label="폐렴",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_21 = models.BooleanField(
+        label="동맥경화성폐질환 말초혈관질환",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_22 = models.BooleanField(
+        label="만성폐쇄성폐질환, 결핵, 천식, 호흡기영향, 비염",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_23 = models.BooleanField(
+        label="당뇨",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_24 = models.BooleanField(
+        label="여성생식기계영향, 태아발육부진",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_25 = models.BooleanField(
+        label="고관절 골절",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_26 = models.BooleanField(
+        label="자궁외임신",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_27 = models.BooleanField(
+        label="남성 성기능-발기부전",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_28 = models.BooleanField(
+        label="고혈압",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_29 = models.BooleanField(
+        label="류마티스관절염",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_30 = models.BooleanField(
+        label="고지혈증",
+        widget=widgets.CheckboxInput,
+        blank=True,
+    )
+
+    disease_history_31 = models.StringField(
+        label="기타",
+        blank=True,
+    )
+
+    smoking_cessation_importance = models.IntegerField(
+        label="",
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+         )
+
+    smoking_cessation_confidence = models.IntegerField(
+        label="",
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+         )
+
+    smoking_cessation_readiness = models.IntegerField(
+        label="",
+        choices = [
+                  [1, "0"],
+                  [2, "1"],
+                  [3, "2"],
+                  [4, "3"],
+                  [5, "4"],
+                  [6, "5"],
+                  [7, "6"],
+                  [8, "7"],
+                  [9, "8"],
+                  [10, "9"],
+                  [11, "10"],
+              ],
+        widget = widgets.RadioSelectHorizontal,
+        )
+    st_1 = make_field_lickert(0)
+    st_2 = make_field_lickert(1)
+    st_3 = make_field_lickert(2)
+    st_4 = make_field_lickert(3)
+    st_5 = make_field_lickert(4)
+    st_6 = make_field_lickert(5)
+    st_7 = make_field_lickert(6)
+    st_8 = make_field_lickert(7)
+    st_9 = make_field_lickert(8)
+    st_10 = make_field_lickert(9)
+    st_11 = make_field_lickert(10)
+    st_12 = make_field_lickert(11)
+    st_13 = make_field_lickert(12)
+    st_14 = make_field_lickert(13)
+    st_15 = make_field_lickert(14)
+    st_16 = make_field_lickert(15)
+    st_17 = make_field_lickert(16)
+    st_18 = make_field_lickert(17)
+    st_19 = make_field_lickert(18)
+    st_20 = make_field_lickert(19)
+    st_21 = make_field_lickert(20)
+
