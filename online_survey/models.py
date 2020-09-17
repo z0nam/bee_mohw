@@ -27,7 +27,12 @@ class Constants(BaseConstants):
     BORN_YEAR_MIN = 1959
     BORN_YEAR_MAX = 2000
     L5_CHOICES = GlobalConstants.L5_CHOICES
+    L52_CHOICES=GlobalConstants.L52_CHOICES
     smoking_type_list = smoking_cessation_questions.SMOKING_TYPE
+    subjective_norm_list = smoking_cessation_questions.SUBJECTIVE_NORM
+    perceived_behavioral_control_list = smoking_cessation_questions.PERCEIVED_BEHAVIORAL_CONTROL
+    attitude_toward_smoking_list = smoking_cessation_questions.ATTITUDE_TOWARD_SMOKING
+    intention_list = smoking_cessation_questions.INTENTION
     FULLTIME, PARTTIME, FREELANCER, UNPAID = 1, 2, 3, 99
     JOB_POSITION = [
         [FULLTIME, "전일제 근무자"],
@@ -51,7 +56,30 @@ def make_field_lickert(index):
         widget=widgets.RadioSelectHorizontal,
         choices=Constants.L5_CHOICES,
     )
-
+def make_field_lickert_2(index):
+    return models.IntegerField(
+        label=Constants.attitude_toward_smoking_list[index],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L52_CHOICES,
+    )
+def make_field_lickert_3(index):
+    return models.IntegerField(
+        label=Constants.subjective_norm_list[index],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L52_CHOICES,
+    )
+def make_field_lickert_4(index):
+    return models.IntegerField(
+        label=Constants.perceived_behavioral_control_list[index],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L52_CHOICES,
+    )
+def make_field_lickert_5(index):
+    return models.IntegerField(
+        label=Constants.intention_list[index],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L52_CHOICES,
+    )
 class Player(BasePlayer):
     gender = models.IntegerField(
         label="귀하의 성별은 어떻게 되십니까?",
@@ -1773,3 +1801,22 @@ class Player(BasePlayer):
     st_20 = make_field_lickert(19)
     st_21 = make_field_lickert(20)
 
+    sa_1 = make_field_lickert_2(0)
+    sa_2 = make_field_lickert_2(1)
+    sa_3 = make_field_lickert_2(2)
+    sa_4 = make_field_lickert_2(3)
+    sa_5 = make_field_lickert_2(4)
+    sa_6 = make_field_lickert_2(5)
+    sa_7 = make_field_lickert_2(6)
+    sa_8 = make_field_lickert_2(7)
+
+    sn_1 = make_field_lickert_3(0)
+    sn_2 = make_field_lickert_3(1)
+
+    pbc_1 = make_field_lickert_4(0)
+    pbc_2 = make_field_lickert_4(1)
+
+    i_1 = make_field_lickert_5(0)
+    i_2 = make_field_lickert_5(1)
+    i_3 = make_field_lickert_5(2)
+    i_4 = make_field_lickert_5(3)

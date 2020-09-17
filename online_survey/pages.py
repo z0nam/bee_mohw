@@ -246,13 +246,33 @@ class online_survey(Page):
         'st_19',
         'st_20',
         'st_21',
+        'sa_1',
+        'sa_2',
+        'sa_3',
+        'sa_4',
+        'sa_5',
+        'sa_6',
+        'sa_7',
+        'sa_8',
 
+        'sn_1',
+        'sn_2',
+
+        'pbc_1',
+        'pbc_2',
+
+        'i_1',
+        'i_2',
+        'i_3',
+        'i_4',
     ]
 
     def vars_for_template(self) -> dict:
         vars_to_return = {}
         vars_to_return['L5'] = [i[1] for i in Constants.L5_CHOICES]
+        vars_to_return['L52'] = [i[1] for i in Constants.L52_CHOICES]
         return vars_to_return
+
 
 
 page_sequence = [online_survey, ]
