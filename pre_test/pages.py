@@ -270,6 +270,7 @@ class pre_test(Page):
         'firm_type_op',
         'firm_size',
         'household_income',
+        'text_field',
 
     ]
 
