@@ -9,7 +9,7 @@ from otree.api import (
     currency_range,
 )
 from Global_Constants import GlobalConstants
-
+from . import post_test_questions
 
 author = 'Kyubum Moon<mailto:moonx190@umn.edu>'
 
@@ -32,7 +32,18 @@ class Constants(BaseConstants):
 
     BINARY_CHOICES = GlobalConstants.BINARY_CHOICES
     BINARY_POSSESSION = GlobalConstants.BINARY_POSSESSION
-
+    smoker_type = post_test_questions.SMOKER_TYPE
+    satisfaction = post_test_questions.SATISFACTION
+    smoking_cessation_adverse_effect = post_test_questions.SMOKING_CESSATION_ADVERSE_EFFECT
+    smoking_experience = post_test_questions.SMOKING_DESIRE_EXPERIENCE
+    smoking_opinion = post_test_questions.SMOKING_OPINION
+    confidence_against_smoking = post_test_questions.CONFIDENCE_AGAINST_SMOKING
+    experience_frequency = post_test_questions.EXPERIENCE_FREQUENCY
+    L5_CHOICES = GlobalConstants.L5_CHOICES
+    L53_CHOICES = GlobalConstants.L53_CHOICES
+    L54_CHOICES = GlobalConstants.L54_CHOICES
+    L55_CHOICES = GlobalConstants.L55_CHOICES
+    L56_CHOICES = GlobalConstants.L56_CHOICES
     ACTION_STRENGTHENING_PROP = [
         [1, "물"],
         [2, "식품류(비타민, 캔디, 껌 등)"],
@@ -74,7 +85,7 @@ class Constants(BaseConstants):
         [5, "금연을 실천한 지 6개월 이상 되었음"],
     ]
 
-    SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT =[
+    SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT = [
         [1, "전혀 그렇지않다"],
         [2, "그렇지 않다"],
         [3, "보통"],
@@ -100,7 +111,7 @@ class Constants(BaseConstants):
         [7, "금연보조제 사용 등 효과가 없는 것 같아서"],
     ]
 
-    CONFIDENCE_LEVEL =[
+    CONFIDENCE_LEVEL = [
         [1, "전혀 자신없다"],
         [2, "자신없다"],
         [3, "보통"],
@@ -123,6 +134,7 @@ class Constants(BaseConstants):
         [12, "찾금 연계(일반형)"],
     ]
 
+
 class Subsession(BaseSubsession):
     pass
 
@@ -131,265 +143,154 @@ class Group(BaseGroup):
     pass
 
 
+def make_field_smoker_type(index):
+    return models.IntegerField(
+        label=Constants.smoker_type[index - 1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L5_CHOICES,
+    )
+
+
+def make_field_satisfaction(index):
+    return models.IntegerField(
+        label=Constants.satisfaction[index - 1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L53_CHOICES,
+    )
+
+
+def make_field_smoking_cessation_adverse(index):
+    return models.IntegerField(
+        label=Constants.smoking_cessation_adverse_effect[index - 1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L54_CHOICES,
+    )
+
+
+def make_field_smoking_experience(index):
+    return models.IntegerField(
+        label=Constants.smoking_experience[index - 1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L55_CHOICES,
+    )
+
+
+def make_field_smoking_opinion(index):
+    return models.IntegerField(
+        label=Constants.smoking_opinion[index - 1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L54_CHOICES,
+    )
+
+
+def make_field_confidence(index):
+    return models.IntegerField(
+        label=Constants.confidence_against_smoking[index - 1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L56_CHOICES,
+    )
+
+
+def make_field_experience_frequency(index):
+    return models.IntegerField(
+        label=Constants.experience_frequency[index - 1],
+        widget=widgets.RadioSelectHorizontal,
+        choices=Constants.L54_CHOICES,
+    )
+
+
 class Player(BasePlayer):
-    action_strengthening_prop_category = models.IntegerField(
+    num_post_not = models.BooleanField(
+        label="",
+        choices=Constants.BINARY_CHOICES,
+        widget=widgets.RadioSelectHorizontal,
+    )
+    post_action_strengthening_prop_category = models.IntegerField(
         label="귀하께서 지난 1주일 동안 사용한 행동강화물품의 종류는 무엇입니까?",
         choices=Constants.ACTION_STRENGTHENING_PROP,
         widget=widgets.RadioSelect,
     )
 
-    smoking_desire_decrease_lickert = models.IntegerField(
+    post_smoking_desire_decrease_lickert = models.IntegerField(
         label="귀하가 사용하는 행동강화물품은 흡연욕구를 저하시키는데 도움이 되었습니까?",
         choices=Constants.SMOKING_DESIRE_DECREASE_LICKERT,
         widget=widgets.RadioSelect,
     )
 
-    post_smoking_cessation_health_status = models.IntegerField(
+    post_post_smoking_cessation_health_status = models.IntegerField(
         label="금연 이후, 귀하가 생각하는 본인의 현재 건강상태는 개선되었다고 생각합니까?",
         choices=Constants.POST_SMOKING_CESSATION_HEALTH_STATUS,
         widget=widgets.RadioSelect,
     )
 
-    post_smoking_cessation_stress_metirc = models.IntegerField(
+    post_post_smoking_cessation_stress_metirc = models.IntegerField(
         label="금연 이후, 평소 귀하의 스트레스 정도는 어떻습니까?",
         choices=Constants.POST_SMOKING_CESSATION_STRESS_METRIC,
         widget=widgets.RadioSelect,
     )
 
-    smoking_cessation_practice_plan_change = models.IntegerField(
+    post_smoking_cessation_practice_plan_change = models.IntegerField(
         label="현재 귀하께서는 금연 실천할 생각이 변화하였습니까?",
         choices=Constants.SMOKING_CESSATION_PRACTICE_PLAN_CHANGE,
         widget=widgets.RadioSelect,
     )
 
-    smoking_cessation_adverse_effect_symptom_1 = models.IntegerField(
-        label="담배를 피우고 싶은 절심함",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
+    post_sa_1 = make_field_smoking_cessation_adverse(0)
+    post_sa_2 = make_field_smoking_cessation_adverse(1)
+    post_sa_3 = make_field_smoking_cessation_adverse(2)
+    post_sa_4 = make_field_smoking_cessation_adverse(3)
+    post_sa_5 = make_field_smoking_cessation_adverse(4)
+    post_sa_6 = make_field_smoking_cessation_adverse(5)
+    post_sa_7 = make_field_smoking_cessation_adverse(6)
+    post_sa_8 = make_field_smoking_cessation_adverse(7)
+    post_sa_9 = make_field_smoking_cessation_adverse(8)
 
-    smoking_cessation_adverse_effect_symptom_2 = models.IntegerField(
-        label="짜증남/ 좌절/ 분노",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
+    post_se_1 = make_field_smoking_experience(0)
+    post_se_2 = make_field_smoking_experience(1)
 
-    smoking_cessation_adverse_effect_symptom_3 = models.IntegerField(
-        label="불안",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_cessation_adverse_effect_symptom_4 = models.IntegerField(
-        label="집중하기 어려움",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_cessation_adverse_effect_symptom_5 = models.IntegerField(
-        label="안절부절 하지 못함",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_cessation_adverse_effect_symptom_6 = models.IntegerField(
-        label="식욕증가",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_cessation_adverse_effect_symptom_7 = models.IntegerField(
-        label="수면방",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_cessation_adverse_effect_symptom_8 = models.IntegerField(
-        label="우울함",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_cessation_adverse_effect_symptom_9 = models.IntegerField(
-        label="참지 못함",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    daily_smoking_related_impulses_1 = models.IntegerField(
-        label="오늘 담배를 사용하겠다는 충동을 얼마나 많이 느꼈습니까?",
-        choices = Constants.DAILY_SMOKING_RELATED_EXPERIENCE_LICKERT,
-        widget = widgets.RadioSelect,
-    )
-
-    daily_smoking_related_impulses_2 = models.IntegerField(
-        label="오늘은 얼마나 강한 충동이 있었습니까?",
-        choices = Constants.DAILY_SMOKING_RELATED_EXPERIENCE_LICKERT,
-        widget = widgets.RadioSelect,
-    )
-
-    reason_for_failure_to_continue_quitting_smoking = models.IntegerField(
+    post_reason_for_failure_to_continue_quitting_smoking = models.IntegerField(
         label="지난 1주일 이후 금연에 실패한 가장 큰 이유는 무엇입니까?",
         choices=Constants.WHY_YOU_COULD_NOT_CONTINUE_QUITTING_SMOKING_AFTER_PAST_ONE_WEEK,
         widget=widgets.RadioSelect,
     )
 
-    smoking_perception_1 = models.IntegerField(
-        label="흡연은 스트레스를 해소 시켜준다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
+    post_so_1 = make_field_smoking_opinion(0)
+    post_so_2 = make_field_smoking_opinion(1)
+    post_so_3 = make_field_smoking_opinion(2)
+    post_so_4 = make_field_smoking_opinion(3)
+    post_so_5 = make_field_smoking_opinion(4)
+    post_so_6 = make_field_smoking_opinion(5)
 
-    smoking_perception_2 = models.IntegerField(
-        label="흡연은 일에 집중을 더 잘할 수 있도록 도와준다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
+    post_cas_1 = make_field_confidence(0)
+    post_cas_2 = make_field_confidence(1)
+    post_cas_3 = make_field_confidence(2)
+    post_cas_4 = make_field_confidence(3)
+    post_cas_5 = make_field_confidence(4)
+    post_cas_6 = make_field_confidence(5)
+    post_cas_7 = make_field_confidence(6)
 
-    smoking_perception_3 = models.IntegerField(
-        label="흡연을 하면 긴장이 풀리면서 기분이 좋아진다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_perception_4 = models.IntegerField(
-        label="흡연은 나의 건강을 해친다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_perception_5 = models.IntegerField(
-        label="흡연은 다른 사람의 건강을 해치는 일이다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_perception_6 = models.IntegerField(
-        label="흡연의 위험성을 알면서도 흡연하는 것은 어리석은 일이다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    confidence_against_smoking_temptation_1 = models.IntegerField(
-        label="술자리에서 음주 시",
-        choices=Constants.CONFIDENCE_LEVEL,
-        widget=widgets.RadioSelect,
-    )
-
-    confidence_against_smoking_temptation_2 = models.IntegerField(
-        label="아침에 잠자리에서 일어났을 때",
-        choices=Constants.CONFIDENCE_LEVEL,
-        widget=widgets.RadioSelect,
-    )
-
-    confidence_against_smoking_temptation_3 = models.IntegerField(
-        label="걱정거리가 생겼거나 스트레스를 받을 때",
-        choices=Constants.CONFIDENCE_LEVEL,
-        widget=widgets.RadioSelect,
-    )
-
-    confidence_against_smoking_temptation_4 = models.IntegerField(
-        label="잡담을 하거나 휴식을 취하면서 커피를 마실 때",
-        choices=Constants.CONFIDENCE_LEVEL,
-        widget=widgets.RadioSelect,
-    )
-
-    confidence_against_smoking_temptation_5 = models.IntegerField(
-        label="기운을 낼 필요가 있다고 느낄 때 (업무 등으로 몸이 지쳐있을 때)",
-        choices=Constants.CONFIDENCE_LEVEL,
-        widget=widgets.RadioSelect,
-    )
-
-    confidence_against_smoking_temptation_6 = models.IntegerField(
-        label="화가 많이 났을 때",
-        choices=Constants.CONFIDENCE_LEVEL,
-        widget=widgets.RadioSelect,
-    )
-
-    confidence_against_smoking_temptation_7 = models.IntegerField(
-        label="가족이나 친구들이 옆에서 담배를 피울 때",
-        choices=Constants.CONFIDENCE_LEVEL,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_1 = models.IntegerField(
-        label="담배 피우고 싶을 때는 일부러 딴 생각을 하거나 다른 일을 한다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_2 = models.IntegerField(
-        label="금연하고 싶을 때는 언제든지 금연할 수 있다고 생각한다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_3 = models.IntegerField(
-        label="사회가 흡연자들의 생활을 불편하게 하는 방향으로 변화하고 있다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_4 = models.IntegerField(
-        label="금연의 혜택이나 금연방법에 대한 정보를 읽거나 들은 적이 있다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_5 = models.IntegerField(
-        label="흡연욕구를 참았을 때 주위사람들로부터 칭찬을 받는다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_6 = models.IntegerField(
-        label="흡연은 환경을 오염시키는 원인이 된다고 생각한다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_7 = models.IntegerField(
-        label="흡연의 결과에 대한 경고문이나 포스터 등을 보면 걱정이 된다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_8 = models.IntegerField(
-        label="담배를 끊지 못하는 내 자신이 실망스럽게 느껴진다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_9 = models.IntegerField(
-        label="담배를 끊기 위해 담배, 재떨이 등을 회사나 집에서 모두 치웠다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
-
-    smoking_related_experience_frequency_10 = models.IntegerField(
-        label="나의 금연노력을 도와줄 가족이나 친구가 주변에 있다.",
-        choices=Constants.SMOKING_CESSATION_ADVERSE_EFFECT_LICKERT,
-        widget=widgets.RadioSelect,
-    )
+    post_ef_1 = make_field_experience_frequency(0)
+    post_ef_2 = make_field_experience_frequency(1)
+    post_ef_3 = make_field_experience_frequency(2)
+    post_ef_4 = make_field_experience_frequency(3)
+    post_ef_5 = make_field_experience_frequency(4)
+    post_ef_6 = make_field_experience_frequency(5)
+    post_ef_7 = make_field_experience_frequency(6)
+    post_ef_8 = make_field_experience_frequency(7)
+    post_ef_9 = make_field_experience_frequency(8)
+    post_ef_10 = make_field_experience_frequency(9)
 
     TERMINATION = models.IntegerField(
         label="금연프로그램이 정상적으로 종결되었는지 혹은 중간에 종결되었는지를 선택해 주십시오.",
         choices=[
-            [1,"정상종결"],
-            [2,"중간종결"],
+            [1, "정상종결"],
+            [2, "중간종결"],
         ],
         widget=widgets.RadioSelectHorizontal,
     )
+
     termination_reason = models.IntegerField(
         label="금연프로그램이 종결된 사유를 선택해주십시오.",
         choices=Constants.TERMINATION_REASON,
         widget=widgets.RadioSelect,
     )
-
-
-
-
-
-
-
-

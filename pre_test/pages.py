@@ -229,8 +229,6 @@ class pre_test(Page):
         vars_to_return['L54'] = [i[1] for i in Constants.L54_CHOICES]
         vars_to_return['L55'] = [i[1] for i in Constants.L55_CHOICES]
         vars_to_return['L56'] = [i[1] for i in Constants.L56_CHOICES]
-
-
         return vars_to_return
 
 
