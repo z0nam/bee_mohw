@@ -215,6 +215,8 @@
 
         <div class="row alert border">
             <b>다음은 신체활동(운동)에 대한 문항입니다. 자신의 현재 상태에 해당되는 내용을 선택해주십시오.</b>
+               <br>중강도 운동이란 약간 땀이 나며, 대화가 가능하지만 조금 버거운 정도의 운동을 지칭합니다.</br>
+               (예: 빨리 걷기)
             <div style="border:3px solid skyblue; padding-left: 5px; padding-right: 5px">
                 <div class="d-block">
                     <b>주1회</b>, 10분 이상, <u>중강도 운동</u>을 하십니까? <div class="d-inline-block">{% formfield player.mid_act_yesno %}</div>
@@ -262,8 +264,12 @@
     <div class="alert border">{% formfield player.avg_daily_tobacco_smoking_amount %}</div>
     <div class="alert border">{% formfield player.within_past_month_tobacco_smoking_days %}</div>
     <div class="alert border">{% formfield player.tobacco_sticks_per_day %}</div>
-    <div class="alert border">{% formfield player.past_tobacco_smoking_years %}</div>
-    <div class="alert border">{% formfield player.past_tobacco_smoking_months %}</div>
+    <div class="alert border">
+       귀하의 과거 일반담배(궐련) 흡연기간을 입력해주십시오.
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.past_tobacco_smoking_years %}</div>년 <div class="d-inline-block">{% formfield player.past_tobacco_smoking_months %}</div>개월</div>
+    <div class="alert border">
+
     <div class="alert border">{% formfield player.past_tobacco_sticks_per_day %}</div>
     <div class="alert border"><p>평소에 하루 중 일반담배(궐련) 흡연을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
         {% formfield player.hardest_time_to_resist_smoking_1 %}

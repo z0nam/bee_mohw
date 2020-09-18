@@ -3,7 +3,7 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class pre_test(Page):
+class BasicInfo(Page):
     form_model = 'player'
     form_fields = [
         'registration_type',
@@ -35,6 +35,12 @@ class pre_test(Page):
         'support_service_registration_source_7',
         'support_service_registration_source_8',
         'support_service_registration_source_9',
+    ]
+
+
+class HealthInfo(Page):
+    form_model = 'player'
+    form_fields = [
         'height',
         'weight',
         'waist_circumference',
@@ -102,6 +108,12 @@ class pre_test(Page):
         'highest_schooling',
         'occupation',
         'occupation_op',
+    ]
+
+
+class SmokerEvaluation(Page):
+    form_model = 'player'
+    form_fields = [
         'within_last_one_year_smoking_cessation_tryout_yesno',
         'within_last_one_year_smoking_cessation_tryout_yesno_op_month',
         'within_last_one_year_smoking_cessation_tryout_yesno_op_days',
@@ -136,12 +148,23 @@ class pre_test(Page):
         'smoking_cessation_motivation',
         'smoking_cessation_confidence',
         'smoking_cessation_readiness',
+    ]
+
+
+class NicotineDependence(Page):
+    form_model = 'player'
+    form_fields = [
         'morning_smoking_time',
         'smoking_resistancy',
         'most_tasty_smoking_time',
         'how_many_gaebis_per_day',
         'morning_smoking_more_than_the_rest_of_day',
         'sick_all_day_still_smoking',
+    ]
+
+class SmokerType(Page):
+    form_model = 'player'
+    form_fields=[
         'st_1',
         'st_2',
         'st_3',
@@ -163,7 +186,21 @@ class pre_test(Page):
         'st_19',
         'st_20',
         'st_21',
-        'st_22',
+    ]
+
+
+    def vars_for_template(self) -> dict:
+        vars_to_return = {}
+        vars_to_return['L5'] = [i[1] for i in Constants.L5_CHOICES]
+        vars_to_return['L53'] = [i[1] for i in Constants.L53_CHOICES]
+        vars_to_return['L54'] = [i[1] for i in Constants.L54_CHOICES]
+        vars_to_return['L55'] = [i[1] for i in Constants.L55_CHOICES]
+        vars_to_return['L56'] = [i[1] for i in Constants.L56_CHOICES]
+        return vars_to_return
+
+class Satisfaction(Page):
+    form_model='player'
+    form_fields = [
         's_1',
         's_2',
         's_3',
@@ -171,6 +208,20 @@ class pre_test(Page):
         's_5',
         's_6',
         's_7',
+    ]
+
+    def vars_for_template(self) -> dict:
+        vars_to_return = {}
+        vars_to_return['L5'] = [i[1] for i in Constants.L5_CHOICES]
+        vars_to_return['L53'] = [i[1] for i in Constants.L53_CHOICES]
+        vars_to_return['L54'] = [i[1] for i in Constants.L54_CHOICES]
+        vars_to_return['L55'] = [i[1] for i in Constants.L55_CHOICES]
+        vars_to_return['L56'] = [i[1] for i in Constants.L56_CHOICES]
+        return vars_to_return
+
+class pre_test(Page):
+    form_model = 'player'
+    form_fields = [
         'self_reported_health_status',
         'stress_metric_self_reported',
         'afterward_smoking_cessation_yesno',
@@ -232,4 +283,4 @@ class pre_test(Page):
         return vars_to_return
 
 
-page_sequence = [pre_test, ]
+page_sequence = [BasicInfo, HealthInfo, SmokerEvaluation, NicotineDependence, SmokerType, Satisfaction, pre_test, ]

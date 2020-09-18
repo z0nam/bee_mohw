@@ -116,10 +116,10 @@ class Constants(BaseConstants):
     ]
 
     TIME_DIVISION = [
-        [1, "5분 이내"],
+        [3, "5분 이내"],
         [2, "6분~30분 사이"],
-        [3, "31분~1시간 사이"],
-        [4, "1시간 이후"],
+        [1, "31분~1시간 사이"],
+        [0, "1시간 이후"],
     ]
 
     TYPE_LICKERT = [
@@ -789,13 +789,13 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
 
-    within_last_one_year_smoking_cessation_tryout_yesno_op_month = models.StringField(
+    within_last_one_year_smoking_cessation_tryout_yesno_op_month = models.IntegerField(
         label="작년 1년동안 가장오랫동안 금연시도를 한 개월수를 입력해주십시오.",
         choices=range(0,13),
         blank=True,
     )
 
-    within_last_one_year_smoking_cessation_tryout_yesno_op_days = models.StringField(
+    within_last_one_year_smoking_cessation_tryout_yesno_op_days = models.IntegerField(
         label="작년 1년동안 가장오랫동안 금연시도를 한 일수 입력해주십시오.",
         choices=range(0, 30),
         blank=True,
@@ -995,18 +995,15 @@ class Player(BasePlayer):
 
     smoking_resistancy = models.BooleanField(
         label="금연구역(도서관, 극장, 병원 등)에서 담배를 참기가 어렵습니까?",
-        choices=[
-            [1, "예"],
-            [2, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICE,
         widget=widgets.RadioSelectHorizontal,
     )
 
-    most_tasty_smoking_time = models.BooleanField(
+    most_tasty_smoking_time = models.IntegerField(
         label="하루 중 담배 맛이 가장 좋은 때는 언제입니까?",
         choices=[
             [1, "아침 첫 담배"],
-            [2, "그 외의 담배"],
+            [0, "그 외의 담배"],
         ],
         widget=widgets.RadioSelectHorizontal,
     )
@@ -1014,28 +1011,28 @@ class Player(BasePlayer):
     how_many_gaebis_per_day = models.IntegerField(
         label="하루에 보통 몇 개비나 피우십니까?",
         choices=[
-                [1, "10개비 이하"],
-                [2, "11~20개비"],
-                [3, "21~30개비"],
-                [4, "31개비 이상"],
+                [0, "10개비 이하"],
+                [1, "11~20개비"],
+                [2, "21~30개비"],
+                [3, "31개비 이상"],
         ],
         widget=widgets.RadioSelect,
     )
 
-    morning_smoking_more_than_the_rest_of_day = models.BooleanField(
+    morning_smoking_more_than_the_rest_of_day = models.IntegerField(
         label="아침에 일어나서 첫 몇 시간 동안하루 중 다른 시간보다 거 자주 담배를 피우십니까?",
         choices=[
             [1, "예"],
-            [2, "아니오"],
+            [0, "아니오"],
         ],
         widget=widgets.RadioSelectHorizontal,
     )
 
-    sick_all_day_still_smoking = models.BooleanField(
+    sick_all_day_still_smoking = models.IntegerField(
         label="몸이 아파 하루 종일 누워있을 때에도 담배를 피우십니까?",
         choices=[
             [1, "예"],
-            [2, "아니오"],
+            [0, "아니오"],
         ],
         widget=widgets.RadioSelectHorizontal,
     )
@@ -1061,7 +1058,7 @@ class Player(BasePlayer):
     st_19 = make_field_smoker_type(18)
     st_20 = make_field_smoker_type(19)
     st_21 = make_field_smoker_type(20)
-    st_22 = make_field_smoker_type(21)
+
 
     s_1 = make_field_satisfaction(0)
     s_2 = make_field_satisfaction(1)

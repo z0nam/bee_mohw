@@ -294,3 +294,7 @@ class Player(BasePlayer):
         choices=Constants.TERMINATION_REASON,
         widget=widgets.RadioSelect,
     )
+    text_field = models.LongStringField(
+        label="메모남겨주실 부분 있으시면 여기에 남겨주시면 감사드리겠습니다.",
+        blank=True,
+    )

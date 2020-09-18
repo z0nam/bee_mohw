@@ -49,6 +49,7 @@ class post_test(Page):
         'post_ef_10',
         'TERMINATION',
         'termination_reason',
+        'text_field',
 
     ]
 

@@ -446,7 +446,26 @@ class Player(BasePlayer):
 
     mid_act_min = models.IntegerField(
         label="",
-        choices=range(0, 721, 30),
+        choices=[
+            [1, "00"],
+            [2, "15"],
+            [3, "30"],
+            [4, "45"],
+            [5, "60"],
+            [6, "75"],
+            [7, "90"],
+            [8, "105"],
+            [9, "120"],
+            [10, "135"],
+            [11, "150"],
+            [12, "165"],
+            [13, "180"],
+            [14, "195"],
+            [15, "210"],
+            [16, "225"],
+            [17, "240"],
+            [18, "240+"],
+        ],
     )
 
     muscle_act_days = models.IntegerField(
@@ -563,7 +582,7 @@ class Player(BasePlayer):
     )
 
     avg_daily_tobacco_smoking_amount = models.IntegerField(
-        label="하루 평균 일반담배(궐련) 흡연량",
+        label="하루 평균 일반담배(궐련) 흡연량(기준: 개비)",
         blank=True,
     )
 
@@ -580,17 +599,17 @@ class Player(BasePlayer):
     )
 
     past_tobacco_smoking_years = models.IntegerField(
-        label="과거 일반담배(궐련) 흡연기간(연수)",
+        label="",
         choices=range(101),
         blank=True,
     )
     past_tobacco_smoking_months = models.IntegerField(
-        label="과거 일반담배(궐련) 흡연기간(개월수(0-11))",
+        label="",
         choices=range(12),
         blank=True,
     )
     past_tobacco_sticks_per_day = models.IntegerField(
-        label="과거 일반담배(궐련)를 피울 때 하루 평균 흡연량(개비)",
+        label="과거 일반담배(궐련)를 피울 때 하루 평균 흡연량(기준: 개비)",
         choices=range(101),
         blank=True,
     )
