@@ -64,16 +64,15 @@
 	</div>
     <div class="alert border">
         <p>※ 금연동기, 금연자신감, 금연 준비 정도 (다음의 각 항목에 따라 1점부터 10점까지 체크)</p>
-            [금연동기] 0점 : 매우 중요하지 않음; 10점 : 매우 중요함
-        <br>[금연자신감] 0점: 자신감이 매우 낮음; 10점: 자신감이 매우 높음</br>
-            [금연 준비 정도] 0점: 하나도 준비가 되지 않았음; 10점: 완벽하게 준비가 되었음
+
     </div>
 <!--    <div class="alert border">{% formfield player.smoking_cessation_motivation %}</div>-->
 <!--    <div class="alert border">{% formfield player.smoking_cessation_confidence %}</div>-->
 <!--    <div class="alert border">{% formfield player.smoking_cessation_readiness %}</div>-->
 <!--    <div class="alert border">-->
     <div class="alert row border">
-            <p>금연은 당신에게 어느 정도 중요합니까?</p>
+            금연은 당신에게 어느 정도 중요합니까?
+            <br>[금연동기] 0점 : 매우 중요하지 않음; 10점 : 매우 중요함</br>
             <table class="table">
                 <tr>
                     <td>{{ form.smoking_cessation_motivation.label }}</td>
@@ -84,7 +83,8 @@
             </table>
     </div>
     <div class="alert row border">
-            <p>당신은 금연에 성공할 자신감이 어느 정도 입니까?</p>
+            당신은 금연에 성공할 자신감이 어느 정도 입니까?
+             <br>[금연자신감] 0점: 자신감이 매우 낮음; 10점: 자신감이 매우 높음</br>
             <table class="table">
                 <tr>
                     <td>{{ form.smoking_cessation_confidence.label }}</td>
@@ -95,7 +95,8 @@
             </table>
     </div>
     <div class="alert row border">
-            <p>당신은 금연할 준비가 어느 정도 되어 있습니까?</p>
+             당신은 금연할 준비가 어느 정도 되어 있습니까?
+             <br>[금연 준비 정도] 0점: 하나도 준비가 되지 않았음; 10점: 완벽하게 준비가 되었음</br>
             <table class="table">
                 <tr>
                     <td>{{ form.smoking_cessation_readiness.label }}</td>
