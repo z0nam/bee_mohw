@@ -692,18 +692,15 @@ class Player(BasePlayer):
 
     is_it_hard_to_resist_smoking_in_the_public = models.BooleanField(
         label="(과거 일반담배(궐련) 흡연자는 흡연당시 기준으로 작성) 금연구역(도서관, 극장, 병원 등)에서 일반담배(궐련)를 참기가 어렵습니까?",
-        choices=[
-            [1, "예"],
-            [2, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
-    when_is_tobacco_the_most_tasty = models.BooleanField(
+    when_is_tobacco_the_most_tasty = models.IntegerField(
         label="(과거 일반담배(궐련) 흡연자는 흡연당시 기준으로 작성) 하루 중 일반담배(궐련) 맛이 가장 좋은 때는 언제입니까?",
         choices=[
-            [1, "예"],
-            [2, "아니오"],
+            [1, "아침 첫 담배"],
+            [0, "그 외의 담배"],
         ],
         widget=widgets.RadioSelectHorizontal,
     )
