@@ -1,0 +1,94 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+    <h3>7. 사용정보 – 궐련형 전자담배</h3>
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+    <table class ="tg">
+    <thead>
+        <tr>
+            <th colspan="3">궐련형 전자담배 (가열담배, 예> 아이코스, 글로, 릴 등)
+<br>- 액상 니코틴이 아닌 담배를 가열해서 에어로졸을 흡입하는 방식의 전자담배입니다</br></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="tg-0lax">아이코스</td>
+            <td class="tg-0lax">글로</td>
+            <td class="tg-0lax">릴</td>
+        </tr>
+        <tr>
+            <td class="tg-0lax"><img src="{% static "global/image4.png" %}" alt="image4" height="150" width="150px"></td>
+            <td class="tg-0lax"><img src="{% static "global/image5.png" %}" alt="image5" height="150" width="150px"></td>
+            <td class="tg-0lax"><img src="{% static "global/image6.png" %}" alt="image6" height="150" width="150px"></td>
+        </tr>
+        <tr>
+            <td class="tg-0lax">- [충전기], [흡입기], [담배형태의 스틱]으로 구성
+<br>- 1회 충전 시 1개의 스틱을 사용하여 약 14회 흡입 혹은 6분 간 사용 가능</br>
+- 본체 가격은 12만원이며 스틱은 20개 당 4,300원임</td>
+            <td class="tg-0lax">- [본체-흡입기], [담배형태의 스틱]으로 구성
+                <br>- 1회 충전으로 최대 30개비를 피울 수 있음</br>
+- 본체가격은 9만원이며 스틱은 20개 당 4,300원</td>
+            <td class="tg-0lax">- [본체-흡입기], [담배형태의 스틱]으로 구성
+                <br>- 1회 충전으로 최대 20개비를 피울 수 있음</br>
+- 본체가격은 9만 5천원이며 스틱은 20개 당 4,300원</td>
+        </tr>
+    </tbody>
+    </table>
+    <caption>출처: 조홍준 외, (2018)</caption>
+    <div class="alert border">{% formfield player.do_you_use_tobacco_type_e_cigarette %}</div>
+    <div class="alert border">
+        귀하께서는 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등)를 언제 시작하셨습니까?
+    </div>
+    <div class="d-block"> 20<div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_start_year %}</div>년 <div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_start_month %}</div>월</div>
+    <div class="alert border">
+		마지막으로 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등)를 사용한 시기는 언제입니까?
+    </div>
+    <div class="d-block"> 20<div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_end_year %}</div>년 <div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_end_month %}</div>월</div>
+    <div class="alert border">
+		최근 1달 간 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등) 사용일수
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.within_recent_month_days_of_use_for_tobacco_type_e_cigarette %}</div>일</div>
+    <div class="alert border">
+		궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등)를 사용한 날 하루 평균 사용량
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_avg_sticks_per_day %}</div>개비</div>
+    <div class="alert border"><p>평소에 하루 중 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등) 사용을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_1 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_2 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_3 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_4 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_5 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_6 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_7 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_8 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_9 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_10 %}
+        {% formfield player.tobacco_type_e_cigarette_hardest_to_resist_when_11 %}
+	  </div>
+    <div class="alert border">{% formfield player.tobacco_type_e_cigarette_first_in_the_day %}</div>
+    <div class="alert border">{% formfield player.tobacco_type_e_cigarette_hard_to_resist_in_public %}</div>
+    <div class="alert border">{% formfield player.tobacco_type_e_cigarette_most_tasty_in_the_day %}</div>
+    <div class="alert border">{% formfield player.tobacco_type_e_cigarette_sticks_per_day %}</div>
+    <div class="alert border">{% formfield player.tobacco_type_e_cigarette_more_tasty_in_the_morning_than_the_rest %}</div>
+    <div class="alert border">{% formfield player.tobacco_type_e_cigarette_sick_all_day_still_smoking %}</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

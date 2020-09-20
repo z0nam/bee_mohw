@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+{% block app_scripts %}
+{#    <script src="{% static "jquery-ui-1.12.1/jquery-ui.js" %}"></script>#}
+    <script>
+        $(document).ready(function(){
+            op_checker("id_occupation_10","occupation_op")
+            op_checker("id_firm_type_6","firm_type_op")
+        })
+    </script>
+{% endblock %}
+{% block content %}
+
+    <h3>3. 인구통계학적 정보</h3>
+    <div class="alert border">{% formfield player.region %}</div>
+    <div class="alert border">{% formfield player.region_size %}</div>
+    <div class="alert border">{% formfield player.marriage %}</div>
+    <div class="alert border">{% formfield player.final_schooling %}</div>
+    <div class="alert border">{% formfield player.occupation %}
+    <div class="optional" id="occupation_op">{% formfield player.occupation_op %}</div></div>
+    <div class="alert border">{% formfield player.firm_type %}
+    <div class="optional" id="firm_type_op">{% formfield player.firm_type_op %}</div></div>
+    <div class="alert border">{% formfield player.firm_size %}</div>
+    <div class="alert border">{% formfield player.household_income %}</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

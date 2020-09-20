@@ -1,0 +1,119 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+{% block app_scripts %}
+{#    <script src="{% static "jquery-ui-1.12.1/jquery-ui.js" %}"></script>#}
+    <script>
+        $(document).ready(function(){
+            op_checker("id_reason_to_quit_smoking_this_time_primary_9","reason_to_quit_smoking_this_time_primary_op")
+            op_checker("id_reason_to_quit_smoking_this_time_secondary_9","reason_to_quit_smoking_this_time_secondary_op")
+            op_checker("id_reason_to_quit_smoking_this_time_tertiary_9","reason_to_quit_smoking_this_time_tertiary_op")
+        })
+    </script>
+{% endblock %}
+{% block content %}
+
+    <h3>9. 금연경험</h3>
+    <div class="alert border"><p>금연에 실패한 이유는? (해당사항 모두 표시)</p>
+        {% formfield player.smoking_cessation_failure_reason_1 %}
+        {% formfield player.smoking_cessation_failure_reason_2 %}
+        {% formfield player.smoking_cessation_failure_reason_3 %}
+        {% formfield player.smoking_cessation_failure_reason_4 %}
+        {% formfield player.smoking_cessation_failure_reason_5 %}
+        {% formfield player.smoking_cessation_failure_reason_6 %}
+        {% formfield player.smoking_cessation_failure_reason_7 %}
+	  </div>
+    <div class="alert border">{% formfield player.reason_to_quit_smoking_this_time_primary %}
+    <div class="optional" id="reason_to_quit_smoking_this_time_primary_op">{% formfield player.reason_to_quit_smoking_this_time_primary_op %}</div></div>
+    <div class="alert border">{% formfield player.reason_to_quit_smoking_this_time_secondary %}
+    <div class="optional" id="reason_to_quit_smoking_this_time_secondary_op">{% formfield player.reason_to_quit_smoking_this_time_secondary_op %}</div></div>
+    <div class="alert border">{% formfield player.reason_to_quit_smoking_this_time_tertiary %}
+    <div class="optional" id="reason_to_quit_smoking_this_time_tertiary_op">{% formfield player.reason_to_quit_smoking_this_time_tertiary_op %}</div></div>
+    <div class="alert border"><p>금연하는데 도움을 주는 사람은 누구입니까? (복수선택)</p>
+        {% formfield player.smoking_cessation_helper_1 %}
+        {% formfield player.smoking_cessation_helper_2 %}
+        {% formfield player.smoking_cessation_helper_3 %}
+        {% formfield player.smoking_cessation_helper_4 %}
+        {% formfield player.smoking_cessation_helper_5 %}
+        {% formfield player.smoking_cessation_helper_6 %}
+        {% formfield player.smoking_cessation_helper_7 %}
+        {% formfield player.smoking_cessation_helper_8 %}
+        {% formfield player.smoking_cessation_helper_9 %}
+        {% formfield player.smoking_cessation_helper_10 %}
+	  </div>
+    <div class="alert border"><p>귀하의 질병력을 선택해주세요(해당사항 모두 표시)</p>
+        {% formfield player.disease_history_1 %}
+        {% formfield player.disease_history_2 %}
+        {% formfield player.disease_history_3 %}
+        {% formfield player.disease_history_4 %}
+        {% formfield player.disease_history_5 %}
+        {% formfield player.disease_history_6 %}
+        {% formfield player.disease_history_7 %}
+        {% formfield player.disease_history_8 %}
+        {% formfield player.disease_history_9 %}
+        {% formfield player.disease_history_10 %}
+        {% formfield player.disease_history_11 %}
+        {% formfield player.disease_history_12 %}
+        {% formfield player.disease_history_13 %}
+        {% formfield player.disease_history_14 %}
+        {% formfield player.disease_history_15 %}
+        {% formfield player.disease_history_16 %}
+        {% formfield player.disease_history_17 %}
+        {% formfield player.disease_history_18 %}
+        {% formfield player.disease_history_19 %}
+        {% formfield player.disease_history_20 %}
+        {% formfield player.disease_history_21 %}
+        {% formfield player.disease_history_22 %}
+        {% formfield player.disease_history_23 %}
+        {% formfield player.disease_history_24 %}
+        {% formfield player.disease_history_25 %}
+        {% formfield player.disease_history_26 %}
+        {% formfield player.disease_history_27 %}
+        {% formfield player.disease_history_28 %}
+        {% formfield player.disease_history_29 %}
+        {% formfield player.disease_history_30 %}
+		    {% formfield player.disease_history_31 %}
+	</div>
+  <div class="alert row border">
+            <p>금연은 당신에게 어느 정도 중요합니까? (중요할수록 높은값)</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.smoking_cessation_importance.label }}</td>
+                    {% for choice in form.smoking_cessation_importance %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert row border">
+            <p>당신은 금연에 성공할 자신감이 어느 정도 입니까?</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.smoking_cessation_confidence.label }}</td>
+                    {% for choice in form.smoking_cessation_confidence %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert row border">
+            <p>당신은 금연할 준비가 어느 정도 되어 있습니까?</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.smoking_cessation_readiness.label }}</td>
+                    {% for choice in form.smoking_cessation_readiness %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

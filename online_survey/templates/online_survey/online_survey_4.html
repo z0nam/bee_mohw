@@ -1,0 +1,81 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+{% block app_scripts %}
+{#    <script src="{% static "jquery-ui-1.12.1/jquery-ui.js" %}"></script>#}
+    <script>
+        $(document).ready(function(){
+            op_checker("id_num_drink_not_0","drink_questions");
+        })
+    </script>
+{% endblock %}
+{% block content %}
+    <h3>4. 건강정보</h3>
+    <div class="row alert border">
+            <div class="alert"><b>다음은 음주에 대한 문항입니다. 자신의 현재 상태에 해당되는 내용을 선택해 주십시오.</b>
+                <div class="border">
+                    지난 1년간 술을 마신 적 있으십니까?
+                    <div>{% formfield player.num_drink_not %}</div>
+                </div>
+                <div class="optional" id="drink_questions">
+                  <div class="row border alert">
+                      <p class="alert-info">
+                      술을 마시는 날은 보통 어느 정도 마십니까? (맥주1병 = 4잔, 소주 1병 = 7잔; 주로 마시는 술 종류의 잔을 기준으로 음주량 확인)</p>
+                      <table>
+                          <tr>
+                              <th></th>
+                              <th class="align-content-center">잔</th>
+                          </tr>
+                          <tr>
+                              <td>소주</td>
+                              <td>{% formfield player.alc_avg_1_jan %} </td>
+                          </tr>
+                          <tr>
+                              <td>맥주</td>
+                              <td>{% formfield player.alc_avg_2_jan %} </td>
+                          </tr>
+                      </table>
+                    </div>
+                    <div class="border">
+                    <p class="alert-info">
+                    술을 마신 횟수는 어느 정도입니까?</p>
+                    <div>{% formfield player.drink_freq_1 %}</div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row alert border">
+            <b>다음은 신체활동(운동)에 대한 문항입니다. 자신의 현재 상태에 해당되는 내용을 선택해주십시오.</b>
+               <br>중강도 운동이란 약간 땀이 나며, 대화가 가능하지만 조금 버거운 정도의 운동을 지칭합니다.</br>
+               (예: 빨리 걷기)
+            <div style="border:3px solid skyblue; padding-left: 5px; padding-right: 5px">
+                <div class="d-block">
+                    <b>주1회</b>, 10분 이상, <u>중강도 운동</u>을 하십니까? <div class="d-inline-block">{% formfield player.mid_act_yesno %}</div>
+                </div>
+                <div class="d-block">
+                    귀하가 주로 실천하시는 <b>중강도 운동</b>의 <u>종류</u>를 입력해주십시오. 운동종류: <div class="d-inline-block">{% formfield player.mid_act_type %}</div>
+                </div>
+                <div class="d-block">
+                귀하는 일주일에 평균 몇 회 운동하십니까? <div class="d-inline-block">{% formfield player.mid_act_day %}</div>회
+                </div>
+                <div class="d-block">
+                    귀하는 한 번 운동하실 때 평균 몇 분 운동하십니까? <div class="d-inline-block">{% formfield player.mid_act_min %}</div>분
+                </div>
+            </div>
+        </div>
+
+        <div class="alert row border">
+            <div class="alert border">{% formfield player.overall_health_evaluation %}</div>
+            <div class="alert border">{% formfield player.overall_stress_evaluation %}</div>
+        </div>
+
+      <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

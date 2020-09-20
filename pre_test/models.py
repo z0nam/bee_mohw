@@ -24,7 +24,7 @@ class Constants(BaseConstants):
     name_in_url = 'pre_test'
     players_per_group = None
     num_rounds = 1
-    BINARY_CHOICE = GlobalConstants.BINARY_CHOICES
+    BINARY_CHOICES = GlobalConstants.BINARY_CHOICES
     BINARY_POSSESSION = GlobalConstants.BINARY_POSSESSION
     smoker_type = pre_test_questions.SMOKER_TYPE
     satisfaction = pre_test_questions.SATISFACTION
@@ -785,7 +785,7 @@ class Player(BasePlayer):
 
     within_last_one_year_smoking_cessation_tryout_yesno = models.BooleanField(
         label="귀하는 지난 1년 동안 금연 시도를 하셨습니까?",
-        choices=Constants.BINARY_CHOICE,
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
@@ -995,7 +995,7 @@ class Player(BasePlayer):
 
     smoking_resistancy = models.BooleanField(
         label="금연구역(도서관, 극장, 병원 등)에서 담배를 참기가 어렵습니까?",
-        choices=Constants.BINARY_CHOICE,
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
@@ -1019,21 +1019,15 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
-    morning_smoking_more_than_the_rest_of_day = models.IntegerField(
+    morning_smoking_more_than_the_rest_of_day = models.BooleanField(
         label="아침에 일어나서 첫 몇 시간 동안하루 중 다른 시간보다 거 자주 담배를 피우십니까?",
-        choices=[
-            [1, "예"],
-            [0, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
-    sick_all_day_still_smoking = models.IntegerField(
+    sick_all_day_still_smoking = models.BooleanField(
         label="몸이 아파 하루 종일 누워있을 때에도 담배를 피우십니까?",
-        choices=[
-            [1, "예"],
-            [0, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
@@ -1073,11 +1067,11 @@ class Player(BasePlayer):
     self_reported_health_status = models.IntegerField(
         label="귀하가 생각하는 본인의 현재 건강상태는 어떻습니까?",
         choices=[
-            [1, "매우 건강함"],
-            [2, "건강한 편"],
-            [3, "보통"],
-            [4, "허약한 편"],
-            [5, "매우 허약함"],
+            [1, "① 매우 건강함"],
+            [2, "② 건강한 편"],
+            [3, "③ 보통"],
+            [4, "④ 허약한 편"],
+            [5, "⑤ 매우 허약함"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -1085,11 +1079,11 @@ class Player(BasePlayer):
     stress_metric_self_reported = models.IntegerField(
         label="평소 귀하의 스트레스 정도는 어떻습니까?",
         choices=[
-            [1, "전혀 받지 않음"],
-            [2, "별로 받지 않음"],
-            [3, "그저 그런 편임 "],
-            [4, "약간 받는 편"],
-            [5, "매우 많이 받음"],
+            [1, "① 전혀 받지 않음"],
+            [2, "② 별로 받지 않음"],
+            [3, "③ 그저 그런 편임 "],
+            [4, "④ 약간 받는 편"],
+            [5, "⑤ 매우 많이 받음"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -1275,24 +1269,3 @@ class Player(BasePlayer):
         label="메모남겨주실 부분 있으시면 여기에 남겨주시면 감사드리겠습니다.",
         blank=True,
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

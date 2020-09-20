@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+    <h3><p>5. 흡연정보 – 일반담배(궐련형)</p></h3>
+
+    <div class="alert border"><p>현재 주로 사용중인 담배제품을 모두 선택해주세요 (복수선택 가능)</p>
+        {% formfield player.tobacco_product_in_use_1 %}
+        {% formfield player.tobacco_product_in_use_2 %}
+        {% formfield player.tobacco_product_in_use_3 %}
+        {% formfield player.tobacco_product_in_use_4 %}
+        {% formfield player.tobacco_product_in_use_5 %}
+        {% formfield player.tobacco_product_in_use_6 %}
+        {% formfield player.tobacco_product_in_use_7 %}
+        {% formfield player.tobacco_product_in_use_8 %}
+        {% formfield player.tobacco_product_in_use_9 %}
+        {% formfield player.tobacco_product_in_use_10 %}
+        {% formfield player.tobacco_product_in_use_11 %}
+        {% formfield player.tobacco_product_in_use_12 %}
+	</div>
+    <div class="alert border"><p>현재 일반담배(궐련)를 피우십니까?</p>
+        <p>일반담배 (궐련)이란, 잘게 썬 담뱃잎을 종이 등에 말아 불을 붙여 피우는 방식의 가장 보편적인 담배 제품입니다. 본 질문에는 일반담배를 피우시는 분들만 답해 주시고, 전자담배 등 다른 방식의 담배 제품을 사용하시는 분은 별도의 질문에 답해주시기 바랍니다. </p>
+         <img src="{% static "global/image1.png" %}" alt="image1" height="400px" width="600px">
+                 {% formfield player.do_you_smoke_tobacco %}
+	</div>
+    <div class="alert border">{% formfield player.first_time_to_finish_one_stick_of_tobacco %}</div>
+    <div class="alert border">{% formfield player.first_time_to_finish_one_stick_or_more %}</div>
+    <div class="alert border">{% formfield player.avg_daily_tobacco_smoking_amount %}</div>
+    <div class="alert border">{% formfield player.within_past_month_tobacco_smoking_days %}</div>
+    <div class="alert border">{% formfield player.tobacco_sticks_per_day %}</div>
+    <div class="alert border">
+       귀하의 과거 일반담배(궐련) 흡연기간을 입력해주십시오.
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.past_tobacco_smoking_years %}</div>년 <div class="d-inline-block">{% formfield player.past_tobacco_smoking_months %}</div>개월</div>
+    <div class="alert border">
+
+    <div class="alert border">{% formfield player.past_tobacco_sticks_per_day %}</div>
+    <div class="alert border"><p>평소에 하루 중 일반담배(궐련) 흡연을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
+        {% formfield player.hardest_time_to_resist_smoking_1 %}
+        {% formfield player.hardest_time_to_resist_smoking_2 %}
+        {% formfield player.hardest_time_to_resist_smoking_3 %}
+        {% formfield player.hardest_time_to_resist_smoking_4 %}
+        {% formfield player.hardest_time_to_resist_smoking_5 %}
+        {% formfield player.hardest_time_to_resist_smoking_6 %}
+        {% formfield player.hardest_time_to_resist_smoking_7 %}
+        {% formfield player.hardest_time_to_resist_smoking_8 %}
+        {% formfield player.hardest_time_to_resist_smoking_9 %}
+        {% formfield player.hardest_time_to_resist_smoking_10 %}
+        {% formfield player.hardest_time_to_resist_smoking_11 %}
+	</div>
+    <div class="alert border">{% formfield player.first_tobacco_of_the_day %}</div>
+    <div class="alert border">{% formfield player.is_it_hard_to_resist_smoking_in_the_public %}</div>
+    <div class="alert border">{% formfield player.when_is_tobacco_the_most_tasty %}</div>
+    <div class="alert border">{% formfield player.number_of_sticks_per_day_in_the_past %}</div>
+    <div class="alert border">{% formfield player.is_morning_tobacco_more_tasty_than_the_rest %}</div>
+    <div class="alert border">{% formfield player.sick_all_day_still_smoking %}</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문 
+{% endblock %}
+
+{% block content %}
+  <div class="alert border">
+      연구명: 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석
+      <br>작성자: 조남운, 어수진, 김종환, 문규범, 이지원, 정태성 (한국행동경제학연구소)</br>
+      김진영, 권순탁 (한림대학교 의과대학), 최은철 (고려대학교)
+  </div>
+
+    <h3>1. 설문개요</h3>
+    <div class="alert border">
+        흡연 및 금연경험자이고 근로자인 성인 300명 대상
+        <br>생애중 (궐련형 기준) 100개비 이상 흡연한 적이 있는 20세 이상 60세 미만 흡연경험자</br>
+        최근 1년 이내에 24시간 이상 금연 경험이 있는 금연 경험자
+    </div>
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+    font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+    <thead>
+        <tr>
+            <th class="tg-0pky" colspan="2">직군 및 성별 구분<br></th>
+            <th class="tg-1wig">20대</th>
+            <th class="tg-1wig">30대</th>
+            <th class="tg-1wig">40대<br></th>
+            <th class="tg-1wig">50대</th>
+            <th class="tg-1wig">합계</th>
+         </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="tg-1wig" rowspan="2">관리자 및 사무 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">79</td>
+            <td class="tg-0lax">94</td>
+            <td class="tg-0lax">82</td>
+            <td class="tg-0lax">300</td>
+            <td class="tg-0lax">43</td>
+         </tr>
+         <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">19</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">전문가 및 관련 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">10</td>
+            <td class="tg-0lax">16</td>
+            <td class="tg-0lax">14</td>
+            <td class="tg-0lax">8</td>
+            <td class="tg-0lax">48</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">20</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">서비스 및 판매 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">8</td>
+            <td class="tg-0lax">11</td>
+            <td class="tg-0lax">15</td>
+            <td class="tg-0lax">14</td>
+            <td class="tg-0lax">48</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">5</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">6</td>
+            <td class="tg-0lax">20</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">기능원, 장치, 기계 조작 및 조립 종사자</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">5</td>
+            <td class="tg-0lax">10</td>
+            <td class="tg-0lax">16</td>
+            <td class="tg-0lax">16</td>
+            <td class="tg-0lax">47</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">2</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">20</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" rowspan="2">기타</td>
+            <td class="tg-1wig">남성</td>
+            <td class="tg-0lax">2</td>
+            <td class="tg-0lax">4</td>
+            <td class="tg-0lax">7</td>
+            <td class="tg-0lax">11</td>
+            <td class="tg-0lax">24</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig">여성</td>
+            <td class="tg-0lax">1</td>
+            <td class="tg-0lax">2</td>
+            <td class="tg-0lax">3</td>
+            <td class="tg-0lax">5</td>
+            <td class="tg-0lax">11</td>
+        </tr>
+        <tr>
+            <td class="tg-1wig" colspan="2">합계</td>
+            <td class="tg-0lax">45</td>
+            <td class="tg-0lax">79</td>
+            <td class="tg-0lax">94</td>
+            <td class="tg-0lax">82</td>
+            <td class="tg-0lax">300</td>
+        </tr>
+    </tbody>
+    </table>
+    <caption>표 1 조사대상자 표집인원 할당표</caption>
+    <p></p>
+    <br>▷직군은 통계청 2017년 5월말 직종별 인구통계에 기반하여 비율을 할당</br>
+    ▷남성과 여성 비율을 7:3 으로 할당한 것은 미보고에 의한 여성흡연율 과소추산을 고려한 실질 흡연율을 감안함 (정금지 외 2018)
+    <br>▷설문조사의 표집 범위를 근로자로 한정한 이유는 연구 예산 제약상 다소 부족한 설문조사인원수의 문제를 보완하기 위한 것임</br>
+    ▷금연경험자로 한정한 이유는 금연중 행동강화물품의 효과성이 연구의 핵심 질문이기 때문임
+    <p></p>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

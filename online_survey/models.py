@@ -27,7 +27,7 @@ class Constants(BaseConstants):
     BORN_YEAR_MIN = 1959
     BORN_YEAR_MAX = 2000
     L5_CHOICES = GlobalConstants.L5_CHOICES
-    L52_CHOICES=GlobalConstants.L52_CHOICES
+    L52_CHOICES = GlobalConstants.L52_CHOICES
     smoking_type_list = smoking_cessation_questions.SMOKING_TYPE
     subjective_norm_list = smoking_cessation_questions.SUBJECTIVE_NORM
     perceived_behavioral_control_list = smoking_cessation_questions.PERCEIVED_BEHAVIORAL_CONTROL
@@ -42,7 +42,6 @@ class Constants(BaseConstants):
     ]
 
 
-
 class Subsession(BaseSubsession):
     pass
 
@@ -50,36 +49,47 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     pass
 
+
 def make_field_lickert(index):
     return models.IntegerField(
         label=Constants.smoking_type_list[index],
         widget=widgets.RadioSelectHorizontal,
         choices=Constants.L5_CHOICES,
     )
+
+
 def make_field_lickert_2(index):
     return models.IntegerField(
         label=Constants.attitude_toward_smoking_list[index],
         widget=widgets.RadioSelectHorizontal,
         choices=Constants.L52_CHOICES,
     )
+
+
 def make_field_lickert_3(index):
     return models.IntegerField(
         label=Constants.subjective_norm_list[index],
         widget=widgets.RadioSelectHorizontal,
         choices=Constants.L52_CHOICES,
     )
+
+
 def make_field_lickert_4(index):
     return models.IntegerField(
         label=Constants.perceived_behavioral_control_list[index],
         widget=widgets.RadioSelectHorizontal,
         choices=Constants.L52_CHOICES,
     )
+
+
 def make_field_lickert_5(index):
     return models.IntegerField(
         label=Constants.intention_list[index],
         widget=widgets.RadioSelectHorizontal,
         choices=Constants.L52_CHOICES,
     )
+
+
 class Player(BasePlayer):
     gender = models.IntegerField(
         label="귀하의 성별은 어떻게 되십니까?",
@@ -97,7 +107,8 @@ class Player(BasePlayer):
 
     def born_year_error_message(self, value):
         if (value > Constants.BORN_YEAR_MAX or value < Constants.BORN_YEAR_MIN):
-            return str.format("태어나신 해는 유효한 네자리 숫자 (가령 {} - {} 사이의 숫자) 로 입력하셔야 합니다.", Constants.BORN_YEAR_MIN,Constants.BORN_YEAR_MAX)
+            return str.format("태어나신 해는 유효한 네자리 숫자 (가령 {} - {} 사이의 숫자) 로 입력하셔야 합니다.", Constants.BORN_YEAR_MIN,
+                              Constants.BORN_YEAR_MAX)
 
     job_position = models.IntegerField(
         label="직장(일)에서 귀하의 지위는 무엇입니까?",
@@ -107,8 +118,8 @@ class Player(BasePlayer):
 
     def job_position_error_message(self, value):
         if (value == Constants.UNPAID):
-            return str.format("안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 현재 6개월 이상 재직자를 대상으로 연구참여를 제한하게 된 점 양해 부탁드립니다. 감사합니다.")  # todo: 이것을 클릭했을 경우 alert 뜨고 종료로 안내하도록 수정하기
-
+            return str.format(
+                "안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 현재 6개월 이상 재직자를 대상으로 연구참여를 제한하게 된 점 양해 부탁드립니다. 감사합니다.")  # todo: 이것을 클릭했을 경우 alert 뜨고 종료로 안내하도록 수정하기
 
     smoking_in_lifetime_yesno = models.IntegerField(
         label="지금까지 살아오는 동안 담배를 피운 적 있습니까? (여기에서 담배는, 일반 담배(궐련)과 액상형/궐련형 전자담배 모두를 포괄합니다.)",
@@ -121,8 +132,9 @@ class Player(BasePlayer):
     )
 
     def smoking_in_lifetime_yesno_error_message(self, value):
-        if (value == 999 | value == 9999):
-            return str.format("안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 5갑(100개비)이상 흡연자를 대상으로 진행되기에 귀하의 연구참여를 제한합니다. ")
+        if (value == 999 or value == 9999):
+            return str.format(
+                "안녕하십니까? 본 연구는 보건복지부의 위탁을 받아 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 5갑(100개비)이상 흡연자를 대상으로 진행되기에 귀하의 연구참여를 제한합니다. ")
 
     within_past_one_year_smoking_cessation_attempted = models.IntegerField(
         label="최근 1년 동안 담배를 끊고자 하루(24시간) 이상 금연한 적이 있습니까?",
@@ -137,6 +149,7 @@ class Player(BasePlayer):
         if (value == 99999):
             return str.format(
                 "본 연구는 보건복지부의 위탁을 받아 행동강화물품이 금연동기강화 및 금연유지에 미치는 효과를 연구하기 위한 목적에 따라, 최근 1년 동안 담배를 끊고자 하루(24시간) 이상 금연한 적이 있는 분들만을 대상으로 하는 연구입니다. 따라서 귀하의 연구 참가를 제한합니다.")
+
     region = models.IntegerField(
         label="귀하의 거주 지역을 선택해주세요.",
         choices=[
@@ -277,39 +290,9 @@ class Player(BasePlayer):
         blank=True,
     )
 
-    drink_freq_2 = models.IntegerField(
-        label="한 달에 (__)번",
-        choices=range(1, 31),
-        blank=True,
-    )
-
-    drink_freq_3 = models.IntegerField(
-        label="1년에 (__)번",
-        choices=range(1, 13),
-        blank=True,
-    )
-
     alc_avg_1_jan = models.IntegerField(
         label="",
         choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_1_bot = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_1_can = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_1_cc = models.IntegerField(
-        label="",
-        choices=range(100, 10000, 100),
         blank=True,
     )
 
@@ -317,111 +300,6 @@ class Player(BasePlayer):
         label="",
         choices=range(1, 100),
         blank=True,
-    )
-
-    alc_avg_2_bot = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_2_can = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_2_cc = models.IntegerField(
-        label="",
-        choices=range(100, 10000, 100),
-        blank=True,
-    )
-
-    alc_avg_3_jan = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_3_bot = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_3_can = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_3_cc = models.IntegerField(
-        label="",
-        choices=range(100, 10000, 100),
-        blank=True,
-    )
-
-    alc_avg_4_jan = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_4_bot = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_4_can = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_4_cc = models.IntegerField(
-        label="",
-        choices=range(100, 10000, 100),
-        blank=True,
-    )
-
-    alc_avg_5_jan = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_5_bot = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_5_can = models.IntegerField(
-        label="",
-        choices=range(1, 100),
-        blank=True,
-    )
-
-    alc_avg_5_cc = models.IntegerField(
-        label="",
-        choices=range(100, 10000, 100),
-        blank=True,
-    )
-
-    high_act_day = models.IntegerField(
-        label="",
-        choices=range(0, 8),
-    )
-
-    high_act_hour = models.IntegerField(
-        label="",
-        choices=range(0, 24),
-    )
-
-    high_act_min = models.IntegerField(
-        label="",
-        choices=range(0, 60),
     )
 
     mid_act_yesno = models.BooleanField(
@@ -436,12 +314,7 @@ class Player(BasePlayer):
     )
     mid_act_day = models.IntegerField(
         label="",
-        choices=range(1,8),
-    )
-
-    mid_act_hour = models.IntegerField(
-        label="",
-        choices=range(0, 24),
+        choices=range(1, 8),
     )
 
     mid_act_min = models.IntegerField(
@@ -466,11 +339,6 @@ class Player(BasePlayer):
             [17, "240"],
             [18, "240+"],
         ],
-    )
-
-    muscle_act_days = models.IntegerField(
-        label="",
-        choices=range(0, 8),
     )
 
     overall_health_evaluation = models.IntegerField(
@@ -718,19 +586,13 @@ class Player(BasePlayer):
 
     is_morning_tobacco_more_tasty_than_the_rest = models.BooleanField(
         label="(과거 일반담배(궐련) 흡연자는 흡연당시 기준으로 작성) 아침에 일어나서 첫 몇 시간 동안 하루 중 다른 시간보다 더 자주 일반담배(궐련)를 피우십니까?",
-        choices=[
-            [1, "예"],
-            [2, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
     sick_all_day_still_smoking = models.BooleanField(
         label="(과거 일반담배(궐련) 흡연자는 흡연당시 기준으로 작성) 몸이 아파 하루 종일 누워있을 때에도 일반담배(궐련)를 피우십니까?",
-        choices=[
-            [1, "예"],
-            [2, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
@@ -764,7 +626,7 @@ class Player(BasePlayer):
 
     liquid_cigarette_start_month = models.IntegerField(
         label="",
-        choices=range(1,13),
+        choices=range(1, 13),
         blank=True,
     )
 
@@ -786,7 +648,7 @@ class Player(BasePlayer):
     )
     liquid_cigarette_end_month = models.IntegerField(
         label="",
-        choices=range(1,13),
+        choices=range(1, 13),
         blank=True,
     )
 
@@ -852,32 +714,32 @@ class Player(BasePlayer):
     )
 
     liquid_cigarette_hardest_to_resist_when_7 = models.BooleanField(
-        label = "긍정적 상황 (친구나 가족과 함께 있을 때, 대화나 피로를 풀 때 등)",
-        widget = widgets.CheckboxInput,
-        blank = True,
+        label="긍정적 상황 (친구나 가족과 함께 있을 때, 대화나 피로를 풀 때 등)",
+        widget=widgets.CheckboxInput,
+        blank=True,
     )
 
     liquid_cigarette_hardest_to_resist_when_8 = models.BooleanField(
-        label = "부정적 상황 (스트레스 받을 때, 일이 뜻대로 안될 때, 화날 때 등)",
-        widget = widgets.CheckboxInput,
-        blank = True,
+        label="부정적 상황 (스트레스 받을 때, 일이 뜻대로 안될 때, 화날 때 등)",
+        widget=widgets.CheckboxInput,
+        blank=True,
     )
 
     liquid_cigarette_hardest_to_resist_when_9 = models.BooleanField(
-        label = "흡연자와 같이 있거나, TV의 배우 또는 주위 흡연자의 모습을 보았을 때 ",
-        widget = widgets.CheckboxInput,
-        blank = True,
+        label="흡연자와 같이 있거나, TV의 배우 또는 주위 흡연자의 모습을 보았을 때 ",
+        widget=widgets.CheckboxInput,
+        blank=True,
     )
 
     liquid_cigarette_hardest_to_resist_when_10 = models.BooleanField(
-        label = "사용을 참기 힘들지 않음",
-        widget = widgets.CheckboxInput,
-        blank = True,
+        label="사용을 참기 힘들지 않음",
+        widget=widgets.CheckboxInput,
+        blank=True,
     )
 
     liquid_cigarette_hardest_to_resist_when_11 = models.StringField(
-        label = "기타(직접입력:)",
-        blank = True,
+        label="기타(직접입력:)",
+        blank=True,
     )
 
     liquid_cigarette_first_in_the_day = models.IntegerField(
@@ -893,48 +755,39 @@ class Player(BasePlayer):
 
     is_it_hard_to_resist_smoking_liquid_cigarette_in_public = models.BooleanField(
         label="(과거 액상형 전자담배(쥴, 탱크형 등) 사용자는 사용당시 기준으로 작성) 금연구역(도서관, 극장, 병원 등)에서 액상형 전자담배(쥴, 탱크형 등)를 참기가 어렵습니까?",
-        choices=[
-            [1, "예"],
-            [2, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
-    when_is_the_liquid_cigarette_the_most_tasty = models.BooleanField(
+    when_is_the_liquid_cigarette_the_most_tasty = models.IntegerField(
         label="(과거 액상형 전자담배(쥴, 탱크형 등) 사용자는 사용당시 기준으로 작성) 하루 중 액상형 전자담배(쥴, 탱크형 등) 맛이 가장 좋은 때는 언제입니까?",
         choices=[
             [1, "아침 첫 사용시기"],
-            [2, "그 외의 사용시기"],
+            [0, "그 외의 사용시기"],
         ],
         widget=widgets.RadioSelectHorizontal,
     )
 
     liquid_cigarette_use_frequency_per_day = models.IntegerField(
         label="(과거 액상형 전자담배(쥴, 탱크형 등) 사용자는 사용당시 기준으로 작성) 하루에 보통 몇 번 사용하십니까?",
-        choices = [
-                  [1, "10회 이하"],
-                  [2, "11~20회"],
-                  [3, "21~30회"],
-                  [4, "31회 이상"],
-              ],
-        widget = widgets.RadioSelect,
+        choices=[
+            [0, "10회 이하"],
+            [1, "11~20회"],
+            [2, "21~30회"],
+            [3, "31회 이상"],
+        ],
+        widget=widgets.RadioSelect,
     )
 
     liquid_cigarette_morning_is_more_tasty_than_the_rest = models.BooleanField(
         label="(과거 액상형 전자담배(쥴, 탱크형 등) 사용자는 사용당시 기준으로 작성) 아침에 일어나서 첫 몇 시간 동안 하루 중 다른 시간보다 더 자주 액상형 전자담배(쥴, 탱크형 등)를 사용하십니까?",
-        choices=[
-            [1, "예"],
-            [2, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
     liquid_cigarette_sick_all_day_still_smoking = models.BooleanField(
         label="(과거 액상형 전자담배(쥴, 탱크형 등) 사용자는 사용당시 기준으로 작성) 몸이 아파 하루 종일 누워있을 때에도 액상형 전자담배(쥴, 탱크형 등)를 사용하십니까?",
-        choices=[
-            [1, "예"],
-            [2, "아니오"],
-        ],
+        choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
 
@@ -1109,13 +962,13 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,
     )
 
-    tobacco_type_e_cigarette_most_tasty_in_the_day = models.BooleanField(
+    tobacco_type_e_cigarette_most_tasty_in_the_day = models.IntegerField(
         label="(과거 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등) 사용자는 사용당시 기준으로 작성) 하루 중 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등) 맛이 가장 좋은 때는 언제입니까?",
         choices=[
             [1, "아침 첫 사용 시기"],
-            [2, "그 외의 사용 시기"],
+            [0, "그 외의 사용 시기"],
         ],
-        widget = widgets.RadioSelectHorizontal,
+        widget=widgets.RadioSelectHorizontal,
     )
 
     tobacco_type_e_cigarette_sticks_per_day = models.IntegerField(
@@ -1126,7 +979,7 @@ class Player(BasePlayer):
             [3, "21~30개비"],
             [4, "31개비 이상"],
         ],
-         widget = widgets.RadioSelect,
+        widget=widgets.RadioSelect,
     )
 
     tobacco_type_e_cigarette_more_tasty_in_the_morning_than_the_rest = models.BooleanField(
@@ -1210,14 +1063,14 @@ class Player(BasePlayer):
 
     drink_water_when_desiring_to_smoke = models.IntegerField(
         label="담배가 피우고 싶을 때 물을마심",
-        choices = [
-                  [1, "오늘 사용"],
-                  [2, "1일 전 사용"],
-                  [3, "2일 전 사용"],
-                  [4, "3~5일전사용"],
-                  [5, "최근 5일 동안 사용하지 않음"],
-              ],
-        widget = widgets.RadioSelect,
+        choices=[
+            [1, "오늘 사용"],
+            [2, "1일 전 사용"],
+            [3, "2일 전 사용"],
+            [4, "3~5일전사용"],
+            [5, "최근 5일 동안 사용하지 않음"],
+        ],
+        widget=widgets.RadioSelect,
     )
 
     effect_of_water_in_resisting_smoking_desire = models.IntegerField(
@@ -1306,8 +1159,8 @@ class Player(BasePlayer):
             [3, "2일 전 사용"],
             [4, "3~5일전사용"],
             [5, "최근 5일 동안 사용하지 않음"],
-             ],
-            widget = widgets.RadioSelect,
+        ],
+        widget=widgets.RadioSelect,
     )
 
     effect_of_aroma_pipe_or_change_stick_in_resisting_smoking_desire = models.IntegerField(
@@ -1443,7 +1296,7 @@ class Player(BasePlayer):
             [6, "나의 흡연으로 주위사람 건강에 나쁜 영향을 미치는 것을 방지하기 위해서"],
             [7, "금연의지를 보여주기 위해"],
             [8, "흡연자에 대한 사회적 시선 때문"],
-            [9,"현재 금연 의사가 없음"],
+            [9, "현재 금연 의사가 없음"],
             [10, "기타(직접입력)"],
         ],
         widget=widgets.RadioSelect,
@@ -1466,7 +1319,7 @@ class Player(BasePlayer):
             [7, "금연의지를 보여주기 위해"],
             [8, "흡연자에 대한 사회적 시선 때문"],
             [9, "현재 금연 의사가 없음"],
-            [10,"기타(직접입력)"],
+            [10, "기타(직접입력)"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -1758,7 +1611,7 @@ class Player(BasePlayer):
             [11, "10"],
         ],
         widget=widgets.RadioSelectHorizontal,
-         )
+    )
 
     smoking_cessation_confidence = models.IntegerField(
         label="",
@@ -1776,25 +1629,30 @@ class Player(BasePlayer):
             [11, "10"],
         ],
         widget=widgets.RadioSelectHorizontal,
-         )
+    )
 
     smoking_cessation_readiness = models.IntegerField(
         label="",
-        choices = [
-                  [1, "0"],
-                  [2, "1"],
-                  [3, "2"],
-                  [4, "3"],
-                  [5, "4"],
-                  [6, "5"],
-                  [7, "6"],
-                  [8, "7"],
-                  [9, "8"],
-                  [10, "9"],
-                  [11, "10"],
-              ],
-        widget = widgets.RadioSelectHorizontal,
-        )
+        choices=[
+            [1, "0"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+    )
+
+    def vars_for_template(self) -> dict:
+        vars_to_return = {'L5': [i[1] for i in Constants.L5_CHOICES], 'L52': [i[1] for i in Constants.L52_CHOICES]}
+        return vars_to_return
+
     st_1 = make_field_lickert(0)
     st_2 = make_field_lickert(1)
     st_3 = make_field_lickert(2)

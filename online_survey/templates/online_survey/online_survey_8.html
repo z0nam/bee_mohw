@@ -1,0 +1,94 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+  <h3>8. 금연정보</h3>
+ 	<div class="alert border">
+        ※ 이하에 쓰인 ‘흡연’ 또는 ‘담배’의 의미는 궐련형 일반담배, 액상형 전자담배, 궐련형 전자담배 등을 모두 포함한 담배 사용을 의미합니다. 이하에 쓰인 ‘금연’의 의미는 귀하가 사용하고 있는 모든 종류의 담배 사용 중지를 의미합니다.
+    </div>
+    <div class="alert border">{% formfield player.smoking_cessation_attempt_count %}</div>
+    <div class="alert border">{% formfield player.within_one_month_do_you_plan_to_quit_smoking %}</div>
+    <div class="alert border">{% formfield player.within_past_five_days_last_time_to_use_nicotine_alternatives %}</div>
+    <div class="alert border">
+        최근 5일 동안 흡연욕구가 생겼을 때 사용하셨던 방법과 효과에 모두 표기를 해주시기 바랍니다
+    </div>
+    <div class="alert border">{% formfield player.ate_food_products_when_smoking_desire_arose %}</div>
+    <div class="alert row border">
+            <p>담배가 피우고 싶을 때 식품류 (껌, 사탕, 비타민)를 대신 먹었음 -> 효과(0-10), 높을수록 효과높음</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.effect_of_food_product_in_resisting_smoking_desire.label }}</td>
+                    {% for choice in form.effect_of_food_product_in_resisting_smoking_desire %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert border">{% formfield player.drink_water_when_desiring_to_smoke %}</div>
+    <div class="alert row border">
+            <p>담배가 피우고 싶을 때 물을마심 → 효과 (0-10), 높을수록 효과높음</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.effect_of_water_in_resisting_smoking_desire.label }}</td>
+                    {% for choice in form.effect_of_water_in_resisting_smoking_desire %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert border">{% formfield player.pressure_tool_when_desiring_to_smoke %}</div>
+    <div class="alert row border">
+            <p>담배가 피우고 싶을 때 지압기와 같은 몸에 자극을 줄 수 있는 기구로 자극을 줌 → 효과 (0-10), 높을수록 효과높음</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.effect_of_pressure_tool_in_resisting_smoking_desire.label }}</td>
+                    {% for choice in form.effect_of_pressure_tool_in_resisting_smoking_desire %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert border">{% formfield player.mouth_wash_when_resisting_smoking_desire %}</div>
+    <div class="alert row border">
+            <p>담배가 피우고 싶을 때 구강청결제 (가그린, 양치질등) 등을 대신함 → 효과(0-10), 높을수록 효과높음</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.effect_of_mouth_wash_in_resisting_smoking_desire.label }}</td>
+                    {% for choice in form.effect_of_mouth_wash_in_resisting_smoking_desire %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert border">{% formfield player.aroma_pipe_or_change_stick_when_resisting_smoking_desire %}</div>
+    <div class="alert row border">
+            <p>담배가 피우고 싶을 때 아로마파이프나 체인지스틱 같은 흡연욕구저하제를 대신 사용함 → 효과 (0-10), 높을수록 효과높음</p>
+            <table class="table">
+                <tr>
+                    <td>{{ form.effect_of_aroma_pipe_or_change_stick_in_resisting_smoking_desire.label }}</td>
+                    {% for choice in form.effect_of_aroma_pipe_or_change_stick_in_resisting_smoking_desire %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert border"><b>가장 최근에 담배를 끊기 위해 사용하셨던 방법을 모두 표시해주십시오.</b>></div>
+    <div class="alert border">{% formfield player.smoking_cessation_method_self_will %}</div>
+    <div class="alert border">{% formfield player.smoking_cessation_method_call_center %}</div>
+    <div class="alert border">{% formfield player.smoking_cessation_method_clinic %}</div>
+    <div class="alert border">{% formfield player.smoking_cessation_method_pharmaceuticals %}</div>
+    <div class="alert border">{% formfield player.smoking_cessation_method_champix %}</div>
+    <div class="alert border">{% formfield player.smoking_cessation_method_internet %}</div>
+    <div class="alert border">{% formfield player.smoking_cessation_method_other %}</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

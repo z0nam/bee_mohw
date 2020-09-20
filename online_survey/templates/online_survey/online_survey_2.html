@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+    <h3>2. 층화표집을 위한 선별질문</h3>
+    <div class="alert border">{% formfield player.gender %}</div>
+    <div class="alert border">{% formfield player.born_year %}</div>
+    <div class="alert border">{% formfield player.job_position %}</div>
+    <div class="alert border">{% formfield player.smoking_in_lifetime_yesno %}</div>
+    <div class="alert border">{% formfield player.within_past_one_year_smoking_cessation_attempted %}</div>
+    
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}
