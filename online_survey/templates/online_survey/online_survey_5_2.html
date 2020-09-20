@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+    <div class="alert border">{% formfield player.first_time_to_finish_one_stick_of_tobacco %}</div>
+    <div class="alert border">{% formfield player.first_time_to_finish_one_stick_or_more %}</div>
+    <div class="alert border">{% formfield player.avg_daily_tobacco_smoking_amount %}</div>
+    <div class="alert border">{% formfield player.within_past_month_tobacco_smoking_days %}</div>
+    <div class="alert border">{% formfield player.tobacco_sticks_per_day %}</div>
+
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

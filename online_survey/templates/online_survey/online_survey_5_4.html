@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+    <div class="alert border"><p>평소에 하루 중 일반담배(궐련) 흡연을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
+        {% formfield player.hardest_time_to_resist_smoking_1 %}
+        {% formfield player.hardest_time_to_resist_smoking_2 %}
+        {% formfield player.hardest_time_to_resist_smoking_3 %}
+        {% formfield player.hardest_time_to_resist_smoking_4 %}
+        {% formfield player.hardest_time_to_resist_smoking_5 %}
+        {% formfield player.hardest_time_to_resist_smoking_6 %}
+        {% formfield player.hardest_time_to_resist_smoking_7 %}
+        {% formfield player.hardest_time_to_resist_smoking_8 %}
+        {% formfield player.hardest_time_to_resist_smoking_9 %}
+        {% formfield player.hardest_time_to_resist_smoking_10 %}
+        {% formfield player.hardest_time_to_resist_smoking_11 %}
+	</div>
+    <div class="alert border">{% formfield player.first_tobacco_of_the_day %}</div>
+    <div class="alert border">{% formfield player.is_it_hard_to_resist_smoking_in_the_public %}</div>
+    <div class="alert border">{% formfield player.when_is_tobacco_the_most_tasty %}</div>
+    <div class="alert border">{% formfield player.number_of_sticks_per_day_in_the_past %}</div>
+    <div class="alert border">{% formfield player.is_morning_tobacco_more_tasty_than_the_rest %}</div>
+    <div class="alert border">{% formfield player.sick_all_day_still_smoking %}</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

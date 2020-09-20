@@ -10,6 +10,7 @@ from otree.api import (
 )
 from Global_Constants import GlobalConstants
 from . import smoking_cessation_questions
+from datetime import datetime
 
 author = 'Kyubum Moon<mailto:moonx190@umn.edu>'
 
@@ -35,11 +36,11 @@ class Constants(BaseConstants):
     intention_list = smoking_cessation_questions.INTENTION
     FULLTIME, PARTTIME, FREELANCER, UNPAID = 1, 2, 3, 99
     JOB_POSITION = [
-        [FULLTIME, "전일제 근무자"],
-        [PARTTIME, "파트타임 근무자"],
-        [FREELANCER, "프리랜서"],
-        [UNPAID, "최근 6개월 이내 근무경력 없음"]
-    ]
+                        [FULLTIME, "①전일제 근무자"],
+                        [PARTTIME, "②파트타임 근무자"],
+                        [FREELANCER, "③프리랜서"],
+                        [UNPAID, "④최근 6개월 이내 근무경력 없음"]
+                    ]
 
 
 class Subsession(BaseSubsession):
@@ -94,9 +95,9 @@ class Player(BasePlayer):
     gender = models.IntegerField(
         label="귀하의 성별은 어떻게 되십니까?",
         choices=[
-            [1, "남성"],
-            [2, "여성"],
-        ],
+                    [1, "①남성"],
+                    [2, "②여성"],
+                ],
         widget=widgets.RadioSelectHorizontal,
     )
 
@@ -124,10 +125,10 @@ class Player(BasePlayer):
     smoking_in_lifetime_yesno = models.IntegerField(
         label="지금까지 살아오는 동안 담배를 피운 적 있습니까? (여기에서 담배는, 일반 담배(궐련)과 액상형/궐련형 전자담배 모두를 포괄합니다.)",
         choices=[
-            [999, "예. 5갑(100개비) 미만"],
-            [1, "예. 5갑(100개비) 이상"],
-            [9999, "아니오. 피운 적 없음"],
-        ],
+                    [999, "예. 5갑(100개비) 미만"],
+                    [1, "예. 5갑(100개비) 이상"],
+                    [9999, "아니오. 피운 적 없음"],
+                ],
         widget=widgets.RadioSelect,
     )
 
@@ -153,34 +154,34 @@ class Player(BasePlayer):
     region = models.IntegerField(
         label="귀하의 거주 지역을 선택해주세요.",
         choices=[
-            [1, "서울"],
-            [2, "인천"],
-            [3, "경기도"],
-            [4, "강원도"],
-            [5, "세종"],
-            [6, "충청남도"],
-            [7, "충청북도"],
-            [8, "대전"],
-            [9, "대구"],
-            [10, "경상북도"],
-            [11, "경상남도"],
-            [12, "울산"],
-            [13, "부산"],
-            [14, "전라북도"],
-            [15, "전라남도"],
-            [16, "광주"],
-            [17, "제주도"],
-        ],
+                    [1, "①서울"],
+                    [2, "②인천"],
+                    [3, "③경기도"],
+                    [4, "④강원도"],
+                    [5, "⑤세종"],
+                    [6, "⑥충청남도"],
+                    [7, "⑦충청북도"],
+                    [8, "⑧대전"],
+                    [9, "⑨대구"],
+                    [10, "⑩경상북도"],
+                    [11, "⑪경상남도"],
+                    [12, "⑫울산"],
+                    [13, "⑬부산"],
+                    [14, "⑭전라북도"],
+                    [15, "⑮전라남도"],
+                    [16, "⑯광주"],
+                    [17, "⑰제주도"],
+                ],
         widget=widgets.RadioSelect,
     )
 
     region_size = models.IntegerField(
         label="귀하의 거주지의 지역규모를 선택해주세요.",
         choices=[
-            [1, "대도시(특별/광역시-서울, 부산, 대구, 인천, 광주, 대전, 울산)"],
-            [2, "중소도시(특별/광역시가 아닌 그 외 지역)"],
-            [3, "읍면지역(ex. ○○시 ○○읍/면)"],
-            [4, "특수지역(도서·벽지 지역)"],
+                    [1, "①대도시(특별/광역시-서울, 부산, 대구, 인천, 광주, 대전, 울산)"],
+                    [2, "②중소도시(특별/광역시가 아닌 그 외 지역)"],
+                    [3, "③읍면지역(ex. ○○시 ○○읍/면)"],
+                    [4, "④특수지역(도서·벽지 지역)"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -199,12 +200,12 @@ class Player(BasePlayer):
     final_schooling = models.IntegerField(
         label="귀하의 최종 학력을 선택해주세요",
         choices=[
-            [1, "무학"],
-            [2, "초등학교 졸업이하"],
-            [3, "중학교 졸업이하"],
-            [4, "고등학교 졸업이하"],
-            [5, "전문대/대학교 졸업이하"],
-            [6, "대학원 수료이상"],
+                    [1, "①무학"],
+                    [2, "②초등학교 졸업이하"],
+                    [3, "③중학교 졸업이하"],
+                    [4, "④고등학교 졸업이하"],
+                    [5, "⑤전문대/대학교 졸업이하"],
+                    [6, "⑥대학원 수료이상"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -212,17 +213,17 @@ class Player(BasePlayer):
     occupation = models.IntegerField(
         label="귀하의 직업을 선택해주세요",
         choices=[
-            [1, "관리자"],
-            [2, "전문가 및 관련종사자"],
-            [3, "사무 종사자"],
-            [4, "서비스 종사자"],
-            [5, "판매 종사자"],
-            [6, "농림어업 숙련 종사자"],
-            [7, "기능 및 관련기능 종사자"],
-            [8, "장치, 기계조작 및 조립 종사자"],
-            [9, "단순 노무 종사자"],
-            [10, "군인"],
-            [11, "기타(직접입력)"],
+                    [1, "①관리자"],
+                    [2, "②전문가 및 관련종사자"],
+                    [3, "③사무 종사자"],
+                    [4, "④서비스 종사자"],
+                    [5, "⑤판매 종사자"],
+                    [6, "⑥농림어업 숙련 종사자"],
+                    [7, "⑦기능 및 관련기능 종사자"],
+                    [8, "⑧장치, 기계조작 및 조립 종사자"],
+                    [9, "⑨ 단순 노무 종사자"],
+                    [10,"⑩군인"],
+                    [11, "⑭기타(직접입력)"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -235,14 +236,14 @@ class Player(BasePlayer):
     firm_type = models.IntegerField(
         label="귀하께서 현재 근무하시는 기업의 유형은 다음 중 무엇입니까?",
         choices=[
-            [1, "공기업·준정부기관·기타 공공기관"],
-            [2, "공무원"],
-            [3, "사기업-규모별: 대기업"],
-            [4, "사기업-규모별: 중견기업"],
-            [5, "사기업-규모별: 중소·벤처기업"],
-            [6, "사기업-규모별: 소기업 및 소상공인"],
-            [7, "기타(위에 해당하지 않는 경우 자유 입력: )"],
-        ],
+                    [1, "①공기업·준정부기관·기타 공공기관"],
+                    [2, "②공무원"],
+                    [3, "③사기업-규모별: 대기업"],
+                    [4, "④사기업-규모별: 중견기업"],
+                    [5, "⑤사기업-규모별: 중소·벤처기업"],
+                    [6, "⑥사기업-규모별: 소기업 및 소상공인"],
+                    [7, "⑦기타(위에 해당하지 않는 경우 자유 입력: )"],
+                ],
         widget=widgets.RadioSelect,
     )
 
@@ -254,27 +255,27 @@ class Player(BasePlayer):
     firm_size = models.IntegerField(
         label="현재 근무하시는 사업장 규모를 다음 중 선택해주십시오",
         choices=[
-            [1, "5인 미만"],
-            [2, "5인 이상~50인 미만"],
-            [3, "50인 이상~100인 미만"],
-            [4, "100인 이상~200인 미만"],
-            [5, "200인 이상~300인 미만"],
-            [6, "300인 이상"],
-        ],
+                    [1, "①5인 미만"],
+                    [2, "②5인 이상~50인 미만"],
+                    [3, "③50인 이상~100인 미만"],
+                    [4, "④100인 이상~200인 미만"],
+                    [5, "⑤200인 이상~300인 미만"],
+                    [6, "⑥300인 이상"],
+                ],
         widget=widgets.RadioSelect,
     )
 
     household_income = models.IntegerField(
         label="최근 6개월 평균 가구소득액(즉, 가족구성원 전체의 수입 합산액)은 어떻게 되십니까? 월별 세후 실질 수령액 기준으로 선택해 주십시오.",
         choices=[
-            [1, "없음"],
-            [2, "150만원 미만"],
-            [3, "150만원 이상 300만원 미만"],
-            [4, "300만원 이상 450만원 미만"],
-            [5, "450만원 이상 600만원 미만"],
-            [6, "600만원 이상 750만원 미만"],
-            [7, "750만원 이상"],
-        ],
+                    [1, "①없음"],
+                    [2, "②150만원 미만"],
+                    [3, "③150만원 이상 300만원 미만"],
+                    [4, "④300만원 이상 450만원 미만"],
+                    [5, "⑤450만원 이상 600만원 미만"],
+                    [6, "⑥600만원 이상 750만원 미만"],
+                    [7, "⑦750만원 이상"],
+                ],
         widget=widgets.RadioSelect,
     )
 
@@ -609,46 +610,24 @@ class Player(BasePlayer):
 
     liquid_cigarette_start_year = models.IntegerField(
         label="",
-        choices=[
-            [1, "11"],
-            [2, "12"],
-            [3, "13"],
-            [4, "14"],
-            [5, "15"],
-            [6, "16"],
-            [7, "17"],
-            [8, "18"],
-            [9, "19"],
-            [10, "20"],
-        ],
+        choices=range(2000,int(datetime.now().strftime('%Y'))+1),
         blank=True,
     )
 
     liquid_cigarette_start_month = models.IntegerField(
         label="",
-        choices=range(1, 13),
+        choices=range(1, int(datetime.now().strftime('%m'))+1),
         blank=True,
     )
 
     liquid_cigarette_end_year = models.IntegerField(
-        label="",
-        choices=[
-            [1, "11"],
-            [2, "12"],
-            [3, "13"],
-            [4, "14"],
-            [5, "15"],
-            [6, "16"],
-            [7, "17"],
-            [8, "18"],
-            [9, "19"],
-            [10, "20"],
-        ],
-        blank=True,
+        label = "",
+        choices = range(2000, int(datetime.now().strftime('%Y')) + 1),
+        blank = True,
     )
     liquid_cigarette_end_month = models.IntegerField(
         label="",
-        choices=range(1, 13),
+        choices=range(1, int(datetime.now().strftime('%m'))+1),
         blank=True,
     )
 
@@ -804,67 +783,23 @@ class Player(BasePlayer):
 
     tobacco_type_e_cigarette_start_year = models.IntegerField(
         label="",
-        choices=[
-            [1, "00"],
-            [2, "01"],
-            [3, "02"],
-            [4, "03"],
-            [5, "04"],
-            [6, "05"],
-            [7, "06"],
-            [8, "07"],
-            [9, "08"],
-            [10, "09"],
-            [11, "10"],
-            [12, "11"],
-            [13, "12"],
-            [14, "13"],
-            [15, "14"],
-            [16, "15"],
-            [17, "16"],
-            [18, "17"],
-            [19, "18"],
-            [20, "19"],
-            [21, "20"],
-        ],
+        choices=range(2000, int(datetime.now().strftime('%Y')) + 1),
         blank=True,
     )
     tobacco_type_e_cigarette_start_month = models.IntegerField(
         label="",
-        choices=range(1, 13),
+        choices=range(1, int(datetime.now().strftime('%m')) + 1),
         blank=True,
     )
 
     tobacco_type_e_cigarette_end_year = models.IntegerField(
         label="",
-        choices=[
-            [1, "00"],
-            [2, "01"],
-            [3, "02"],
-            [4, "03"],
-            [5, "04"],
-            [6, "05"],
-            [7, "06"],
-            [8, "07"],
-            [9, "08"],
-            [10, "09"],
-            [11, "10"],
-            [12, "11"],
-            [13, "12"],
-            [14, "13"],
-            [15, "14"],
-            [16, "15"],
-            [17, "16"],
-            [18, "17"],
-            [19, "18"],
-            [20, "19"],
-            [21, "20"],
-        ],
+        choices=range(2000, int(datetime.now().strftime('%Y')) + 1),
         blank=True,
     )
     tobacco_type_e_cigarette_end_month = models.IntegerField(
         label="",
-        choices=range(1, 13),
+        choices=range(1, int(datetime.now().strftime('%m')) + 1),
         blank=True,
     )
 
@@ -997,11 +932,11 @@ class Player(BasePlayer):
     smoking_cessation_attempt_count = models.IntegerField(
         label="귀하께서는 금연 시도 경험이 있다고 답변하신 바 있습니다. 지금까지 금연 시도를 몇 번 정도 시도하셨습니까?",
         choices=[
-            [1, "1회"],
-            [2, "2회"],
-            [3, "3회"],
-            [4, "4회"],
-            [5, "5회 이상"],
+            [1, "① 1회"],
+            [2, "② 2회"],
+            [3, "③ 3회"],
+            [4, "④ 4회"],
+            [5, "⑤ 5회 이상"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -1021,12 +956,12 @@ class Player(BasePlayer):
     within_past_five_days_last_time_to_use_nicotine_alternatives = models.IntegerField(
         label="최근 5일 동안 니코틴 패치, 니코틴 껌, 니코틴 사탕 등의 니코틴 대체용품을 마지막으로 사용한 때는 언제입니까?",
         choices=[
-            [1, "오늘 사용"],
-            [2, "1일 전 사용"],
-            [3, "2일 전 사용"],
-            [4, "3~5일전사용"],
-            [5, "최근 5일 동안 사용하지 않음"],
-            [6, "지금까지 사용해본 적 없음"],
+            [1, "①오늘 사용"],
+            [2, "②1일 전 사용"],
+            [3, "③2일 전 사용"],
+            [4, "④3~5일전사용"],
+            [5, "⑤최근 5일 동안 사용하지 않음"],
+            [6, "⑥지금까지 사용해본 적 없음"],
         ],
         widget=widgets.RadioSelect,
     )
@@ -1034,12 +969,12 @@ class Player(BasePlayer):
     ate_food_products_when_smoking_desire_arose = models.IntegerField(
         label="담배가 피우고 싶을 때 식품류 (껌, 사탕, 비타민)를 대신 먹었음	",
         choices=[
-            [1, "오늘 사용"],
-            [2, "1일 전 사용"],
-            [3, "2일 전 사용"],
-            [4, "3~5일전사용"],
-            [5, "최근 5일 동안 사용하지 않음"],
-        ],
+                    [1, "①오늘 사용"],
+                    [2, "②1일 전 사용"],
+                    [3, "③2일 전 사용"],
+                    [4, "④3~5일전사용"],
+                    [5, "⑤최근 5일 동안 사용하지 않음"],
+                ],
         widget=widgets.RadioSelect,
     )
 
@@ -1064,42 +999,42 @@ class Player(BasePlayer):
     drink_water_when_desiring_to_smoke = models.IntegerField(
         label="담배가 피우고 싶을 때 물을마심",
         choices=[
-            [1, "오늘 사용"],
-            [2, "1일 전 사용"],
-            [3, "2일 전 사용"],
-            [4, "3~5일전사용"],
-            [5, "최근 5일 동안 사용하지 않음"],
-        ],
+                    [1, "①오늘 사용"],
+                    [2, "②1일 전 사용"],
+                    [3, "③2일 전 사용"],
+                    [4, "④3~5일전사용"],
+                    [5, "⑤최근 5일 동안 사용하지 않음"],
+                ],
         widget=widgets.RadioSelect,
     )
 
     effect_of_water_in_resisting_smoking_desire = models.IntegerField(
         label="",
         choices=[
-            [1, "0"],
-            [2, "1"],
-            [3, "2"],
-            [4, "3"],
-            [5, "4"],
-            [6, "5"],
-            [7, "6"],
-            [8, "7"],
-            [9, "8"],
-            [10, "9"],
-            [11, "10"],
-        ],
+                    [1, "0"],
+                    [2, "1"],
+                    [3, "2"],
+                    [4, "3"],
+                    [5, "4"],
+                    [6, "5"],
+                    [7, "6"],
+                    [8, "7"],
+                    [9, "8"],
+                    [10, "9"],
+                    [11, "10"],
+                ],
         widget=widgets.RadioSelectHorizontal,
     )
 
     pressure_tool_when_desiring_to_smoke = models.IntegerField(
         label="담배가 피우고 싶을 때 지압기와 같은 몸에 자극을 줄 수 있는 기구로 자극을 줌",
         choices=[
-            [1, "오늘 사용"],
-            [2, "1일 전 사용"],
-            [3, "2일 전 사용"],
-            [4, "3~5일전사용"],
-            [5, "최근 5일 동안 사용하지 않음"],
-        ],
+                    [1, "①오늘 사용"],
+                    [2, "②1일 전 사용"],
+                    [3, "③2일 전 사용"],
+                    [4, "④3~5일전사용"],
+                    [5, "⑤최근 5일 동안 사용하지 않음"],
+                ],
         widget=widgets.RadioSelect,
     )
 
@@ -1124,12 +1059,12 @@ class Player(BasePlayer):
     mouth_wash_when_resisting_smoking_desire = models.IntegerField(
         label="담배가 피우고 싶을 때 구강청결제 (가그린, 양치질등) 등을 대신함",
         choices=[
-            [1, "오늘 사용"],
-            [2, "1일 전 사용"],
-            [3, "2일 전 사용"],
-            [4, "3~5일전사용"],
-            [5, "최근 5일 동안 사용하지 않음"],
-        ],
+                    [1, "①오늘 사용"],
+                    [2, "②1일 전 사용"],
+                    [3, "③2일 전 사용"],
+                    [4, "④3~5일전사용"],
+                    [5, "⑤최근 5일 동안 사용하지 않음"],
+                ],
         widget=widgets.RadioSelect,
     )
 
@@ -1154,12 +1089,12 @@ class Player(BasePlayer):
     aroma_pipe_or_change_stick_when_resisting_smoking_desire = models.IntegerField(
         label="담배가 피우고 싶을 때 아로마파이프나 체인지스틱 같은 흡연욕구저하제를 대신 사용함	",
         choices=[
-            [1, "오늘 사용"],
-            [2, "1일 전 사용"],
-            [3, "2일 전 사용"],
-            [4, "3~5일전사용"],
-            [5, "최근 5일 동안 사용하지 않음"],
-        ],
+                    [1, "①오늘 사용"],
+                    [2, "②1일 전 사용"],
+                    [3, "③2일 전 사용"],
+                    [4, "④3~5일전사용"],
+                    [5, "⑤최근 5일 동안 사용하지 않음"],
+                ],
         widget=widgets.RadioSelect,
     )
 

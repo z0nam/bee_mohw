@@ -1,14 +1,17 @@
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
+from datetime import datetime
+
 
 class online_survey_1(Page):
-    form_model='player'
-    form_fields=[]
+    form_model = 'player'
+    form_fields = []
+
 
 class online_survey_2(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'gender',
         'born_year',
         'job_position',
@@ -16,9 +19,10 @@ class online_survey_2(Page):
         'within_past_one_year_smoking_cessation_attempted',
     ]
 
+
 class online_survey_3(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'region',
         'region_size',
         'marriage',
@@ -31,24 +35,26 @@ class online_survey_3(Page):
         'household_income',
     ]
 
+
 class online_survey_4(Page):
-    form_model='player'
-    form_fields=[
-            'num_drink_not',
-            'drink_freq_1',
-            'alc_avg_1_jan',
-            'alc_avg_2_jan',
-            'mid_act_yesno',
-            'mid_act_day',
-            'mid_act_type',
-            'mid_act_min',
-            'overall_health_evaluation',
-            'overall_stress_evaluation',
+    form_model = 'player'
+    form_fields = [
+        'num_drink_not',
+        'drink_freq_1',
+        'alc_avg_1_jan',
+        'alc_avg_2_jan',
+        'mid_act_yesno',
+        'mid_act_day',
+        'mid_act_type',
+        'mid_act_min',
+        'overall_health_evaluation',
+        'overall_stress_evaluation',
     ]
 
-class online_survey_5(Page):
-    form_model='player'
-    form_fields=[
+
+class online_survey_5_1(Page):
+    form_model = 'player'
+    form_fields = [
         'tobacco_product_in_use_1',
         'tobacco_product_in_use_2',
         'tobacco_product_in_use_3',
@@ -62,14 +68,39 @@ class online_survey_5(Page):
         'tobacco_product_in_use_11',
         'tobacco_product_in_use_12',
         'do_you_smoke_tobacco',
+
+    ]
+
+
+class online_survey_5_2(Page):
+    form_model = 'player'
+    form_fields = [
         'first_time_to_finish_one_stick_of_tobacco',
         'first_time_to_finish_one_stick_or_more',
         'avg_daily_tobacco_smoking_amount',
         'within_past_month_tobacco_smoking_days',
         'tobacco_sticks_per_day',
+    ]
+
+    def is_displayed(self):
+        return (self.player.do_you_smoke_tobacco == 1) or (self.player.do_you_smoke_tobacco == 2)
+
+
+class online_survey_5_3(Page):
+    form_model = 'player'
+    form_fields = [
         'past_tobacco_smoking_years',
         'past_tobacco_smoking_months',
         'past_tobacco_sticks_per_day',
+    ]
+
+    def is_displayed(self):
+        return self.player.do_you_smoke_tobacco == 3
+
+
+class online_survey_5_4(Page):
+    form_model = 'player'
+    form_fields = [
         'hardest_time_to_resist_smoking_1',
         'hardest_time_to_resist_smoking_2',
         'hardest_time_to_resist_smoking_3',
@@ -89,16 +120,47 @@ class online_survey_5(Page):
         'sick_all_day_still_smoking',
     ]
 
-class online_survey_6(Page):
-    form_model='player'
-    form_fields=[
+    def is_displayed(self):
+        return self.player.do_you_smoke_tobacco != 4
+
+
+class online_survey_6_1(Page):
+    form_model = 'player'
+    form_fields = [
         'do_you_use_liquid_cigarette',
+    ]
+
+
+class online_survey_6_2(Page):
+    form_model = 'player'
+    form_fields = [
         'liquid_cigarette_start_year',
         'liquid_cigarette_start_month',
         'liquid_cigarette_end_year',
         'liquid_cigarette_end_month',
+    ]
+
+    def is_displayed(self):
+        return self.player.do_you_use_liquid_cigarette != 4
+
+
+class online_survey_6_3(Page):
+    form_model = 'player'
+    form_fields = [
         'most_recent_month_liquid_cigarette_use_days',
         'liquid_amount_of_liquid_cigarette_recent_week',
+
+    ]
+
+    def is_displayed(self):
+        return (self.player.do_you_use_liquid_cigarette != 4) and (
+                (self.player.liquid_cigarette_end_year == int(datetime.now().strftime('%Y'))) and (
+                    int(datetime.now().strftime('%m')) - self.player.liquid_cigarette_end_month <= 1))
+
+
+class online_survey_6_4(Page):
+    form_model = 'player'
+    form_fields = [
         'liquid_cigarette_density',
         'liquid_cigarette_hardest_to_resist_when_1',
         'liquid_cigarette_hardest_to_resist_when_2',
@@ -119,15 +181,45 @@ class online_survey_6(Page):
         'liquid_cigarette_sick_all_day_still_smoking',
     ]
 
-class online_survey_7(Page):
-    form_model='player'
-    form_fields=[
+    def is_displayed(self):
+        return self.player.do_you_use_liquid_cigarette != 4
+
+
+class online_survey_7_1(Page):
+    form_model = 'player'
+    form_fields = [
         'do_you_use_tobacco_type_e_cigarette',
+    ]
+
+
+class online_survey_7_2(Page):
+    form_model = 'player'
+    form_fields = [
         'tobacco_type_e_cigarette_start_year',
         'tobacco_type_e_cigarette_start_month',
         'tobacco_type_e_cigarette_end_year',
         'tobacco_type_e_cigarette_end_month',
+    ]
+
+    def is_displayed(self):
+        return self.player.do_you_use_tobacco_type_e_cigarette != 4
+
+
+class online_survey_7_3(Page):
+    form_model = 'player'
+    form_fields = [
         'within_recent_month_days_of_use_for_tobacco_type_e_cigarette',
+    ]
+
+    def is_displayed(self):
+        return (self.player.do_you_use_tobacco_type_e_cigarette != 4) and (
+                (self.player.tobacco_type_e_cigarette_end_year == int(datetime.now().strftime('%Y'))) and (
+                int(datetime.now().strftime('%m')) - self.player.tobacco_type_e_cigarette_end_month <= 1))
+
+
+class online_survey_7_4(Page):
+    form_model = 'player'
+    form_fields = [
         'tobacco_type_e_cigarette_avg_sticks_per_day',
         'tobacco_type_e_cigarette_hardest_to_resist_when_1',
         'tobacco_type_e_cigarette_hardest_to_resist_when_2',
@@ -148,9 +240,13 @@ class online_survey_7(Page):
         'tobacco_type_e_cigarette_sick_all_day_still_smoking',
     ]
 
+    def is_displayed(self):
+        return self.player.do_you_use_tobacco_type_e_cigarette != 4
+
+
 class online_survey_8(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'smoking_cessation_attempt_count',
         'within_one_month_do_you_plan_to_quit_smoking',
         'within_past_five_days_last_time_to_use_nicotine_alternatives',
@@ -173,71 +269,73 @@ class online_survey_8(Page):
         'smoking_cessation_method_other',
     ]
 
+
 class online_survey_9(Page):
-    form_model='player'
-    form_fields=[
-                'smoking_cessation_failure_reason_1',
-                'smoking_cessation_failure_reason_2',
-                'smoking_cessation_failure_reason_3',
-                'smoking_cessation_failure_reason_4',
-                'smoking_cessation_failure_reason_5',
-                'smoking_cessation_failure_reason_6',
-                'smoking_cessation_failure_reason_7',
-                'reason_to_quit_smoking_this_time_primary',
-                'reason_to_quit_smoking_this_time_primary_op',
-                'reason_to_quit_smoking_this_time_secondary',
-                'reason_to_quit_smoking_this_time_secondary_op',
-                'reason_to_quit_smoking_this_time_tertiary',
-                'reason_to_quit_smoking_this_time_tertiary_op',
-                'smoking_cessation_helper_1',
-                'smoking_cessation_helper_2',
-                'smoking_cessation_helper_3',
-                'smoking_cessation_helper_4',
-                'smoking_cessation_helper_5',
-                'smoking_cessation_helper_6',
-                'smoking_cessation_helper_7',
-                'smoking_cessation_helper_8',
-                'smoking_cessation_helper_9',
-                'smoking_cessation_helper_10',
-                'disease_history_1',
-                'disease_history_2',
-                'disease_history_3',
-                'disease_history_4',
-                'disease_history_5',
-                'disease_history_6',
-                'disease_history_7',
-                'disease_history_8',
-                'disease_history_9',
-                'disease_history_10',
-                'disease_history_11',
-                'disease_history_12',
-                'disease_history_13',
-                'disease_history_14',
-                'disease_history_15',
-                'disease_history_16',
-                'disease_history_17',
-                'disease_history_18',
-                'disease_history_19',
-                'disease_history_20',
-                'disease_history_21',
-                'disease_history_22',
-                'disease_history_23',
-                'disease_history_24',
-                'disease_history_25',
-                'disease_history_26',
-                'disease_history_27',
-                'disease_history_28',
-                'disease_history_29',
-                'disease_history_30',
-                'disease_history_31',
-                'smoking_cessation_importance',
-                'smoking_cessation_confidence',
-                'smoking_cessation_readiness',
+    form_model = 'player'
+    form_fields = [
+        'smoking_cessation_failure_reason_1',
+        'smoking_cessation_failure_reason_2',
+        'smoking_cessation_failure_reason_3',
+        'smoking_cessation_failure_reason_4',
+        'smoking_cessation_failure_reason_5',
+        'smoking_cessation_failure_reason_6',
+        'smoking_cessation_failure_reason_7',
+        'reason_to_quit_smoking_this_time_primary',
+        'reason_to_quit_smoking_this_time_primary_op',
+        'reason_to_quit_smoking_this_time_secondary',
+        'reason_to_quit_smoking_this_time_secondary_op',
+        'reason_to_quit_smoking_this_time_tertiary',
+        'reason_to_quit_smoking_this_time_tertiary_op',
+        'smoking_cessation_helper_1',
+        'smoking_cessation_helper_2',
+        'smoking_cessation_helper_3',
+        'smoking_cessation_helper_4',
+        'smoking_cessation_helper_5',
+        'smoking_cessation_helper_6',
+        'smoking_cessation_helper_7',
+        'smoking_cessation_helper_8',
+        'smoking_cessation_helper_9',
+        'smoking_cessation_helper_10',
+        'disease_history_1',
+        'disease_history_2',
+        'disease_history_3',
+        'disease_history_4',
+        'disease_history_5',
+        'disease_history_6',
+        'disease_history_7',
+        'disease_history_8',
+        'disease_history_9',
+        'disease_history_10',
+        'disease_history_11',
+        'disease_history_12',
+        'disease_history_13',
+        'disease_history_14',
+        'disease_history_15',
+        'disease_history_16',
+        'disease_history_17',
+        'disease_history_18',
+        'disease_history_19',
+        'disease_history_20',
+        'disease_history_21',
+        'disease_history_22',
+        'disease_history_23',
+        'disease_history_24',
+        'disease_history_25',
+        'disease_history_26',
+        'disease_history_27',
+        'disease_history_28',
+        'disease_history_29',
+        'disease_history_30',
+        'disease_history_31',
+        'smoking_cessation_importance',
+        'smoking_cessation_confidence',
+        'smoking_cessation_readiness',
     ]
 
+
 class online_survey_10(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'st_1',
         'st_2',
         'st_3',
@@ -264,9 +362,10 @@ class online_survey_10(Page):
     def vars_for_template(self):
         return self.player.vars_for_template()
 
+
 class online_survey_11(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'sa_1',
         'sa_2',
         'sa_3',
@@ -276,16 +375,18 @@ class online_survey_11(Page):
         'sa_7',
         'sa_8',
     ]
+
     def vars_for_template(self):
         return self.player.vars_for_template()
 
 
 class online_survey_12(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'sn_1',
         'sn_2',
     ]
+
     def vars_for_template(self):
         return self.player.vars_for_template()
 
@@ -296,9 +397,10 @@ class online_survey_12(Page):
     #     return vars_to_return
     #
 
+
 class online_survey_13(Page):
-    form_model='player'
-    form_fields=[
+    form_model = 'player'
+    form_fields = [
         'pbc_1',
         'pbc_2',
     ]
@@ -319,4 +421,9 @@ class online_survey_14(Page):
     def vars_for_template(self):
         return self.player.vars_for_template()
 
-page_sequence = [online_survey_1,online_survey_2,online_survey_3,online_survey_4,online_survey_5, online_survey_6, online_survey_7,online_survey_8,online_survey_9, online_survey_10,online_survey_11, online_survey_12, online_survey_13, online_survey_14, ]
+
+page_sequence = [online_survey_1, online_survey_2, online_survey_3, online_survey_4, online_survey_5_1,
+                 online_survey_5_2, online_survey_5_3, online_survey_5_4, online_survey_6_1, online_survey_6_2,
+                 online_survey_6_3, online_survey_6_4, online_survey_7_1, online_survey_7_2, online_survey_7_3,online_survey_7_4,
+                 online_survey_8, online_survey_9, online_survey_10, online_survey_11, online_survey_12,
+                 online_survey_13, online_survey_14, ]

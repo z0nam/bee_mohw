@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+    <div class="alert border">
+        귀하께서는 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등)를 언제 시작하셨습니까?
+    </div>
+    <div class="d-block"> 20<div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_start_year %}</div>년 <div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_start_month %}</div>월</div>
+    <div class="alert border">
+		마지막으로 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등)를 사용한 시기는 언제입니까?
+    </div>
+    <div class="d-block"> 20<div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_end_year %}</div>년 <div class="d-inline-block">{% formfield player.tobacco_type_e_cigarette_end_month %}</div>월</div>
+
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

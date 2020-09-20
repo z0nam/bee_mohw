@@ -1,0 +1,21 @@
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+    <div class="alert border">{% formfield player.most_recent_month_liquid_cigarette_use_days %}</div>
+    <div class="alert border">
+		귀하가 최근 1주일간 사용한 액상형 전자담배(쥴, 탱크형 등) 액상의 양(ml)은 얼마입니까?
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.liquid_amount_of_liquid_cigarette_recent_week %}</div>ml</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

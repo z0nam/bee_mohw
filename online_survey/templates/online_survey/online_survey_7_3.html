@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+    <div class="alert border">
+		최근 1달 간 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등) 사용일수
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.within_recent_month_days_of_use_for_tobacco_type_e_cigarette %}</div>일</div>
+
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

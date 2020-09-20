@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+    <div class="alert border">{% formfield player.liquid_cigarette_density %}</div>
+    <div class="alert border"><p>평소에 하루 중 액상형 전자담배(쥴, 탱크형 등) 사용을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_1 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_2 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_3 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_4 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_5 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_6 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_7 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_8 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_9 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_10 %}
+        {% formfield player.liquid_cigarette_hardest_to_resist_when_11 %}
+	</div>
+    <div class="alert border">{% formfield player.liquid_cigarette_first_in_the_day %}</div>
+    <div class="alert border">{% formfield player.is_it_hard_to_resist_smoking_liquid_cigarette_in_public %}</div>
+	  <div class="alert border">{% formfield player.when_is_the_liquid_cigarette_the_most_tasty %}</div>
+    <div class="alert border">{% formfield player.liquid_cigarette_use_frequency_per_day %}</div>
+    <div class="alert border">{% formfield player.liquid_cigarette_morning_is_more_tasty_than_the_rest %}</div>
+    <div class="alert border">{% formfield player.liquid_cigarette_sick_all_day_still_smoking %}</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

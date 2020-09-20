@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석 온라인설문
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="alert border">
+       귀하의 과거 일반담배(궐련) 흡연기간을 입력해주십시오.
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.past_tobacco_smoking_years %}</div>년 <div class="d-inline-block">{% formfield player.past_tobacco_smoking_months %}</div>개월</div>
+    <div class="alert border">
+
+    <div class="alert border">{% formfield player.past_tobacco_sticks_per_day %}</div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}
+
