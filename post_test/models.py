@@ -205,80 +205,80 @@ class Player(BasePlayer):
         choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
     )
-    post_action_strengthening_prop_category = models.IntegerField(
+    action_strengthening_prop_category = models.IntegerField(
         label="귀하께서 지난 1주일 동안 사용한 행동강화물품의 종류는 무엇입니까?",
         choices=Constants.ACTION_STRENGTHENING_PROP,
         widget=widgets.RadioSelect,
     )
 
-    post_smoking_desire_decrease_lickert = models.IntegerField(
+    smoking_desire_decrease_lickert = models.IntegerField(
         label="귀하가 사용하는 행동강화물품은 흡연욕구를 저하시키는데 도움이 되었습니까?",
         choices=Constants.SMOKING_DESIRE_DECREASE_LICKERT,
         widget=widgets.RadioSelect,
     )
 
-    post_post_smoking_cessation_health_status = models.IntegerField(
+    post_smoking_cessation_health_status = models.IntegerField(
         label="금연 이후, 귀하가 생각하는 본인의 현재 건강상태는 개선되었다고 생각합니까?",
         choices=Constants.POST_SMOKING_CESSATION_HEALTH_STATUS,
         widget=widgets.RadioSelect,
     )
 
-    post_post_smoking_cessation_stress_metirc = models.IntegerField(
+    post_smoking_cessation_stress_metirc = models.IntegerField(
         label="금연 이후, 평소 귀하의 스트레스 정도는 어떻습니까?",
         choices=Constants.POST_SMOKING_CESSATION_STRESS_METRIC,
         widget=widgets.RadioSelect,
     )
 
-    post_smoking_cessation_practice_plan_change = models.IntegerField(
+    smoking_cessation_practice_plan_change = models.IntegerField(
         label="현재 귀하께서는 금연 실천할 생각이 변화하였습니까?",
         choices=Constants.SMOKING_CESSATION_PRACTICE_PLAN_CHANGE,
         widget=widgets.RadioSelect,
     )
 
-    post_sa_1 = make_field_smoking_cessation_adverse(0)
-    post_sa_2 = make_field_smoking_cessation_adverse(1)
-    post_sa_3 = make_field_smoking_cessation_adverse(2)
-    post_sa_4 = make_field_smoking_cessation_adverse(3)
-    post_sa_5 = make_field_smoking_cessation_adverse(4)
-    post_sa_6 = make_field_smoking_cessation_adverse(5)
-    post_sa_7 = make_field_smoking_cessation_adverse(6)
-    post_sa_8 = make_field_smoking_cessation_adverse(7)
-    post_sa_9 = make_field_smoking_cessation_adverse(8)
+    sa_1 = make_field_smoking_cessation_adverse(0)
+    sa_2 = make_field_smoking_cessation_adverse(1)
+    sa_3 = make_field_smoking_cessation_adverse(2)
+    sa_4 = make_field_smoking_cessation_adverse(3)
+    sa_5 = make_field_smoking_cessation_adverse(4)
+    sa_6 = make_field_smoking_cessation_adverse(5)
+    sa_7 = make_field_smoking_cessation_adverse(6)
+    sa_8 = make_field_smoking_cessation_adverse(7)
+    sa_9 = make_field_smoking_cessation_adverse(8)
 
-    post_se_1 = make_field_smoking_experience(0)
-    post_se_2 = make_field_smoking_experience(1)
+    se_1 = make_field_smoking_experience(0)
+    se_2 = make_field_smoking_experience(1)
 
-    post_reason_for_failure_to_continue_quitting_smoking = models.IntegerField(
+    reason_for_failure_to_continue_quitting_smoking = models.IntegerField(
         label="지난 1주일 이후 금연에 실패한 가장 큰 이유는 무엇입니까?",
         choices=Constants.WHY_YOU_COULD_NOT_CONTINUE_QUITTING_SMOKING_AFTER_PAST_ONE_WEEK,
         widget=widgets.RadioSelect,
     )
 
-    post_so_1 = make_field_smoking_opinion(0)
-    post_so_2 = make_field_smoking_opinion(1)
-    post_so_3 = make_field_smoking_opinion(2)
-    post_so_4 = make_field_smoking_opinion(3)
-    post_so_5 = make_field_smoking_opinion(4)
-    post_so_6 = make_field_smoking_opinion(5)
+    so_1 = make_field_smoking_opinion(0)
+    so_2 = make_field_smoking_opinion(1)
+    so_3 = make_field_smoking_opinion(2)
+    so_4 = make_field_smoking_opinion(3)
+    so_5 = make_field_smoking_opinion(4)
+    so_6 = make_field_smoking_opinion(5)
 
-    post_cas_1 = make_field_confidence(0)
-    post_cas_2 = make_field_confidence(1)
-    post_cas_3 = make_field_confidence(2)
-    post_cas_4 = make_field_confidence(3)
-    post_cas_5 = make_field_confidence(4)
-    post_cas_6 = make_field_confidence(5)
-    post_cas_7 = make_field_confidence(6)
+    cas_1 = make_field_confidence(0)
+    cas_2 = make_field_confidence(1)
+    cas_3 = make_field_confidence(2)
+    cas_4 = make_field_confidence(3)
+    cas_5 = make_field_confidence(4)
+    cas_6 = make_field_confidence(5)
+    cas_7 = make_field_confidence(6)
 
-    post_ef_1 = make_field_experience_frequency(0)
-    post_ef_2 = make_field_experience_frequency(1)
-    post_ef_3 = make_field_experience_frequency(2)
-    post_ef_4 = make_field_experience_frequency(3)
-    post_ef_5 = make_field_experience_frequency(4)
-    post_ef_6 = make_field_experience_frequency(5)
-    post_ef_7 = make_field_experience_frequency(6)
-    post_ef_8 = make_field_experience_frequency(7)
-    post_ef_9 = make_field_experience_frequency(8)
-    post_ef_10 = make_field_experience_frequency(9)
+    ef_1 = make_field_experience_frequency(0)
+    ef_2 = make_field_experience_frequency(1)
+    ef_3 = make_field_experience_frequency(2)
+    ef_4 = make_field_experience_frequency(3)
+    ef_5 = make_field_experience_frequency(4)
+    ef_6 = make_field_experience_frequency(5)
+    ef_7 = make_field_experience_frequency(6)
+    ef_8 = make_field_experience_frequency(7)
+    ef_9 = make_field_experience_frequency(8)
+    ef_10 = make_field_experience_frequency(9)
 
     TERMINATION = models.IntegerField(
         label="금연프로그램이 정상적으로 종결되었는지 혹은 중간에 종결되었는지를 선택해 주십시오.",
@@ -298,3 +298,12 @@ class Player(BasePlayer):
         label="메모남겨주실 부분 있으시면 여기에 남겨주시면 감사드리겠습니다.",
         blank=True,
     )
+
+    def vars_for_template(self) -> dict:
+        vars_to_return = {}
+        vars_to_return['L5'] = [i[1] for i in Constants.L5_CHOICES]
+        vars_to_return['L53'] = [i[1] for i in Constants.L53_CHOICES]
+        vars_to_return['L54'] = [i[1] for i in Constants.L54_CHOICES]
+        vars_to_return['L55'] = [i[1] for i in Constants.L55_CHOICES]
+        vars_to_return['L56'] = [i[1] for i in Constants.L56_CHOICES]
+        return vars_to_return

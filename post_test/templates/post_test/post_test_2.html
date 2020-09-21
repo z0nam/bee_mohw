@@ -1,0 +1,158 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+   행동강화물품 사후조사
+{% endblock %}
+
+{% block content %}
+
+    <div class="alert border">{% formfield player.action_strengthening_prop_category %}</div>
+    <div class="alert border">{% formfield player.smoking_desire_decrease_lickert %}</div>
+    <div class="alert border">{% formfield player.post_smoking_cessation_health_status %}</div>
+    <div class="alert border">{% formfield player.post_smoking_cessation_stress_metirc %}</div>
+    <div class="alert border">{% formfield player.smoking_cessation_practice_plan_change %}</div>
+    <p class="alert-form-label">
+        다음의 금단증상 중 귀하의 경험을 가장 잘 나타내고 있는 곳에 V 표시하여 주십시오.
+    </p>
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                {% for sq_choices in L54 %}
+                <th>{{ sq_choices }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for sq in form %}
+                {% if forloop.counter >= 6 and forloop.counter <= 14 %}
+                    <tr>
+                        <th>{{ sq.label }}</th>
+                        {% for choice in sq %}
+                        <td class="text-center align-middle">{{ choice.tag }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p>
+        다음 중  귀하의 경험을 가장 잘 나타내고 있는 곳에 V 표시하여 주십시오.
+    </p>
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                {% for sq_choices in L55 %}
+                <th>{{ sq_choices }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for sq in form %}
+                {% if forloop.counter >= 15 and forloop.counter <= 16 %}
+                    <tr>
+                        <th>{{ sq.label }}</th>
+                        {% for choice in sq %}
+                        <td class="text-center align-middle">{{ choice.tag }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="alert border">{% formfield player.reason_for_failure_to_continue_quitting_smoking %}</div>
+    <p class="alert-form-label">
+        [모두 응답] 흡연과 관련된 귀하의 생각을 평소 경험에 비추어 해당하는 곳에 V 표시하여 주십시오.
+    </p>
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                {% for sq_choices in L54 %}
+                <th>{{ sq_choices }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for sq in form %}
+                {% if forloop.counter >= 18 and forloop.counter <= 23 %}
+                <tr>
+                    <th>{{ sq.label }}</th>
+                    {% for choice in sq %}
+                    <td class="text-center align-middle">{{ choice.tag }}</td>
+                    {% endfor %}
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p class="alert-form-label">
+        흡연을 유혹하는 다음의 상황에 직면하였을 때, 금연할 수 있는 자신감의 정도를 V 표시하여 주십시오.
+    </p>
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                {% for sq_choices in L56 %}
+                <th>{{ sq_choices }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for sq in form %}
+                {% if forloop.counter >= 24 and forloop.counter <= 30 %}
+                    <tr>
+                        <th>{{ sq.label }}</th>
+                        {% for choice in sq %}
+                        <td class="text-center align-middle">{{ choice.tag }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p>
+        여러분은 다음의 사항들을 얼마나 자주 경험하시는지 V 표시하여 주십시오.
+    </p>
+    <div class="center-align">
+        <table class="tableFixedHead table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                {% for sq_choices in L54 %}
+                <th>{{ sq_choices }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for sq in form %}
+                {% if forloop.counter >= 31 and forloop.counter <= 40 %}
+                    <tr>
+                        <th>{{ sq.label }}</th>
+                        {% for choice in sq %}
+                        <td class="text-center align-middle">{{ choice.tag }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+
+    </button>
+
+{% endblock %}

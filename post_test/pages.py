@@ -3,64 +3,72 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class post_test(Page):
+class post_test_1(Page):
     form_model = 'player'
     form_fields = [
         'num_post_not',
-        'post_action_strengthening_prop_category',
-        'post_smoking_desire_decrease_lickert',
-        'post_post_smoking_cessation_health_status',
-        'post_post_smoking_cessation_stress_metirc',
-        'post_smoking_cessation_practice_plan_change',
-        'post_sa_1',
-        'post_sa_2',
-        'post_sa_3',
-        'post_sa_4',
-        'post_sa_5',
-        'post_sa_6',
-        'post_sa_7',
-        'post_sa_8',
-        'post_sa_9',
-        'post_se_1',
-        'post_se_2',
-        'post_reason_for_failure_to_continue_quitting_smoking',
-        'post_so_1',
-        'post_so_2',
-        'post_so_3',
-        'post_so_4',
-        'post_so_5',
-        'post_so_6',
-        'post_cas_1',
-        'post_cas_2',
-        'post_cas_3',
-        'post_cas_4',
-        'post_cas_5',
-        'post_cas_6',
-        'post_cas_7',
-        'post_ef_1',
-        'post_ef_2',
-        'post_ef_3',
-        'post_ef_4',
-        'post_ef_5',
-        'post_ef_6',
-        'post_ef_7',
-        'post_ef_8',
-        'post_ef_9',
-        'post_ef_10',
+    ]
+
+
+class post_test_2(Page):
+    form_model = 'player'
+    form_fields = [
+        'action_strengthening_prop_category',
+        'smoking_desire_decrease_lickert',
+        'post_smoking_cessation_health_status',
+        'post_smoking_cessation_stress_metirc',
+        'smoking_cessation_practice_plan_change',
+        'sa_1',
+        'sa_2',
+        'sa_3',
+        'sa_4',
+        'sa_5',
+        'sa_6',
+        'sa_7',
+        'sa_8',
+        'sa_9',
+        'se_1',
+        'se_2',
+        'reason_for_failure_to_continue_quitting_smoking',
+        'so_1',
+        'so_2',
+        'so_3',
+        'so_4',
+        'so_5',
+        'so_6',
+        'cas_1',
+        'cas_2',
+        'cas_3',
+        'cas_4',
+        'cas_5',
+        'cas_6',
+        'cas_7',
+        'ef_1',
+        'ef_2',
+        'ef_3',
+        'ef_4',
+        'ef_5',
+        'ef_6',
+        'ef_7',
+        'ef_8',
+        'ef_9',
+        'ef_10',
+    ]
+
+    def vars_for_template(self):
+        return self.player.vars_for_template()
+
+    def is_displayed(self):
+        return self.player.num_post_not == 1
+
+
+class post_test_3(Page):
+    form_model = 'player'
+    form_fields = [
         'TERMINATION',
         'termination_reason',
         'text_field',
-
     ]
 
-    def vars_for_template(self) -> dict:
-        vars_to_return = {}
-        vars_to_return['L5'] = [i[1] for i in Constants.L5_CHOICES]
-        vars_to_return['L53'] = [i[1] for i in Constants.L53_CHOICES]
-        vars_to_return['L54'] = [i[1] for i in Constants.L54_CHOICES]
-        vars_to_return['L55'] = [i[1] for i in Constants.L55_CHOICES]
-        vars_to_return['L56'] = [i[1] for i in Constants.L56_CHOICES]
-        return vars_to_return
 
-
-page_sequence = [post_test, ]
+page_sequence = [post_test_1, post_test_2, post_test_3]
