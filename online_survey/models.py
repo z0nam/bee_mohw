@@ -917,7 +917,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
-    tobacco_type_e_cigarette_more_tasty_in_the_morning_than_the_rest = models.BooleanField(
+    tobacco_e_cig_more_tasty_in_the_morning = models.BooleanField(
         label="(과거 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등) 사용자는 사용당시 기준으로 작성) 아침에 일어나서 첫 몇 시간 동안 하루 중 다른 시간보다 더 자주 궐련형 전자담배(가열담배, 예: 아이코스, 글로, 릴 등)를 사용하십니까?",
         choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
@@ -1098,7 +1098,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
-    effect_of_aroma_pipe_or_change_stick_in_resisting_smoking_desire = models.IntegerField(
+    effect_of_aroma_stick_against_smoking_desire = models.IntegerField(
         label="",
         choices=[
             [1, "0"],

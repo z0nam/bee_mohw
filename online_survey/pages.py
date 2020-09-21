@@ -236,7 +236,7 @@ class online_survey_7_4(Page):
         'tobacco_type_e_cigarette_hard_to_resist_in_public',
         'tobacco_type_e_cigarette_most_tasty_in_the_day',
         'tobacco_type_e_cigarette_sticks_per_day',
-        'tobacco_type_e_cigarette_more_tasty_in_the_morning_than_the_rest',
+        'tobacco_e_cig_more_tasty_in_the_morning',
         'tobacco_type_e_cigarette_sick_all_day_still_smoking',
     ]
 
@@ -259,7 +259,7 @@ class online_survey_8(Page):
         'mouth_wash_when_resisting_smoking_desire',
         'effect_of_mouth_wash_in_resisting_smoking_desire',
         'aroma_pipe_or_change_stick_when_resisting_smoking_desire',
-        'effect_of_aroma_pipe_or_change_stick_in_resisting_smoking_desire',
+        'effect_of_aroma_stick_against_smoking_desire',
         'smoking_cessation_method_self_will',
         'smoking_cessation_method_call_center',
         'smoking_cessation_method_clinic',
