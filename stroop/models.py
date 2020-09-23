@@ -9,8 +9,10 @@ from otree.api import (
     currency_range,
 )
 
+from stroop_order import *
 
-author = 'Namun Cho (mailto:namun.cho@gmail.com)'
+
+author = 'Namun Cho (mailto:dr.strangelove@kberi.re.kr)'
 
 doc = """
     프로젝트: 행동강화물품이 금연동기강화 및 금연유지에 미치는 효과분석
@@ -24,6 +26,10 @@ class Constants(BaseConstants):
     name_in_url = 'stroop'
     players_per_group = None
     num_rounds = 3
+
+    COLOR_LIST = [
+        1, "빨강"
+    ]
 
 
 class Subsession(BaseSubsession):
