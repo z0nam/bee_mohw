@@ -54,6 +54,21 @@ class Stroop(Page):
         vars_to_return['background_color'] = stroop_test.BACKGROUND_COLOR
         return vars_to_return
 
+    form_model = 'player'
+    form_fields = [
+        'stroop_event_table',
+        'stroop_item_table',
+        'stroop_table',
+        'c_time',
+        'c_error',
+        'c_item_size',
+        'w_time',
+        'w_error',
+        'w_item_size',
+        'cw_time',
+        'cw_error',
+        'cw_item_size',
+    ]
 
 class Results(Page):
 

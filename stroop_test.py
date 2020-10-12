@@ -39,6 +39,8 @@ COLOR_CODE = {
 
 DEFAULT_STR = "◼"  # C 조건에서 사용할 문자
 
+NAME_OF_TEST = ["c", "w", "cw"]
+
 instruction_messages = [
     [
         "검사 1에서는 중앙에 주어진 네모(" + DEFAULT_STR + ")의 색깔을 맞춰야 합니다. ",
@@ -107,11 +109,9 @@ class StroopCW(Stroop):
 
 
 class SessionBlocks:
-
-    name_of_test = ["c", "w", "cw"]
-
+    name_of_test = NAME_OF_TEST
     items = {}
-    for name in name_of_test:
+    for name in NAME_OF_TEST:
         items[name] = []
 
     # we need 4 * size_of_list random numbers_with_no_duplicates
@@ -131,6 +131,9 @@ class SessionBlocks:
     rnd_for_cw2 = generate_no_duplicated_random_colors(DEFAULT_BLOCK_NUMBER)
 
     def __init__(self):
+        self.items = {}   # 이렇게 안하면 constructor 부를때마다 누적됨 5 10 15 20.. append 쓰기 때문인듯.
+        for name in NAME_OF_TEST:
+            self.items[name] = []
         for i in range(0, DEFAULT_BLOCK_NUMBER):
             self.items[self.name_of_test[0]].append(StroopC(self.rnd_for_c[i]))
             self.items[self.name_of_test[1]].append(StroopW(self.rnd_for_w[i]))

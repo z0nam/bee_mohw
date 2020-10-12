@@ -37,6 +37,8 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             for p in self.get_players():
                 p.participant.vars['SessionBlocks'] = stroop_test.SessionBlocks()
+                print("SessionBlocks() called. item size:", len(p.participant.vars['SessionBlocks'].items['c']))
+                print("DEFAULT_BLOCK_NUMBER:", stroop_test.DEFAULT_BLOCK_NUMBER)
 
 
 class Group(BaseGroup):
@@ -48,13 +50,13 @@ class Player(BasePlayer):
     stroop_event_table = models.LongStringField()
     stroop_item_table = models.LongStringField()
 
-    c_time = models.IntegerField()
-    c_error = models.FloatField()
-    c_item_size = models.IntegerField()
-    w_time = models.IntegerField()
-    w_error = models.FloatField()
-    w_item_size = models.IntegerField()
-    cw_time = models.IntegerField()
-    cw_error = models.FloatField()
-    cw_item_size = models.IntegerField()
+    c_time = models.IntegerField(blank=True,)
+    c_error = models.FloatField(blank=True,)
+    c_item_size = models.IntegerField(blank=True,)
+    w_time = models.IntegerField(blank=True,)
+    w_error = models.FloatField(blank=True,)
+    w_item_size = models.IntegerField(blank=True,)
+    cw_time = models.IntegerField(blank=True,)
+    cw_error = models.FloatField(blank=True,)
+    cw_item_size = models.IntegerField(blank=True,)
 

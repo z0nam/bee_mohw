@@ -32,7 +32,7 @@ class StroopItem {
 
 // 항목: 시간테이블, 라운드넘버, 피리오드, 표시문자, 표시색깔, 정답, 클릭한색깔, 정답/오답여부
 class StroopEvent {
-    constrctor(current_time,
+    constructor(current_time,
                elapsed_time,
                round_number,
                current_period,
@@ -110,8 +110,15 @@ $(document).on('click', 'button', function(e){
     correct_color_str = color_strs[correct_answer]
     displayed_color_str = color_strs[displayed_color]
 
+    let is_correct;
+    if(chosen_color_str == correct_color_str){
+        is_correct = true;
+    }else{
+        is_correct = false;
+    }
+
     stroop_event_table.push(new StroopEvent(
-      new Date().getTime(),
+        new Date().getTime(),
         timer.get_elapsed(),
         round_number,
         current_period,
@@ -119,12 +126,14 @@ $(document).on('click', 'button', function(e){
         displayed_color_str,
         correct_color_str,
         chosen_color_str,
-        (chosen_color_str == correct_color_str),
+        is_correct
     ));
+
+
 
     if (chosen_color_str == correct_color_str){
         mark_right();
-        stroop_item_table.push(new StroopItem(
+        stroop_table.push(new StroopItem(
             new Date().getTime(),
             timer.get_elapsed(),
             round_number,
