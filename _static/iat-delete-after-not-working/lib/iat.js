@@ -4,7 +4,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// console.log("hello, iat!");
+// console.log("hello, iat-delete-after-not-working!");
 
 var Category = function Category(round_number, left_main_category, right_main_category, left_sub_category, right_sub_category, left_keycode, right_keycode) {
     _classCallCheck(this, Category);
