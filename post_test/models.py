@@ -200,6 +200,14 @@ def make_field_experience_frequency(index):
 
 
 class Player(BasePlayer):
+    participant_name = models.StringField(
+        label="귀하의 성명을 홍*동의 형태로 입력해주십시오.",
+        blank=True,
+    )
+    organization_type = models.StringField(
+        label="귀하의 소속기관을 입력해주십시오",
+        blank=True,
+    )
     num_post_not = models.BooleanField(
         label="",
         choices=Constants.BINARY_CHOICES,

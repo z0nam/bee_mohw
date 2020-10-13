@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block content %}
+    <div class="alert border">{%formfield player.participant_name %}</div>
+    <div class="alert border">{%formfield player.organization_type %}</div>
     <div class="alert border">{% formfield player.registration_type %}</div>
 
     <div class="alert border">

@@ -6,6 +6,8 @@ from .models import Constants
 class post_test_1(Page):
     form_model = 'player'
     form_fields = [
+        'participant_name',
+        'organization_type',
         'num_post_not',
     ]
 
