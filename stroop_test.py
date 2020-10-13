@@ -37,7 +37,7 @@ COLOR_CODE = {
     WHITE: "#FFFFFF",
 }
 
-DEFAULT_STR = "◼"  # C 조건에서 사용할 문자
+DEFAULT_STR = "ㅁ"  # C 조건에서 사용할 문자. 네모문자ㅁ는 일부 브라우저(크롬)에서 색이 안입혀짐. 일반문자로 대체
 
 NAME_OF_TEST = ["c", "w", "cw"]
 
