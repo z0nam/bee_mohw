@@ -10,36 +10,35 @@ SESSION_CONFIG_DEFAULTS = dict(
 )
 
 SESSION_CONFIGS = [
-    dict(
-       name='introduction',
-       display_name="Introduction to Behavioral Experiment",
-       num_demo_participants=1,
-       app_sequence=['introduction']
-    ),
-    dict(
-      name='pre_test',
-      display_name="Pre-test questionnaire for behavioral experiment",
-      num_demo_participants=1,
-      app_sequence=['pre_test']
-    ),
-    dict(
-      name='post_test',
-      display_name="Post-test questionnaire for behavioral experiment",
-      num_demo_participants=1,
-      app_sequence=['post_test']
-    ),
-    dict(
-        name='online_survey',
-        display_name='Online survey for behavior strengthening material research targeted at smoking cessation contestants',
-        num_demo_participants=1,
-        app_sequence=['online_survey']
-    ),
-    dict(
-        name="stroop_test",
-        display_name='Stroop Test',
-        num_demo_participants=1,
-        app_sequence=['stroop']
-    ),
+    {
+        "name": "online_survey",
+        "display_name": "온라인 설문조사",
+        "num_demo_participants": 1,
+        "app_sequence": [
+            "online_survey",
+
+        ]
+    },
+    {
+        "name": "pre_test",
+        "display_name":"사전검사",
+        "num_demo_participants":1,
+        "app_sequence":[
+            "pre_test",
+            "stroop",
+        ]
+    },
+{
+        "name": "post_test",
+        "display_name":"사후검사",
+        "num_demo_participants":1,
+        "app_sequence":[
+            "post_test",
+            "stroop",
+        ]
+    }
+
+
 ]
 
 
