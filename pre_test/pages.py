@@ -286,4 +286,4 @@ class pre_test(Page):
         return vars_to_return
 
 
-page_sequence = [BasicInfo, HealthInfo, SmokerEvaluation, NicotineDependence, SmokerType, Satisfaction, pre_test, ]
+page_sequence = [BasicInfo, HealthInfo, SmokerEvaluation, NicotineDependence, SmokerType, Satisfaction]

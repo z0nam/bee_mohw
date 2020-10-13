@@ -208,11 +208,6 @@ class Player(BasePlayer):
         label="귀하의 소속기관을 입력해주십시오",
         blank=True,
     )
-    num_post_not = models.BooleanField(
-        label="",
-        choices=Constants.BINARY_CHOICES,
-        widget=widgets.RadioSelectHorizontal,
-    )
     action_strengthening_prop_category = models.IntegerField(
         label="귀하께서 지난 1주일 동안 사용한 행동강화물품의 종류는 무엇입니까?",
         choices=Constants.ACTION_STRENGTHENING_PROP,

@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block content %}
-
+     <div class="alert border">{%formfield player.participant_name %}</div>
+    <div class="alert border">{%formfield player.organization_type %}</div>
     <div class="alert border">{% formfield player.action_strengthening_prop_category %}</div>
     <div class="alert border">{% formfield player.smoking_desire_decrease_lickert %}</div>
     <div class="alert border">{% formfield player.post_smoking_cessation_health_status %}</div>
@@ -27,7 +28,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 6 and forloop.counter <= 14 %}
+                {% if forloop.counter >= 8 and forloop.counter <= 16 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}
@@ -54,7 +55,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 15 and forloop.counter <= 16 %}
+                {% if forloop.counter >= 17 and forloop.counter <= 18 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}
@@ -82,7 +83,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 18 and forloop.counter <= 23 %}
+                {% if forloop.counter >= 20 and forloop.counter <= 25 %}
                 <tr>
                     <th>{{ sq.label }}</th>
                     {% for choice in sq %}
@@ -109,7 +110,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 24 and forloop.counter <= 30 %}
+                {% if forloop.counter >= 26 and forloop.counter <= 32 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}
@@ -136,7 +137,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 31 and forloop.counter <= 40 %}
+                {% if forloop.counter >= 33 and forloop.counter <= 42 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}
@@ -148,6 +149,10 @@
             </tbody>
         </table>
     </div>
+    <div class="alert border">{% formfield player.TERMINATION %}</div>
+    <div class="alert border">{% formfield player.termination_reason %}</div>
+    <div class="alert border">{% formfield player.text_field %}</div>
+
 
     <button class="btn btn-primary btn-large active">
 

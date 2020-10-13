@@ -11,6 +11,37 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     {
+        "name": "pre_test",
+        "display_name": "사전검사",
+        "num_demo_participants": 1,
+        "app_sequence": [
+            "introduction",
+            "pre_test",
+            "stroop",
+            "pre_test_d",
+        ]
+    },
+    {
+        "name": "post_test_normal",
+        "display_name": "사후검사",
+        "num_demo_participants": 1,
+        "app_sequence": [
+            "introduction",
+            "post_test",
+            "stroop",
+
+        ]
+    },
+    {
+        "name": "post_test_abnormal",
+        "display_name": "사후검사 불참자용 설문",
+        "num_demo_participants": 1,
+        "app_sequence": [
+            "introduction",
+            "post_test_d",
+        ]
+    },
+    {
         "name": "online_survey",
         "display_name": "온라인 설문조사",
         "num_demo_participants": 1,
@@ -18,29 +49,9 @@ SESSION_CONFIGS = [
             "online_survey",
 
         ]
-    },
-    {
-        "name": "pre_test",
-        "display_name":"사전검사",
-        "num_demo_participants":1,
-        "app_sequence":[
-            "pre_test",
-            "stroop",
-        ]
-    },
-{
-        "name": "post_test",
-        "display_name":"사후검사",
-        "num_demo_participants":1,
-        "app_sequence":[
-            "post_test",
-            "stroop",
-        ]
     }
 
-
 ]
-
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans

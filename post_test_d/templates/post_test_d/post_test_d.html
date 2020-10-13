@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-   행동강화물품 사후조사
+   행동강화물품 사후조사 불참자용 설문
 {% endblock %}
 
 {% block content %}
@@ -10,6 +10,8 @@
     <p class="alert-form-label">
         사후테스트 실시 못한 경우에는 이 부분만 작성해주시기 바랍니다.
     </p>
+    <div class="alert border">{%formfield player.participant_name %}</div>
+    <div class="alert border">{%formfield player.organization_type %}</div>
     <div class="alert border">{% formfield player.TERMINATION %}</div>
     <div class="alert border">{% formfield player.termination_reason %}</div>
     <div class="alert border">{% formfield player.text_field %}</div>

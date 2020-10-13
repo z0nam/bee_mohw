@@ -3,18 +3,13 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class post_test_1(Page):
+class post_test(Page):
     form_model = 'player'
     form_fields = [
         'participant_name',
         'organization_type',
-        'num_post_not',
-    ]
-
-
-class post_test_2(Page):
-    form_model = 'player'
-    form_fields = [
+        'participant_name',
+        'organization_type',
         'action_strengthening_prop_category',
         'smoking_desire_decrease_lickert',
         'post_smoking_cessation_health_status',
@@ -55,22 +50,13 @@ class post_test_2(Page):
         'ef_8',
         'ef_9',
         'ef_10',
-    ]
-
-    def vars_for_template(self):
-        return self.player.vars_for_template()
-
-    def is_displayed(self):
-        return self.player.num_post_not == 1
-
-
-class post_test_3(Page):
-    form_model = 'player'
-    form_fields = [
         'TERMINATION',
         'termination_reason',
         'text_field',
     ]
 
+    def vars_for_template(self):
+        return self.player.vars_for_template()
 
-page_sequence = [post_test_1, post_test_2, post_test_3]
+
+page_sequence = [post_test]
