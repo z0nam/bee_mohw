@@ -35,10 +35,10 @@ SESSION_CONFIGS = [
         app_sequence=['online_survey']
     ),
     dict(
-        name='stroop',
-        display_name='stroop test',
+        name="stroop_test",
+        display_name='Stroop Test',
         num_demo_participants=1,
-        app_sequence=['stroop'],
+        app_sequence=['stroop']
     ),
 ]
 

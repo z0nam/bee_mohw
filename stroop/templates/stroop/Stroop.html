@@ -2,11 +2,52 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    스트룹 테스트: {{ subsession.round_number }}/{{ Constants.num_rounds }}단계
+{% endblock %}
+
+{% block app_scripts %}
+    <script>
+        var round_number = {{ subsession.round_number }};
+        var correct_answers = {{ stroop_correct_answers|json }};
+        var displayed_characters = {{ stroop_displayed_characters|json }};
+        var displayed_color_codes = {{ stroop_displayed_color_codes|json }};
+        var displayed_colors = {{ stroop_displayed_colors|json }}
+        var color_strs = {{ color_strs|json }}
+    </script>
+{#    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>#}
+{#    <script type="text/javascript" src="{% static 'stroop/jquery.countdown-2.1.0/jquery.countdown.js' %}"></script>#}
+    <script src = "{% static 'stroop/stroop.js' %}?{{ seed_for_refresh_js_cache }}">
+    </script>
 {% endblock %}
 
 {% block content %}
 
-    {% next_button %}
+<div class="container" style="background-color:{{ background_color }};">
+    <div class="row justify-content-center" id="main_area">
+        <div class="row_keyword" id="keyword">로딩중입니다.. 잠시만 기다려 주시기 바랍니다.
+        </div>
+    </div>
+    <div class="row justify-content-center" id="button_area">
+        {% for key, color_str in color_strs.items %}
+            <button class="stroop_button btn btn-dark" type="button"> {{ color_str }}</button>
+        {% endfor %}
+    </div>
+</div>
+<div class="answer_mark" id="wrong_answer_mark">×</div>
+<div class="answer_mark" id="right_answer_mark">○</div>
+    <form id="form">
+        <input type="hidden" name="stroop_event_table" id="stroop_event_table">
+        <input type="hidden" name="stroop_item_table" id="stroop_item_table">
+        <input type="hidden" name="stroop_table" id="stroop_table">
 
+        <input type="hidden" name="c_time" id="c_time">
+        <input type="hidden" name="c_error" id="c_error">
+        <input type="hidden" name="c_item_size" id="c_item_size">
+        <input type="hidden" name="w_time" id="w_time">
+        <input type="hidden" name="w_error" id="w_error">
+        <input type="hidden" name="w_item_size" id="w_item_size">
+        <input type="hidden" name="cw_time" id="cw_time">
+        <input type="hidden" name="cw_error" id="cw_error">
+        <input type="hidden" name="cw_item_size" id="cw_item_size">
+    </form>
 {% endblock %}
