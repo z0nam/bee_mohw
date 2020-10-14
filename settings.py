@@ -73,6 +73,7 @@ ROOMS = []
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
+# to set password, $heroku config:set OTREE_ADMIN_PASSWORD="password_you_want"
 
 DEMO_PAGE_INTRO_HTML = """ """
 
