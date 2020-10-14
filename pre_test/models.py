@@ -217,14 +217,14 @@ def make_field_experience_frequency(index):
 
 
 class Player(BasePlayer):
-    participant_name = models.StringField(
-        label="귀하의 성명을 홍*동의 형태로 입력해주십시오.",
-        blank=True,
-    )
-    organization_type = models.StringField(
-        label="귀하의 소속기관을 입력해주십시오",
-        blank=True,
-    )
+    # participant_name = models.StringField(
+    #     label="귀하의 성명을 홍*동의 형태로 입력해주십시오.",
+    #     blank=True,
+    # )
+    # organization_type = models.StringField(
+    #     label="귀하의 소속기관을 입력해주십시오",
+    #     blank=True,
+    # )
     registration_type = models.IntegerField(
         label="귀하의 등록유형을 선택해주십시오.",
         choices=Constants.REGISTRATION_TYPE,
@@ -1147,7 +1147,7 @@ class Player(BasePlayer):
     ef_9 = make_field_experience_frequency(8)
     ef_10 = make_field_experience_frequency(9)
 
-    behavior_strengthening_material_barcode = models.StringField(
+    behavior_strengthening_material_barcode = models.IntegerField(
         label="지급받은 행동물품 일련번호를 입력해주십시오.",
         blank=True,
     )

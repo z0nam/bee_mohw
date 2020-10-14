@@ -224,6 +224,7 @@ class Satisfaction(Page):
 class pre_test(Page):
     form_model = 'player'
     form_fields = [
+        'behavior_strengthening_material_barcode',
         'self_reported_health_status',
         'stress_metric_self_reported',
         'afterward_smoking_cessation_yesno',
@@ -261,7 +262,6 @@ class pre_test(Page):
         'ef_8',
         'ef_9',
         'ef_10',
-        'behavior_strengthening_material_barcode',
         'gender',
         'birth_year',
         'region',

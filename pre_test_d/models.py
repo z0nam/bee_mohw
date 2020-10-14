@@ -292,7 +292,7 @@ class Player(BasePlayer):
     ef_9 = make_field_experience_frequency(8)
     ef_10 = make_field_experience_frequency(9)
 
-    behavior_strengthening_material_barcode = models.StringField(
+    behavior_strengthening_material_barcode = models.IntegerField(
         label="지급받은 행동물품 일련번호를 입력해주십시오.",
         blank=True,
     )

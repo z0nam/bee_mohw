@@ -6,8 +6,9 @@ from .models import Constants
 class post_test_d(Page):
     form_model = 'player'
     form_fields = [
-        'participant_name',
-        'organization_type',
+        'behavior_strengthening_material_barcode',
+        # 'participant_name',
+        # 'organization_type',
         'TERMINATION',
         'termination_reason',
         'text_field',

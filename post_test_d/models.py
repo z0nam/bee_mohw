@@ -47,12 +47,17 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    participant_name = models.StringField(
-        label="귀하의 성명을 홍*동의 형태로 입력해주십시오.",
-        blank=True,
-    )
-    organization_type = models.StringField(
-        label="귀하의 소속기관을 입력해주십시오",
+    # participant_name = models.StringField(
+    #     label="귀하의 성명을 홍*동의 형태로 입력해주십시오.",
+    #     blank=True,
+    # )
+    # organization_type = models.StringField(
+    #     label="귀하의 소속기관을 입력해주십시오",
+    #     blank=True,
+    # )
+
+    behavior_strengthening_material_barcode = models.IntegerField(
+        label="지급받은 행동물품 일련번호를 입력해주십시오.",
         blank=True,
     )
 

@@ -10,8 +10,12 @@
     <p class="alert-form-label">
         사후테스트 실시 못한 경우에는 이 부분만 작성해주시기 바랍니다.
     </p>
-    <div class="alert border">{%formfield player.participant_name %}</div>
-    <div class="alert border">{%formfield player.organization_type %}</div>
+
+    <p>★★ 지급된 행동강화물품의 일련번호(세 자리 숫자) 를 적어주시기 바랍니다. ★★</p>
+    <div class="alert border">{% formfield player.behavior_strengthening_material_barcode %}</div>
+
+{#    <div class="alert border">{%formfield player.participant_name %}</div>#}
+{#    <div class="alert border">{%formfield player.organization_type %}</div>#}
     <div class="alert border">{% formfield player.TERMINATION %}</div>
     <div class="alert border">{% formfield player.termination_reason %}</div>
     <div class="alert border">{% formfield player.text_field %}</div>

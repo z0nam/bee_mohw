@@ -45,10 +45,10 @@ class Constants(BaseConstants):
     L55_CHOICES = GlobalConstants.L55_CHOICES
     L56_CHOICES = GlobalConstants.L56_CHOICES
     ACTION_STRENGTHENING_PROP = [
-        [1, "물"],
-        [2, "식품류(비타민, 캔디, 껌 등)"],
-        [3, "손 운동용품(지압봉, 스냅스 등)"],
-        [4, "구강청결제(가글 등)"],
+        [1, "물병"],
+        [2, "식품류(캔디)"],
+        [3, "손 운동용품(스냅스)"],
+        [4, "구강청결제(치약세트)"],
         [5, "흡연욕구저하제(아로마금연파이프)"],
         [6, "흡연욕구저하제(체인지 스틱)"],
     ]
@@ -200,14 +200,20 @@ def make_field_experience_frequency(index):
 
 
 class Player(BasePlayer):
-    participant_name = models.StringField(
-        label="귀하의 성명을 홍*동의 형태로 입력해주십시오.",
+    # participant_name = models.StringField(
+    #     label="귀하의 성명을 홍*동의 형태로 입력해주십시오.",
+    #     blank=True,
+    # )
+    # organization_type = models.StringField(
+    #     label="귀하의 소속기관을 입력해주십시오",
+    #     blank=True,
+    # )
+    behavior_strengthening_material_barcode = models.IntegerField(
+        label="지급받은 행동물품 일련번호를 입력해주십시오.",
         blank=True,
     )
-    organization_type = models.StringField(
-        label="귀하의 소속기관을 입력해주십시오",
-        blank=True,
-    )
+
+
     action_strengthening_prop_category = models.IntegerField(
         label="귀하께서 지난 1주일 동안 사용한 행동강화물품의 종류는 무엇입니까?",
         choices=Constants.ACTION_STRENGTHENING_PROP,

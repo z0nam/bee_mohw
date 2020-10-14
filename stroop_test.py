@@ -5,7 +5,7 @@ import json
 
 META_KEYCODE = 32
 
-DEFAULT_BLOCK_NUMBER = 5
+DEFAULT_BLOCK_NUMBER = 30
 RED, BLUE, GREEN, YELLOW, WHITE = 1, 2, 3, 4, 5
 
 COLOR_SET = [
@@ -72,9 +72,10 @@ class Stroop:
         return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
     def print_stroop(self):
-        print("displayed_character:", self.displayed_character,
-              "displayed_color:", self.displayed_color,
-              "correct_answer:", self.correct_answer)
+        # print("displayed_character:", self.displayed_character,
+        #       "displayed_color:", self.displayed_color,
+        #       "correct_answer:", self.correct_answer)
+        pass
 
 
 class StroopC(Stroop):

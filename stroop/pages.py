@@ -47,8 +47,8 @@ class Stroop(Page):
         vars_to_return['stroop_displayed_characters'] = stroop_displayed_characters
         vars_to_return['stroop_displayed_color_codes'] = stroop_displayed_color_codes
         vars_to_return['stroop_displayed_colors'] = stroop_displayed_colors
-        vars_to_return['seed_for_refresh_js_cache'] = random.random()
-        # vars_to_return['seed_for_refresh_js_cache'] = 0    #when production, use this
+        # vars_to_return['seed_for_refresh_js_cache'] = random.random()
+        vars_to_return['seed_for_refresh_js_cache'] = 0    # when production, use this
 
         vars_to_return['color_strs'] = stroop_test.COLOR_STR
         vars_to_return['background_color'] = stroop_test.BACKGROUND_COLOR

@@ -6,8 +6,10 @@
 {% endblock %}
 
 {% block content %}
-     <div class="alert border">{%formfield player.participant_name %}</div>
-    <div class="alert border">{%formfield player.organization_type %}</div>
+    <p>★★ 지급된 행동강화물품의 일련번호(세 자리 숫자) 를 적어주시기 바랍니다. ★★</p>
+    <div class="alert border">{% formfield player.behavior_strengthening_material_barcode %}</div>
+{#     <div class="alert border">{%formfield player.participant_name %}</div>#}
+{#    <div class="alert border">{%formfield player.organization_type %}</div>#}
     <div class="alert border">{% formfield player.action_strengthening_prop_category %}</div>
     <div class="alert border">{% formfield player.smoking_desire_decrease_lickert %}</div>
     <div class="alert border">{% formfield player.post_smoking_cessation_health_status %}</div>
@@ -28,7 +30,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 8 and forloop.counter <= 16 %}
+                {% if forloop.counter >= 7 and forloop.counter <= 15 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}
@@ -55,7 +57,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 17 and forloop.counter <= 18 %}
+                {% if forloop.counter >= 16 and forloop.counter <= 17 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}
@@ -83,7 +85,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 20 and forloop.counter <= 25 %}
+                {% if forloop.counter >= 19 and forloop.counter <= 24 %}
                 <tr>
                     <th>{{ sq.label }}</th>
                     {% for choice in sq %}
@@ -110,7 +112,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 26 and forloop.counter <= 32 %}
+                {% if forloop.counter >= 25 and forloop.counter <= 31 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}
@@ -137,7 +139,7 @@
             </thead>
             <tbody>
             {% for sq in form %}
-                {% if forloop.counter >= 33 and forloop.counter <= 42 %}
+                {% if forloop.counter >= 32 and forloop.counter <= 41 %}
                     <tr>
                         <th>{{ sq.label }}</th>
                         {% for choice in sq %}

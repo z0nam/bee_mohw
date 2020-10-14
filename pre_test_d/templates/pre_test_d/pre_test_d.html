@@ -18,6 +18,10 @@
     <div class="alert border">
         <p>※ 금연클리닉 사전조사</p>
     </div>
+
+    <p>★★ 지급된 행동강화물품의 일련번호(세 자리 숫자) 를 적어주시기 바랍니다. ★★</p>
+    <div class="alert border">{% formfield player.behavior_strengthening_material_barcode %}</div>
+
     <div class="alert border">{% formfield player.self_reported_health_status %}</div>
     <div class="alert border">{% formfield player.stress_metric_self_reported %}</div>
     <div class="alert border">{% formfield player.afterward_smoking_cessation_yesno %}</div>
@@ -36,7 +40,7 @@
         </thead>
         <tbody>
         {% for sq in form %}
-            {% if forloop.counter >= 4 and forloop.counter <= 12  %}
+            {% if forloop.counter >= 5 and forloop.counter <= 13  %}
                 <tr>
                 <th>{{ sq.label }}</th>
                 {% for choice in sq %}
@@ -61,7 +65,7 @@
         </thead>
         <tbody>
         {% for sq in form %}
-            {% if forloop.counter >= 13 and forloop.counter <= 14 %}
+            {% if forloop.counter >= 14 and forloop.counter <= 15 %}
                 <tr>
                 <th>{{ sq.label }}</th>
                 {% for choice in sq %}
@@ -86,7 +90,7 @@
         </thead>
         <tbody>
         {% for sq in form %}
-            {% if forloop.counter >= 15 and forloop.counter <= 20 %}
+            {% if forloop.counter >= 16 and forloop.counter <= 21 %}
                 <tr>
                 <th>{{ sq.label }}</th>
                 {% for choice in sq %}
@@ -111,7 +115,7 @@
         </thead>
         <tbody>
         {% for sq in form %}
-            {% if forloop.counter >= 21 and forloop.counter <= 27 %}
+            {% if forloop.counter >= 22 and forloop.counter <= 28 %}
                 <tr>
                 <th>{{ sq.label }}</th>
                 {% for choice in sq %}
@@ -136,7 +140,7 @@
         </thead>
         <tbody>
         {% for sq in form %}
-            {% if forloop.counter >= 28 and forloop.counter <= 37 %}
+            {% if forloop.counter >= 29 and forloop.counter <= 38 %}
                 <tr>
                 <th>{{ sq.label }}</th>
                 {% for choice in sq %}
@@ -148,8 +152,7 @@
         </tbody>
     </table>
     </div>
- 		<p>★★주의 : 행동강화물품 일련번호 입력!★★</p>
-    <div class="alert border">{% formfield player.behavior_strengthening_material_barcode %}</div>
+
     <!--TODO: 스트룹 테스트-->
     <div class="alert border">
  		<p>★★인구통계학적 기본 정보★★</p>

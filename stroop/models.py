@@ -26,7 +26,6 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = len(stroop_test.default_SessionBlocks.name_of_test)
 
-    #todo meta_keycode는 쓰면 안됨: 팝업창(alert) 쓰는 방식으로 진행할 것.
     META_KEYCODE = stroop_test.META_KEYCODE
 
     META_KEY_NAME = '스페이스 바'
@@ -37,8 +36,8 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             for p in self.get_players():
                 p.participant.vars['SessionBlocks'] = stroop_test.SessionBlocks()
-                print("SessionBlocks() called. item size:", len(p.participant.vars['SessionBlocks'].items['c']))
-                print("DEFAULT_BLOCK_NUMBER:", stroop_test.DEFAULT_BLOCK_NUMBER)
+                # print("SessionBlocks() called. item size:", len(p.participant.vars['SessionBlocks'].items['c']))
+                # print("DEFAULT_BLOCK_NUMBER:", stroop_test.DEFAULT_BLOCK_NUMBER)
 
 
 class Group(BaseGroup):
