@@ -11,14 +11,22 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     {
+        "name": "smoking_cessation_clinic",
+        "display_name": "금연클리닉 등록카드",
+        "num_demo_participants": 1,
+        "app_sequence": [
+            "pre_test",
+        ]
+    },
+    {
         "name": "pre_test",
         "display_name": "사전검사",
         "num_demo_participants": 1,
         "app_sequence": [
             "introduction",
-            "pre_test",
-            "stroop",
             "pre_test_d",
+            "stroop",
+
         ]
     },
     {
@@ -37,7 +45,6 @@ SESSION_CONFIGS = [
         "display_name": "사후검사 불참자용 설문",
         "num_demo_participants": 1,
         "app_sequence": [
-            "introduction",
             "post_test_d",
         ]
     },
