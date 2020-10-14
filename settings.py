@@ -93,6 +93,8 @@ SECRET_KEY = 'kzg55!*oiwbf4u$)y3+r90+&6j!&l@m-roa7!^et772ngl#gm!'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 # ADDED by namun, to fix the 500 error related to "ValueError: Missing staticfiles manifest entry for ''"
 # source: https://devcenter.heroku.com/articles/django-assets
 
