@@ -290,18 +290,20 @@ class Player(BasePlayer):
     ef_10 = make_field_experience_frequency(9)
 
     TERMINATION = models.IntegerField(
-        label="금연프로그램이 정상적으로 종결되었는지 혹은 중간에 종결되었는지를 선택해 주십시오.",
+        label="행동실험이 정상적으로 종결되었는지 혹은 중간에 종결되었는지를 선택해 주십시오.",
         choices=[
             [1, "정상종결"],
             [2, "중간종결"],
         ],
         widget=widgets.RadioSelectHorizontal,
+        blank=True,
     )
 
     termination_reason = models.IntegerField(
-        label="금연프로그램이 종결된 사유를 선택해주십시오.",
+        label="행동실험이 종결된 사유를 선택해주십시오.",
         choices=Constants.TERMINATION_REASON,
         widget=widgets.RadioSelect,
+        blank=True,
     )
     text_field = models.LongStringField(
         label="메모남겨주실 부분 있으시면 여기에 남겨주시면 감사드리겠습니다.",
