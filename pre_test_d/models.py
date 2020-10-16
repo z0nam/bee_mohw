@@ -308,7 +308,7 @@ class Player(BasePlayer):
 
     birth_year = models.IntegerField(
         label="귀하의 출생년도는 몇년도이십니까?",
-        choices=range(1940, 2001),
+        choices=range(1940, 2002),
         blank=True,
     )
 
