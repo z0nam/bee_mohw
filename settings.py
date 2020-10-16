@@ -86,7 +86,17 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 # to set password, $heroku config:set OTREE_ADMIN_PASSWORD="password_you_want"
 
-DEMO_PAGE_INTRO_HTML = """ """
+DEMO_PAGE_TITLE = "흡연 및 금연 경험에 관한 연구 (보건복지부)"
+
+DEMO_PAGE_INTRO_HTML = """ 
+<h5> 주관: 한국행동경제학연구소, 금연학회 </h6>
+<table>
+    <tr>
+        <td width="50%"><img width="100%" src="https://kberi.files.wordpress.com/2020/10/kberi_logo200.jpg"></td>
+        <td width="50%"><img width="90%" src="http://www.ksrnt.org/img/main/logo_2018.png"></td>
+    </tr>
+</table>
+"""
 
 SECRET_KEY = 'kzg55!*oiwbf4u$)y3+r90+&6j!&l@m-roa7!^et772ngl#gm!'
 
@@ -94,27 +104,3 @@ SECRET_KEY = 'kzg55!*oiwbf4u$)y3+r90+&6j!&l@m-roa7!^et772ngl#gm!'
 INSTALLED_APPS = ['otree']
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-# ADDED by namun, to fix the 500 error related to "ValueError: Missing staticfiles manifest entry for ''"
-# source: https://devcenter.heroku.com/articles/django-assets
-
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# print("BASE_DIR:", BASE_DIR)
-#
-# # Static files (CSS, JavaScript, Images)
-# # https://docs.djangoproject.com/en/1.9/howto/static-files/
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATIC_URL = '/static/'
-#
-# # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-#
-# MIDDLEWARE_CLASSES = (
-#     # Simplified static file serving.
-#     # https://warehouse.python.org/project/whitenoise/
-#     'whitenoise.middleware.WhiteNoiseMiddleware',
-# )
-#
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

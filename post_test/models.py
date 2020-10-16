@@ -102,7 +102,7 @@ class Constants(BaseConstants):
     ]
 
     WHY_YOU_COULD_NOT_CONTINUE_QUITTING_SMOKING_AFTER_PAST_ONE_WEEK = [
-        [1, "금연유지 중임"],
+        [1, "금연에 실패하지 않았음 (금연유지 중임)"],
         [2, "금단증상이 나타나서"],
         [3, "스트레스가 많아서"],
         [4, "의지력이 부족해서"],
