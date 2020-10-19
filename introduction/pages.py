@@ -15,6 +15,11 @@ class Consent_IRB(Page):
         }
 
 class Consent_confirm(Page):
+    form_model = 'player'
+    form_fields = [
+        'fgi_will',
+    ]
+
     def before_next_page(self):
         # print("#### before_next_page called")
         self.participant.vars['expiry'] = time.time() + GlobalConstants.EXPIRE_SECONDS
