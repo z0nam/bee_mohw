@@ -33,3 +33,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     panel_id = models.StringField()
+    fgi_will = models.BooleanField(
+        label="<-- 그룹인터뷰 참여의사가 있으신 분은 체크해주세요. 향후 모집시 우선 연락드릴 것입니다. ",
+        blank=True,
+        widget=widgets.CheckboxInput,
+    )
