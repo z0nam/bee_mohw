@@ -1,0 +1,115 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    흡연자 평가
+{% endblock %}
+{% block app_scripts %}
+    <script>
+
+        $(document).ready(function(){
+            op_checker("id_smoking_cessation_this_time_reason_primary_8","smoking_cessation_this_time_reason_primary_op")
+            op_checker("id_smoking_cessation_this_time_reason_secondary_8","smoking_cessation_this_time_reason_secondary_op")
+            op_checker("id_smoking_cessation_this_time_reason_tertiary_8","smoking_cessation_this_time_reason_tertiary_op")
+        })
+    </script>
+{% endblock %}
+{% block content %}
+
+    <div class="alert border">
+        <p>※ 지난 1년 동안 귀하의 금연 시도 여부에 관해 답해 주십시오.</p>
+        <p>※ 지난 1년 동안 귀하의 금연 시도 하셨다면 가장오랫동안 금연을 시도하신 기간을 __개월 __일로 환산하여 입력해주십시오.</p>
+    </div>
+
+    <div class="alert border">{% formfield player.within_last_one_year_smoking_cessation_tryout_yesno %}</div>
+    <div class="alert border">{% formfield player.within_last_one_year_smoking_cessation_tryout_yesno_op_month %}</div>
+    <div class="alert border">{% formfield player.within_last_one_year_smoking_cessation_tryout_yesno_op_days %}</div>
+
+    <div class="alert border"><p>귀하께서 담배를 끊기 위해서  시도했던 방법은? (해당사항 모두 표시)</p>
+        {% formfield player.smoking_cessation_method_1 %}
+        {% formfield player.smoking_cessation_method_2 %}
+        {% formfield player.smoking_cessation_method_3 %}
+        {% formfield player.smoking_cessation_method_4 %}
+        {% formfield player.smoking_cessation_method_5 %}
+        {% formfield player.smoking_cessation_method_6 %}
+	</div>
+
+    <div class="alert border"><p>귀하께서 금연에 실패한 이유는? (해당사항 모두 표시)</p>
+        {% formfield player.smoking_cessation_failure_reason_1 %}
+        {% formfield player.smoking_cessation_failure_reason_2 %}
+        {% formfield player.smoking_cessation_failure_reason_3 %}
+        {% formfield player.smoking_cessation_failure_reason_4 %}
+        {% formfield player.smoking_cessation_failure_reason_5 %}
+        {% formfield player.smoking_cessation_failure_reason_6 %}
+	</div>
+
+    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_primary %}
+    <div class="optional" id="smoking_cessation_this_time_reason_primary_op">{% formfield player.smoking_cessation_this_time_reason_primary_op %}</div></div>
+    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_secondary %}
+    <div class="optional" id="smoking_cessation_this_time_reason_secondary_op">{% formfield player.smoking_cessation_this_time_reason_secondary_op %}</div></div>
+    <div class="alert border">{% formfield player.smoking_cessation_this_time_reason_tertiary %}
+    <div class="optional" id="smoking_cessation_this_time_reason_tertiary_op">{% formfield player.smoking_cessation_this_time_reason_tertiary_op %}</div></div>
+
+    <div class="alert border"><p>평소에 하루 중 흡연을 참기 힘든 시기는 언제입니까? (해당사항 모두 표시)</p>
+        {% formfield player.hardest_event_to_resist_smoking_desire_1 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_2 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_3 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_4 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_5 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_6 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_7 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_8 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_9 %}
+        {% formfield player.hardest_event_to_resist_smoking_desire_10 %}
+	</div>
+    <div class="alert border">
+        <p>※ 금연동기, 금연자신감, 금연 준비 정도 (다음의 각 항목에 따라 1점부터 10점까지 체크)</p>
+
+    </div>
+<!--    <div class="alert border">{% formfield player.smoking_cessation_motivation %}</div>-->
+<!--    <div class="alert border">{% formfield player.smoking_cessation_confidence %}</div>-->
+<!--    <div class="alert border">{% formfield player.smoking_cessation_readiness %}</div>-->
+<!--    <div class="alert border">-->
+    <div class="alert row border">
+            금연은 당신에게 어느 정도 중요합니까?
+            <br>[금연동기] 0점 : 매우 중요하지 않음; 10점 : 매우 중요함</br>
+            <table class="table">
+                <tr>
+                    <td>{{ form.smoking_cessation_motivation.label }}</td>
+                    {% for choice in form.smoking_cessation_motivation %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert row border">
+            당신은 금연에 성공할 자신감이 어느 정도 입니까?
+             <br>[금연자신감] 0점: 자신감이 매우 낮음; 10점: 자신감이 매우 높음</br>
+            <table class="table">
+                <tr>
+                    <td>{{ form.smoking_cessation_confidence.label }}</td>
+                    {% for choice in form.smoking_cessation_confidence %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+    <div class="alert row border">
+             당신은 금연할 준비가 어느 정도 되어 있습니까?
+             <br>[금연 준비 정도] 0점: 하나도 준비가 되지 않았음; 10점: 완벽하게 준비가 되었음</br>
+            <table class="table">
+                <tr>
+                    <td>{{ form.smoking_cessation_readiness.label }}</td>
+                    {% for choice in form.smoking_cessation_readiness %}
+                        <td>{{ choice }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </div>
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

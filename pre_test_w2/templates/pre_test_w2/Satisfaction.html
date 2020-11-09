@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    만족도조사
+{% endblock %}
+
+
+{% block content %}
+    <div class="alert border">
+        <p>※ 만족도 조사</p>
+    </div>
+
+    <div class="center-align">
+    <table class="tableFixedHead table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th></th>
+            {% for sq_choices in L53 %}
+            <th>{{ sq_choices }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for sq in form %}
+            {% if forloop.counter >= 1 and forloop.counter <= 7 %}
+                <tr>
+                <th>{{ sq.label }}</th>
+                {% for choice in sq %}
+                <td class="text-center align-middle">{{ choice.tag }}</td>
+                {% endfor %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+     <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

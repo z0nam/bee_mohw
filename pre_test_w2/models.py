@@ -13,10 +13,10 @@ from otree.api import (
 from Global_Constants import GlobalConstants
 from . import pre_test_questions
 
-author = 'Kyubum Moon <mailto:moonx190@umn.edu>'
+author = 'Kyubum Moon <mailto:moonx190@umn.edu>, Namun Cho <mailto:dr.strangelove@kberi.re.kr>'
 
 doc = """
-행동강화물품 행동실험 사전조사
+행동강화물품 행동실험 사전조사 (wave 2)
 """
 
 

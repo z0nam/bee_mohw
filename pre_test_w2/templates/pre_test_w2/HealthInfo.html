@@ -1,0 +1,115 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    건강정보
+{% endblock %}
+{% block app_scripts %}
+    <script>
+
+        $(document).ready(function(){
+            op_checker("id_nicotine_patch_adverse_effect_7","nicotine_patch_adverse_effect_op")
+            op_checker("id_occupation_15","occupation_op")
+        })
+    </script>
+{% endblock %}
+{% block content %}
+
+    <div class="alert border">{% formfield player.height %}</div>
+    <div class="alert border">{% formfield player.weight %}</div>
+    <div class="alert border">{% formfield player.waist_circumference %}</div>
+    <div class="alert border">{% formfield player.carbon_monoxide %}</div >
+    <div class="alert border">{% formfield player.systolic_blood_pressure %}</div>
+    <div class="alert border">{% formfield player.diastolic_blood_pressure %}</div>
+	<div class="alert border"><p>귀하의 질병력을 선택해주십시오 (복수응답 가능)</p>
+        {% formfield player.disease_history_1 %}
+        {% formfield player.disease_history_2 %}
+        {% formfield player.disease_history_3 %}
+        {% formfield player.disease_history_4 %}
+        {% formfield player.disease_history_5 %}
+        {% formfield player.disease_history_6 %}
+        {% formfield player.disease_history_7 %}
+        {% formfield player.disease_history_8 %}
+        {% formfield player.disease_history_9 %}
+        {% formfield player.disease_history_10 %}
+        {% formfield player.disease_history_11 %}
+        {% formfield player.disease_history_12 %}
+        {% formfield player.disease_history_13 %}
+        {% formfield player.disease_history_14 %}
+        {% formfield player.disease_history_15 %}
+        {% formfield player.disease_history_16 %}
+        {% formfield player.disease_history_17 %}
+        {% formfield player.disease_history_18 %}
+        {% formfield player.disease_history_19 %}
+        {% formfield player.disease_history_20 %}
+        {% formfield player.disease_history_21 %}
+        {% formfield player.disease_history_22 %}
+        {% formfield player.disease_history_23 %}
+        {% formfield player.disease_history_24 %}
+        {% formfield player.disease_history_25 %}
+        {% formfield player.disease_history_26 %}
+        {% formfield player.disease_history_27 %}
+        {% formfield player.disease_history_28 %}
+        {% formfield player.disease_history_29 %}
+        {% formfield player.disease_history_30 %}
+        {% formfield player.disease_history_31 %}
+    </div>
+    <div class="alert border">{% formfield player.drug_in_use %}</div>
+    <div class="alert border">{% formfield player.did_you_drink_within_the_last_one_year %}</div>
+    <div class="alert border">
+        <p>※ 귀하의 음주경험에 대한 설문에 답변해주십시오.</p>
+        <p>※ 주로 마시는 술 종류의 잔을 기준으로 음주량 확인</p>
+        <p>기준 예시) 맥주 1병=4잔, 소주 1병=7잔</p>
+    </div>
+    <div class="alert border">{% formfield player.drinking_amount_per_drinking_outing %}</div>
+    <div class="alert border">{% formfield player.drinking_frequency_per_week %}</div>
+    <div class="alert border">
+        <p>※ 귀하의 운동경험에 대해 답변해주십시오</p>
+    </div>
+    <div class="alert border">{% formfield player.intense_workout_yes_no %}</div>
+    <div class="alert border">
+        ※ 운동의 종류에 대한 설명입니다.
+        <br>등척성 운동: 근육과 관절에 변화가 없는 상태에서 힘을 쓰는 운동</br>
+		    등장성 운동: 관절과 함께 근의 길이가 변화하는 운동 (예: 무거운 물체를 드는 것이나 체조)
+        <br>등속성 운동: 일정한 속도에 의해 힘을 쓰는 운동</br>
+		    무산소 운동: 산소가 충분하거나 없는 상태에서 하는 운동
+		<br>유산소 운동: 편안한 호흡을 지속하면서 할 수 있는 운동 (예: 조깅, 경보, 수영, 사이클)</br>
+        <br>{% formfield player.type_of_workout %}</br>
+    </div>
+    <div class="alert border">{% formfield player.workout_frequency %}</div>
+    <div class="alert border">{% formfield player.workout_minutes_per_time %}</div>
+    <div class="alert border">
+        <p>※ 흡연관련설문</p>
+    </div>
+    <div class="alert border">{% formfield player.age_of_first_smoking %}</div>
+    <div class="alert border">{% formfield player.avg_daily_smoking_amount_in_gaebi %}</div>
+    <div class="alert border">{% formfield player.total_smoking_years %}</div>
+    <div class="alert border">{% formfield player.nicotine_patch_adverse_effect %}
+    <div class="optional" id="nicotine_patch_adverse_effect_op">{% formfield player.nicotine_patch_adverse_effect_op %}</div></div>
+    <div class="alert border"><p>사용중인 담배제품을 표시해주시기 바랍니다. (복수응답 가능)</p>
+        {% formfield player.tobacco_type_in_use_1 %}
+        {% formfield player.tobacco_type_in_use_2 %}
+        {% formfield player.tobacco_type_in_use_3 %}
+        {% formfield player.tobacco_type_in_use_4 %}
+        {% formfield player.tobacco_type_in_use_5 %}
+        {% formfield player.tobacco_type_in_use_6 %}
+        {% formfield player.tobacco_type_in_use_7 %}
+        {% formfield player.tobacco_type_in_use_8 %}
+        {% formfield player.tobacco_type_in_use_9 %}
+        {% formfield player.tobacco_type_in_use_10 %}
+        {% formfield player.tobacco_type_in_use_11 %}
+        {% formfield player.tobacco_type_in_use_12 %}
+        {% formfield player.tobacco_type_in_use_13 %}
+    </div>
+    <div class="alert border">{% formfield player.medical_guarantee %}</div>
+    <div class="alert border">{% formfield player.highest_schooling %}</div>
+    <div class="alert border">{% formfield player.occupation %}
+    <div class="optional" id="occupation_op">{% formfield player.occupation_op %}</div></div>
+
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}
