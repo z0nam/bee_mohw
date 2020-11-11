@@ -897,7 +897,6 @@ class Player(BasePlayer):
         label="이번에 금연을 시도하는 첫번째 이유 ",
         choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
         widget = widgets.RadioSelect,
-        blank = True,
     )
 
     smoking_cessation_this_time_reason_primary_op = models.StringField(
@@ -909,7 +908,6 @@ class Player(BasePlayer):
         label = "이번에 금연을 시도하는 두번째 이유 ",
         choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
         widget = widgets.RadioSelect,
-        blank = True,
     )
 
     smoking_cessation_this_time_reason_secondary_op = models.StringField(
@@ -921,7 +919,6 @@ class Player(BasePlayer):
         label="이번에 금연을 시도하는 세번째 이유 ",
         choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
         widget = widgets.RadioSelect,
-        blank = True,
     )
 
     smoking_cessation_this_time_reason_tertiary_op = models.StringField(
