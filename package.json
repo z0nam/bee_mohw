@@ -1,0 +1,24 @@
+{
+  "name": "bee_mohw",
+  "version": "1.0.0",
+  "description": "Behavioral Enhancement Experiment for Ministry Of Health and Welfare 과제명: 행동강화 물품이 금연동기강화 및 금연유지에 미치는 효과분석",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z0nam/bee_mohw.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/z0nam/bee_mohw/issues"
+  },
+  "homepage": "https://github.com/z0nam/bee_mohw#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3"
+  }
+}
