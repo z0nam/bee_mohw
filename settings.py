@@ -14,25 +14,6 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     {
-        "name": "smoking_cessation_clinic",
-        "display_name": "금연클리닉 등록카드(연구자 입력용)",
-        "num_demo_participants": 1,
-        "app_sequence": [
-            "pre_test_w2",
-        ]
-    },
-    {
-        "name": "pre_test_w2",
-        "display_name": "사전검사",
-        "num_demo_participants": 1,
-        "app_sequence": [
-            "introduction",
-            "pre_test_d",
-            "stroop",
-
-        ]
-    },
-    {
         "name": "pre_test_wave2",
         "display_name": "사전검사 (wave 2)",
         "num_demo_participants": 1,
@@ -63,24 +44,6 @@ SESSION_CONFIGS = [
             "post_test_d",
         ]
     },
-    {
-        "name": "online_survey",
-        "display_name": "온라인 설문조사",
-        "num_demo_participants": 1,
-        "app_sequence": [
-            "online_survey",
-
-        ]
-    },
-    {
-        "name": "stroop",
-        "display_name": "Stroop Test",
-        "num_demo_participants": 1,
-        "app_sequence": [
-            "stroop",
-        ]
-    }
-
 ]
 
 # ISO-639 code
