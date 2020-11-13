@@ -6,7 +6,6 @@ from .models import Constants
 class pre_test_d(Page):
     form_model = 'player'
     form_fields = [
-        'behavior_strengthening_material_barcode',
         'self_reported_health_status',
         'stress_metric_self_reported',
         'afterward_smoking_cessation_yesno',

@@ -6,7 +6,7 @@ from .models import Constants
 class BasicInfo(Page):
     form_model = 'player'
     form_fields = [
-        'behavior_strengthening_material_barcode',
+        # 'behavior_strengthening_material_barcode',
         'registration_type',
         'smoking_cessation_start_year',
         'smoking_cessation_start_month',

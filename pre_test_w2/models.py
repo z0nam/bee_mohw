@@ -44,7 +44,7 @@ class Constants(BaseConstants):
         [3, "대학생"],
         [4, "장애인"],
         [5, "소규모사업장"],
-        [6, "기타"],
+        [6, "기타(위의 유형에 해당하지 않음)"],
     ]
 
     MAX_YEAR = 2020
@@ -176,8 +176,8 @@ def make_field_smoker_type(index):
         label=Constants.smoker_type[index-1],
         widget=widgets.RadioSelectHorizontal,
         choices=Constants.L5_CHOICES,
-        blank=True,
     )
+
 def make_field_satisfaction(index):
     return models.IntegerField(
         label=Constants.satisfaction[index-1],
@@ -413,22 +413,22 @@ class Player(BasePlayer):
     )
 
     waist_circumference = models.FloatField(
-        label="귀하의 복부둘레를 inch 입력해주십시오.",
+        label="귀하의 복부둘레를 inch 입력해주십시오.(모를 경우 생략 가능)",
         blank=True,
     )
 
     carbon_monoxide = models.FloatField(
-        label="귀하의 호기일산화탄소를 ppm단위로 입력해주십시오.",
+        label="귀하의 호기일산화탄소를 ppm단위로 입력해주십시오.(모를 경우 생략 가능)",
         blank=True,
     )
 
     systolic_blood_pressure = models.IntegerField(
-        label="귀하의 수축기혈압을 입력해주십시오.",
+        label="귀하의 수축기혈압을 입력해주십시오.(모를 경우 생략 가능)",
         blank=True,
     )
 
     diastolic_blood_pressure = models.IntegerField(
-        label="귀하의 이완기혈압을 입력해주십시오.",
+        label="귀하의 이완기혈압을 입력해주십시오.(모를 경우 생략 가능)",
         blank=True,
     )
 
@@ -618,7 +618,7 @@ class Player(BasePlayer):
     )
 
     drug_in_use = models.StringField(
-        label="현재 귀하께서 복용 중인 약물을 입력해주십시오.",
+        label="현재 귀하께서 복용 중인 약물을 입력해주십시오.(없을 경우 '없음' 입력)",
         blank=True,
     )
 
@@ -626,7 +626,6 @@ class Player(BasePlayer):
         label="최근 1년 간 음주경험이 있습니까?",
         choices=Constants.BINARY_POSSESSION,
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     drinking_amount_per_drinking_outing = models.IntegerField(
@@ -642,7 +641,6 @@ class Player(BasePlayer):
         label="귀하는 주 1회, 10분 이상, 중강도 신체활동을 실천하십니까?",
         choices=Constants.BINARY_POSSESSION,
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     type_of_workout = models.IntegerField(
@@ -653,20 +651,21 @@ class Player(BasePlayer):
             [3, "등속성 운동"],
             [4, "무산소 운동"],
             [5, "유산소 운동"],
+            [6, "없음 (운동하지 않음)"]
         ],
         widget=widgets.RadioSelect,
         blank=True,
     )
 
     workout_frequency = models.IntegerField(
-        label = "일주일에 평균 몇 회 운동하십니까?",
+        label = "일주일에 평균 몇 회 운동하십니까? (1회 미만시 0 입력)",
         choices=range(101),
         blank=True,
 
     )
 
     workout_minutes_per_time = models.IntegerField(
-        label="한 번 운동할 때 평균 몇 분 정도 운동하십니까?",
+        label="한 번 운동할 때 평균 몇 분 정도 운동하십니까? (없거나 모를 경우 0 입력)",
         blank=True,
     )
 
@@ -677,7 +676,7 @@ class Player(BasePlayer):
     )
 
     avg_daily_smoking_amount_in_gaebi = models.IntegerField(
-        label="귀하의 하루 평균 흡연량을 개비로 환산하여 선택해주십시오.",
+        label="귀하의 하루 평균 흡연량을 개비로 환산하여 선택해주십시오. (최근 흡연 기준)",
         choices=range(101),
         blank=True,
     )
@@ -689,7 +688,7 @@ class Player(BasePlayer):
     )
 
     nicotine_patch_adverse_effect = models.IntegerField(
-        label="귀하의 니코틴 패치 금기증상 여부를 표시해주십시오.",
+        label="귀하의 니코틴 패치 금기증상 여부를 표시해주십시오. (모를 경우 기타란에 '모름'입력)",
         choices=Constants.NICOTINE_PATCH_ADVERSE_EFFECT,
         widget=widgets.RadioSelect,
         blank=True,
@@ -808,19 +807,16 @@ class Player(BasePlayer):
         label="귀하는 지난 1년 동안 금연 시도를 하셨습니까?",
         choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     within_last_one_year_smoking_cessation_tryout_yesno_op_month = models.IntegerField(
-        label="작년 1년동안 가장오랫동안 금연시도를 한 개월수를 입력해주십시오.",
-        choices=range(0,13),
-        blank=True,
+        label="작년 1년동안 가장오랫동안 금연시도를 한 개월수를 입력해주십시오. 가령 x개월 y일 금연했다면 이 질문에 x를 입력해주세요 (없으면 0입력)",
+        choices=range(0, 13),
     )
 
     within_last_one_year_smoking_cessation_tryout_yesno_op_days = models.IntegerField(
-        label="작년 1년동안 가장오랫동안 금연시도를 한 일수 입력해주십시오.",
+        label="작년 1년동안 가장오랫동안 금연시도를 한 일수 입력해주십시오. 가령 x개월 y일 금연했다면 이 질문에 y를 입력해주세요 (없으면 0입력)",
         choices=range(0, 30),
-        blank=True,
     )
 
     smoking_cessation_method_1 = models.BooleanField(
@@ -895,19 +891,19 @@ class Player(BasePlayer):
 
     smoking_cessation_this_time_reason_primary = models.IntegerField(
         label="이번에 금연을 시도하는 첫번째 이유 ",
-        choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
-        widget = widgets.RadioSelect,
+        choices=Constants.SMOKING_CESSATION_THIS_TIME_REASON,
+        widget=widgets.RadioSelect,
     )
 
     smoking_cessation_this_time_reason_primary_op = models.StringField(
-        label = "기타(직접입력)",
-        blank = True,
+        label="기타(직접입력)",
+        blank=True,
     )
 
     smoking_cessation_this_time_reason_secondary = models.IntegerField(
-        label = "이번에 금연을 시도하는 두번째 이유 ",
-        choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
-        widget = widgets.RadioSelect,
+        label="이번에 금연을 시도하는 두번째 이유 ",
+        choices=Constants.SMOKING_CESSATION_THIS_TIME_REASON,
+        widget=widgets.RadioSelect,
     )
 
     smoking_cessation_this_time_reason_secondary_op = models.StringField(
@@ -917,8 +913,8 @@ class Player(BasePlayer):
 
     smoking_cessation_this_time_reason_tertiary = models.IntegerField(
         label="이번에 금연을 시도하는 세번째 이유 ",
-        choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
-        widget = widgets.RadioSelect,
+        choices=Constants.SMOKING_CESSATION_THIS_TIME_REASON,
+        widget=widgets.RadioSelect,
     )
 
     smoking_cessation_this_time_reason_tertiary_op = models.StringField(
@@ -989,35 +985,30 @@ class Player(BasePlayer):
         label="",
         choices=range(11),
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     smoking_cessation_confidence = models.IntegerField(
         label="",
         choices=range(11),
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     smoking_cessation_readiness = models.IntegerField(
         label="",
         choices=range(11),
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     morning_smoking_time = models.IntegerField(
         label="아침에 일어나서 얼마 만에 첫 담배를 피우십니까?",
         choices=Constants.TIME_DIVISION,
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     smoking_resistancy = models.BooleanField(
         label="금연구역(도서관, 극장, 병원 등)에서 담배를 참기가 어렵습니까?",
         choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     most_tasty_smoking_time = models.IntegerField(
@@ -1027,7 +1018,6 @@ class Player(BasePlayer):
             [0, "그 외의 담배"],
         ],
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     how_many_gaebis_per_day = models.IntegerField(
@@ -1039,21 +1029,18 @@ class Player(BasePlayer):
                 [3, "31개비 이상"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     morning_smoking_more_than_the_rest_of_day = models.BooleanField(
         label="아침에 일어나서 첫 몇 시간 동안하루 중 다른 시간보다 거 자주 담배를 피우십니까?",
         choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     sick_all_day_still_smoking = models.BooleanField(
         label="몸이 아파 하루 종일 누워있을 때에도 담배를 피우십니까?",
         choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
-        blank=True,
     )
 
     st_1 = make_field_smoker_type(0)
@@ -1099,7 +1086,6 @@ class Player(BasePlayer):
             [5, "⑤ 매우 허약함"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     stress_metric_self_reported = models.IntegerField(
@@ -1125,7 +1111,6 @@ class Player(BasePlayer):
             [5, "금연을 실천한 지 6개월 이상 되었음 "],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     sa_1 = make_field_smoking_cessation_adverse(0)
@@ -1167,8 +1152,10 @@ class Player(BasePlayer):
     ef_9 = make_field_experience_frequency(8)
     ef_10 = make_field_experience_frequency(9)
 
+    # 아래 항목은 wave2 에서는 쓰이지 않음. 사전검사가 진행되고 난 뒤 진행될 것이기 때문
     behavior_strengthening_material_barcode = models.IntegerField(
         label="지급받은 행동물품 일련번호를 입력해주십시오.",
+        blank=True,
     )
 
     gender = models.IntegerField(
@@ -1178,13 +1165,11 @@ class Player(BasePlayer):
             [2, "여성"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     birth_year = models.IntegerField(
         label="귀하의 출생년도는 몇년도이십니까?",
         choices=range(1940, 2001),
-        blank=True,
     )
 
     region = models.IntegerField(
@@ -1209,7 +1194,6 @@ class Player(BasePlayer):
             [17, "제주도"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     region_size = models.IntegerField(
@@ -1221,7 +1205,6 @@ class Player(BasePlayer):
             [4, "특수지역(도서·벽지 지역)"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     marriage = models.IntegerField(
@@ -1233,7 +1216,6 @@ class Player(BasePlayer):
             [4, "기타"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     job_position = models.IntegerField(
@@ -1245,7 +1227,6 @@ class Player(BasePlayer):
             [4, "최근 6개월 이내 근무경력 없음"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     firm_type = models.IntegerField(
@@ -1262,7 +1243,6 @@ class Player(BasePlayer):
 
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     firm_type_op = models.StringField(
@@ -1282,7 +1262,6 @@ class Player(BasePlayer):
             [7, "현재 근무중이 아님"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     household_income = models.IntegerField(
@@ -1297,7 +1276,6 @@ class Player(BasePlayer):
             [7, "750만원 이상"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     text_field = models.LongStringField(

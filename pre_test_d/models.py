@@ -292,6 +292,7 @@ class Player(BasePlayer):
     ef_9 = make_field_experience_frequency(8)
     ef_10 = make_field_experience_frequency(9)
 
+    # wave2 에서는 쓰지 않음. 절차상 이걸 작성하는 상황에서는 상자가 배정되지 않기 때문.
     behavior_strengthening_material_barcode = models.IntegerField(
         label="지급받은 행동물품 일련번호를 입력해주십시오.",
         blank=True,
@@ -309,7 +310,6 @@ class Player(BasePlayer):
     birth_year = models.IntegerField(
         label="귀하의 출생년도는 몇년도이십니까?",
         choices=range(1940, 2002),
-        blank=True,
     )
 
     region = models.IntegerField(

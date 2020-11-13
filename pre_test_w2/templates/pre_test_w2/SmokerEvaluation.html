@@ -26,8 +26,17 @@
     </div>
 
     <div class="alert border">{% formfield player.within_last_one_year_smoking_cessation_tryout_yesno %}</div>
-    <div class="alert border">{% formfield player.within_last_one_year_smoking_cessation_tryout_yesno_op_month %}</div>
-    <div class="alert border">{% formfield player.within_last_one_year_smoking_cessation_tryout_yesno_op_days %}</div>
+    <div class="alert border">
+        <div class="row alert">
+            <span>{% formfield player.within_last_one_year_smoking_cessation_tryout_yesno_op_month %}
+            </span>개월
+        </div>
+    </div>
+    <div class="alert border">
+        <span style="display:block">
+            {% formfield player.within_last_one_year_smoking_cessation_tryout_yesno_op_days %}
+        일</span>
+    </div>
 
     <div class="alert border"><p>귀하께서 담배를 끊기 위해서  시도했던 방법은? (해당사항 모두 표시)</p>
         {% formfield player.smoking_cessation_method_1 %}

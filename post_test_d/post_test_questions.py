@@ -30,7 +30,7 @@ SATISFACTION = ["금연상담사는 상담 약속시간을 잘 지켰습니까?"
                 "담배를 피우는 다른 사람에게도 국가금연지원서비스를 이용하도록 권유할 생각이 있습니까?",
                 ]
 
-SMOKING_CESSATION_ADVERSE_EFFECT = ["담배를 피우고 싶은 절심함",
+SMOKING_CESSATION_ADVERSE_EFFECT = ["담배를 피우고 싶은 절실함",
                                     "짜증남/ 좌절/ 분노",
                                     "불안",
                                     "집중하기 어려움",
