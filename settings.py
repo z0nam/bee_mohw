@@ -22,7 +22,7 @@ SESSION_CONFIGS = [
             "pre_test_w2",
             "pre_test_d",
             "stroop",
-
+            "ending",
         ]
     },
     {
@@ -33,7 +33,7 @@ SESSION_CONFIGS = [
             # "introduction",
             "post_test",
             "stroop",
-
+            "ending",
         ]
     },
     {
