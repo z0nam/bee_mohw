@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    기본정보
+{% endblock %}
+
+{% block content %}
+
+    <p>★★ 지급된 행동강화물품의 일련번호(세 자리 숫자) 를 적어주시기 바랍니다. ★★</p>
+    <div class="alert border">{% formfield player.behavior_strengthening_material_barcode %}</div>
+
+    <div class="alert border">{% formfield player.registration_type %}</div>
+
+    <div class="alert border">
+        귀하의 금연시작일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.smoking_cessation_start_year %}</div>년 <div class="d-inline-block">{% formfield player.smoking_cessation_start_month %}</div>월 <div class="d-inline-block">{% formfield player.smoking_cessation_start_date %}</div>일</div>
+    <div class="alert border">
+        금연지원프로그램 등록일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.support_service_registration_year %}</div>년 <div class="d-inline-block">{% formfield player.support_service_registration_month %}</div>월 <div class="d-inline-block">{% formfield player.support_service_registration_date %}</div>일</div>
+    <div class="alert border">
+        귀하의 금연결심일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.
+    </div>
+    <div class="d-block"> <div class="d-inline-block">{% formfield player.smoking_cessation_resolution_year %}</div>년 <div class="d-inline-block">{% formfield player.smoking_cessation_resolution_month %}</div>월 <div class="d-inline-block">{% formfield player.smoking_cessation_resolution_date %}</div>일</div>
+    <div class="alert border"><p>금연하는데 도움을 주는 사람은 누구입니까? (복수응답 가능)</p>
+        {% formfield player.smoking_cessation_supporter_1 %}
+        {% formfield player.smoking_cessation_supporter_2 %}
+        {% formfield player.smoking_cessation_supporter_3 %}
+        {% formfield player.smoking_cessation_supporter_4 %}
+        {% formfield player.smoking_cessation_supporter_5 %}
+        {% formfield player.smoking_cessation_supporter_6 %}
+        {% formfield player.smoking_cessation_supporter_7 %}
+        {% formfield player.smoking_cessation_supporter_8 %}
+        {% formfield player.smoking_cessation_supporter_9 %}
+        {% formfield player.smoking_cessation_supporter_10 %}
+    </div>
+    <div class="alert border"><p>귀하의 금연지원서비스 등록경로를 선택해주십시오 (복수응답 가능)</p>
+        {% formfield player.support_service_registration_source_1 %}
+        {% formfield player.support_service_registration_source_2 %}
+        {% formfield player.support_service_registration_source_3 %}
+        {% formfield player.support_service_registration_source_4 %}
+        {% formfield player.support_service_registration_source_5 %}
+        {% formfield player.support_service_registration_source_6 %}
+        {% formfield player.support_service_registration_source_7 %}
+        {% formfield player.support_service_registration_source_8 %}
+        {% formfield player.support_service_registration_source_9 %}
+    </div>
+
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}

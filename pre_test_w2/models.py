@@ -13,10 +13,10 @@ from otree.api import (
 from Global_Constants import GlobalConstants
 from . import pre_test_questions
 
-author = 'Kyubum Moon <mailto:moonx190@umn.edu>'
+author = 'Kyubum Moon <mailto:moonx190@umn.edu>, Namun Cho <mailto:dr.strangelove@kberi.re.kr>'
 
 doc = """
-행동강화물품 행동실험 사전조사
+행동강화물품 행동실험 사전조사 (wave 2)
 """
 
 
@@ -79,7 +79,7 @@ class Constants(BaseConstants):
         [3, "중학교 졸업이하"],
         [4, "고등학교 졸업이하"],
         [5, "전문대/대학교 졸업이하"],
-        [6, "전문대/대학교 졸업이하"],
+        [6, "대학원 수료이상"],
         [7, "모름"],
         [8, "무응답/응답거부"],
     ]
@@ -897,7 +897,6 @@ class Player(BasePlayer):
         label="이번에 금연을 시도하는 첫번째 이유 ",
         choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
         widget = widgets.RadioSelect,
-        blank = True,
     )
 
     smoking_cessation_this_time_reason_primary_op = models.StringField(
@@ -909,7 +908,6 @@ class Player(BasePlayer):
         label = "이번에 금연을 시도하는 두번째 이유 ",
         choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
         widget = widgets.RadioSelect,
-        blank = True,
     )
 
     smoking_cessation_this_time_reason_secondary_op = models.StringField(
@@ -921,7 +919,6 @@ class Player(BasePlayer):
         label="이번에 금연을 시도하는 세번째 이유 ",
         choices = Constants.SMOKING_CESSATION_THIS_TIME_REASON,
         widget = widgets.RadioSelect,
-        blank = True,
     )
 
     smoking_cessation_this_time_reason_tertiary_op = models.StringField(

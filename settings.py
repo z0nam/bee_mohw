@@ -18,15 +18,27 @@ SESSION_CONFIGS = [
         "display_name": "금연클리닉 등록카드(연구자 입력용)",
         "num_demo_participants": 1,
         "app_sequence": [
-            "pre_test",
+            "pre_test_w2",
         ]
     },
     {
-        "name": "pre_test",
+        "name": "pre_test_w2",
         "display_name": "사전검사",
         "num_demo_participants": 1,
         "app_sequence": [
             "introduction",
+            "pre_test_d",
+            "stroop",
+
+        ]
+    },
+    {
+        "name": "pre_test_wave2",
+        "display_name": "사전검사 (wave 2)",
+        "num_demo_participants": 1,
+        "app_sequence": [
+            "introduction",
+            "pre_test_w2",
             "pre_test_d",
             "stroop",
 

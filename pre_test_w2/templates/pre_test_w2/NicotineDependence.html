@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    니코틴 의존도
+{% endblock %}
+
+{% block content %}
+    <p>※ 니코틴 의존도 평가</p>
+    <div class="alert border">{% formfield player.morning_smoking_time %}</div>
+    <div class="alert border">{% formfield player.smoking_resistancy %}</div>
+    <div class="alert border">{% formfield player.most_tasty_smoking_time %}</div>
+    <div class="alert border">{% formfield player.how_many_gaebis_per_day %}</div>
+    <div class="alert border">{% formfield player.morning_smoking_more_than_the_rest_of_day %}</div>
+    <div class="alert border">{% formfield player.sick_all_day_still_smoking %}</div>
+
+
+
+    <button class="btn btn-primary btn-large active">
+
+    모든 질문에 답하셨으면 이 버튼을 클릭하여 다음 화면으로 이동해 주세요.
+    </button>
+
+{% endblock %}
