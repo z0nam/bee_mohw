@@ -10,15 +10,15 @@
     <div class="alert border">{% formfield player.registration_type %}</div>
 
     <div class="alert border">
-        귀하의 금연시작일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.
+        귀하의 금연시작일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.(본 미션에서 실제 금연을 시작한 날)
     </div>
     <div class="d-block"> <div class="d-inline-block">{% formfield player.smoking_cessation_start_year %}</div>년 <div class="d-inline-block">{% formfield player.smoking_cessation_start_month %}</div>월 <div class="d-inline-block">{% formfield player.smoking_cessation_start_date %}</div>일</div>
     <div class="alert border">
-        금연지원프로그램 등록일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.
+        금연지원프로그램 등록일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.(이 설문을 작성하고 있는 날)
     </div>
     <div class="d-block"> <div class="d-inline-block">{% formfield player.support_service_registration_year %}</div>년 <div class="d-inline-block">{% formfield player.support_service_registration_month %}</div>월 <div class="d-inline-block">{% formfield player.support_service_registration_date %}</div>일</div>
     <div class="alert border">
-        귀하의 금연결심일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.
+        귀하의 금연결심일을 년,월,일 선택의 형식으로 아래에 선택해 주시기 바랍니다.(본 미션에 참가하기로 결심한 날)
     </div>
     <div class="d-block"> <div class="d-inline-block">{% formfield player.smoking_cessation_resolution_year %}</div>년 <div class="d-inline-block">{% formfield player.smoking_cessation_resolution_month %}</div>월 <div class="d-inline-block">{% formfield player.smoking_cessation_resolution_date %}</div>일</div>
     <div class="alert border"><p>금연하는데 도움을 주는 사람은 누구입니까? (복수응답 가능)</p>
@@ -33,7 +33,7 @@
         {% formfield player.smoking_cessation_supporter_9 %}
         {% formfield player.smoking_cessation_supporter_10 %}
     </div>
-    <div class="alert border"><p>귀하의 금연지원서비스 등록경로를 선택해주십시오 (복수응답 가능)</p>
+    <div class="alert border"><p>본 미션에 등록하게 된 경로를 선택해주십시오 (복수응답 가능)</p>
         {% formfield player.support_service_registration_source_1 %}
         {% formfield player.support_service_registration_source_2 %}
         {% formfield player.support_service_registration_source_3 %}
