@@ -241,7 +241,7 @@ class Player(BasePlayer):
 
     smoking_cessation_start_year = models.IntegerField(
         label="",
-        choices=range(Constants.MIN_YEAR, Constants.MAX_YEAR + 1),
+        choices=range(2020, 2021),
         blank=True,
     )
 
@@ -258,7 +258,7 @@ class Player(BasePlayer):
 
     support_service_registration_year = models.IntegerField(
         label="",
-        choices=range(Constants.MIN_YEAR, Constants.MAX_YEAR + 1),
+        choices=range(2020, 2021),
         blank=True,
     )
 
@@ -275,7 +275,7 @@ class Player(BasePlayer):
 
     smoking_cessation_resolution_year = models.IntegerField(
         label="",
-        choices=range(Constants.MIN_YEAR, Constants.MAX_YEAR + 1),
+        choices=range(2020, 2021),
         blank=True,
     )
 
