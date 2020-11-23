@@ -5,18 +5,20 @@ from Global_Constants import GlobalConstants
 import requests
 from django.http import HttpResponseRedirect
 
+
 class Thanks(Page):
     def is_displayed(self):
         return True
+
     def get(self):
         url = GlobalConstants.EXTERNAL_URL + "?panel_id="\
             + self.participant.vars['panel_id'] + "&status=001"
-        print("return url:",url)
+        print("return url:", url)
         return HttpResponseRedirect(url)
 
     def vars_for_template(self):
         return{
-            'URL':GlobalConstants.EXTERNAL_URL,
+            'URL': GlobalConstants.EXTERNAL_URL,
             'Panel_ID': self.participant.vars['panel_id']
         }
 

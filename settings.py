@@ -44,6 +44,15 @@ SESSION_CONFIGS = [
             "post_test_d",
         ]
     },
+    {
+        "name": "passing_vars",
+        "display_name": "통신 테스트",
+        "num_demo_participants": 1,
+        "app_sequence": [
+            "introduction",
+            "ending",
+        ]
+    },
 ]
 
 # ISO-639 code
