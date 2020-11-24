@@ -1046,7 +1046,7 @@ class Player(BasePlayer):
     )
 
     morning_smoking_more_than_the_rest_of_day = models.BooleanField(
-        label="아침에 일어나서 첫 몇 시간 동안하루 중 다른 시간보다 거 자주 담배를 피우십니까?",
+        label="아침에 일어나서 첫 몇 시간 동안하루 중 다른 시간보다 더 자주 담배를 피우십니까?",
         choices=Constants.BINARY_CHOICES,
         widget=widgets.RadioSelectHorizontal,
         blank=True,
