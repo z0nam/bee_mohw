@@ -404,12 +404,10 @@ class Player(BasePlayer):
 
     height = models.FloatField(
         label="귀하의 신장을 cm단위로 입력해주십시오.",
-        blank=True,
     )
 
     weight = models.FloatField(
         label="귀하의 체중을 kg단위로 입력해주십시오.",
-        blank=True,
     )
 
     waist_circumference = models.FloatField(
@@ -629,12 +627,12 @@ class Player(BasePlayer):
     )
 
     drinking_amount_per_drinking_outing = models.IntegerField(
-        label="귀하의 1회 음주량을 잔으로 환산하여 입력해주십시오.",
+        label="귀하의 1회 음주량을 잔으로 환산하여 입력해주십시오.(음주를 전혀 하지 않을 경우는 0을 입력)",
         blank=True,
     )
 
     drinking_frequency_per_week = models.IntegerField(
-        label="귀하는 1주에 몇 회 정도 술을 드십니까?",
+        label="귀하는 1주에 몇 회 정도 술을 드십니까?(음주를 하지 않을 경우는 미입력, 1주 미만일 경우는 0을 입력)",
         blank=True,
     )
     intense_workout_yes_no = models.BooleanField(
@@ -788,14 +786,12 @@ class Player(BasePlayer):
         label="귀하의 최종학력을 선택해주십시오.",
         choices=Constants.HIGHEST_SCHOOLING,
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     occupation = models.IntegerField(
         label="귀하의 직업을 선택해주십시오.",
         choices=Constants.OCCUPATION,
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     occupation_op = models.StringField(
@@ -1098,7 +1094,6 @@ class Player(BasePlayer):
             [5, "⑤ 매우 많이 받음"],
         ],
         widget=widgets.RadioSelect,
-        blank=True,
     )
 
     afterward_smoking_cessation_yesno = models.IntegerField(
