@@ -76,4 +76,4 @@ class Results(Page):
         return self.round_number == Constants.num_rounds  # last round
 
 
-page_sequence = [Introduction, Instruction, Stroop, Results]
+page_sequence = [Introduction, Instruction, Stroop]
