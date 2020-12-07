@@ -30,7 +30,7 @@ SESSION_CONFIGS = [
         "display_name": "사후검사",
         "num_demo_participants": 1,
         "app_sequence": [
-            # "introduction",
+            "introduction",
             "post_test",
             "stroop",
             "ending",
